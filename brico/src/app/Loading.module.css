@@ -1,0 +1,157 @@
+/* Loading.module.css (Next-Level BRICO Loader) */
+
+/* --- Variables --- */
+:root {
+  --brico-orange: #ff8c00;
+  --brico-dark-bg: #121212;
+  --skeleton-light: #2c2c2c;
+  --skeleton-dark: #1e1e1e;
+}
+
+/* --- Main Container --- */
+.loadingContainer {
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--brico-dark-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 50px 20px;
+}
+
+/* --- BRICO Loader Animation (Cube/Logo) --- */
+.bricoLoader {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+/* The Rotating Cube (Orange Accent) */
+.cube {
+  width: 25px;
+  height: 25px;
+  background-color: var(--brico-orange);
+  animation: spin 1.5s infinite ease-in-out;
+  border-radius: 4px;
+}
+
+@keyframes spin {
+  0% {
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(-180deg);
+  }
+}
+
+.logoTitle {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: white;
+  opacity: 0;
+  animation: fadeInOut 3s infinite ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0%,
+  10% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  90%,
+  100% {
+    opacity: 0.2;
+  }
+}
+
+/* Loading Text */
+.loadingText {
+  color: #999;
+  font-size: 1rem;
+  margin-bottom: 50px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+/* --- Skeleton Loader Area --- */
+.skeletonContainer {
+  width: 90%;
+  max-width: 1200px;
+  opacity: 0.7; /* Thoda halka dikhayen */
+}
+
+/* Skeleton Header */
+.skeletonHeader {
+  height: 50px;
+  background-color: var(--skeleton-dark);
+  border-radius: 8px;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+/* Skeleton Tiles Grid */
+.skeletonTilesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.skeletonTile {
+  height: 200px;
+  background-color: var(--skeleton-dark);
+  border-radius: 12px;
+}
+
+/* Skeleton Buttons Grid */
+.skeletonButtonsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.skeletonButton {
+  height: 100px;
+  background-color: var(--skeleton-dark);
+  border-radius: 12px;
+}
+
+/* --- Global Skeleton Pulse Animation --- */
+/* Pulse effect for realism */
+.skeletonPulse {
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: var(--skeleton-dark);
+  }
+  50% {
+    background-color: var(--skeleton-light);
+  }
+  100% {
+    background-color: var(--skeleton-dark);
+  }
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  .skeletonTilesGrid {
+    grid-template-columns: 1fr; /* Mobile par 1 column */
+  }
+  .skeletonButton {
+    height: 80px;
+  }
+  .skeletonButtonsGrid {
+    grid-template-columns: repeat(2, 1fr); /* Mobile par 2 columns */
+  }
+}

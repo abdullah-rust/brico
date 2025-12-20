@@ -1,0 +1,113 @@
+/* components/Header/Header.module.css (Responsive) */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px; /* Mobile par padding kam */
+  background-color: #0d0d0d;
+  border-bottom: 1px solid #333;
+  flex-wrap: wrap; /* Agar zaroorat pare toh wrap ho jaye */
+}
+
+.logoProfile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  order: 1; /* Mobile par logo pehle */
+}
+
+.logo {
+  font-size: 1.3rem; /* Mobile par font size kam */
+  font-weight: 700;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+  color: #fff;
+}
+
+.logoIcon {
+  font-size: 1.1rem;
+  color: #ff8c00;
+  margin-right: 3px;
+  transform: translateY(-2px);
+}
+
+.profileIcon {
+  font-size: 1.8rem;
+  color: #fff;
+}
+
+.dropdownIcon {
+  font-size: 0.7rem;
+  color: #aaa;
+  display: none; /* Mobile par dropdown icon chipa sakte hain */
+}
+
+/* Search Bar Styling (Mobile) */
+.searchBar {
+  display: flex;
+  align-items: center;
+  background-color: #2c2c2c;
+  border-radius: 8px;
+  padding: 8px 15px;
+  flex-grow: 1;
+  width: 100%; /* Mobile par poori width le le */
+  max-width: none;
+  margin: 10px 0; /* Logo aur buttons se alag */
+  order: 3; /* Mobile par search bar neeche */
+}
+
+.searchIcon {
+  color: #888;
+  margin-right: 10px;
+}
+
+.searchInput {
+  border: none;
+  background: none;
+  color: #fff;
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+/* Post Gig Button */
+.postGigBtn {
+  background-color: #ff8c00;
+  color: #0d0d0d;
+  border: none;
+  padding: 8px 15px; /* Mobile par padding kam */
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  order: 2; /* Mobile par right side */
+}
+
+/* --- Desktop Styles (Media Query) --- */
+@media (min-width: 768px) {
+  .header {
+    padding: 15px 40px;
+    flex-wrap: nowrap;
+  }
+  .logoProfile {
+    order: unset;
+  }
+  .logo {
+    font-size: 1.5rem;
+    margin-right: 20px;
+  }
+  .dropdownIcon {
+    display: block; /* Desktop par dikhayen */
+  }
+  .searchBar {
+    margin: 0 30px;
+    max-width: 600px;
+    order: unset;
+    width: auto;
+  }
+  .postGigBtn {
+    padding: 10px 25px;
+    order: unset;
+  }
+}

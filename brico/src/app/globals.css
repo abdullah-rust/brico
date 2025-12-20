@@ -1,0 +1,99 @@
+/* styles/globals.css */
+
+/* --- 1. CSS Reset --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* --- Primary Colors (Construction Theme) --- */
+  --color-primary-orange: #ff7f00; /* Main Highlight Color - Safety Orange */
+  --color-primary-blue: #2a3e5c; /* Dark Blue for Secondary Actions/Buttons */
+  --color-primary-dark: #121212; /* Deep Dark Background */
+  --color-primary-light: #f4f4f4; /* Light text/surface */
+
+  /* --- Neutral/Text Colors --- */
+  --color-text-main: var(--color-primary-light);
+  --color-text-secondary: #aaaaaa;
+
+  /* --- Spacing/Layout --- */
+  --spacing-unit: 8px;
+  --max-width: 1200px;
+
+  /* --- Border Radius --- */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+}
+
+/* --- 2. Base HTML & Body Styling --- */
+html {
+  font-size: 16px; /* Base font size */
+  line-height: 1.5;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  background-color: var(--color-primary-dark);
+  color: var(--color-text-main);
+  min-height: 100vh;
+}
+
+/* --- 3. Typography --- */
+h1,
+h2,
+h3,
+h4 {
+  color: var(--color-primary-light);
+  font-weight: 700;
+  margin-bottom: var(--spacing-unit);
+}
+
+a {
+  color: var(--color-primary-orange);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #ff9833; /* Slightly lighter orange on hover */
+}
+
+/* --- 4. Utility Classes (Optional but Recommended) --- */
+
+/* Utility for centering content inside a max-width container */
+.container {
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 calc(var(--spacing-unit) * 2); /* 16px padding on sides */
+}
+
+/* Utility for common buttons */
+.btn {
+  padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3);
+  border: none;
+  cursor: pointer;
+  border-radius: var(--border-radius-md);
+  font-weight: 600;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.btn-primary {
+  background-color: var(--color-primary-orange);
+  color: var(--color-primary-dark);
+}
+
+.btn-secondary {
+  background-color: var(--color-primary-blue);
+  color: var(--color-primary-light);
+}
+
+.btn:hover {
+  opacity: 0.9;
+}

@@ -1,0 +1,93 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+
+
+// --- 1. Enums (CREATE TYPE user_role) ---
+enum Role {
+  CLIENT
+  WORKER
+  ADMIN
+}
+
+// --- 2. User Model (CREATE TABLE users) ---
+model User {
+  // Fields
+  id              String   @id @default(uuid()) @db.Uuid
+  email           String   @unique
+  password        String?  
+  
+  fullName       String   @map("first_name") @db.VarChar(100)
+
+  // Enum mapping the PostgreSQL custom type
+  role            Role     @default(CLIENT)
+  
+  createdAt       DateTime @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt       DateTime @updatedAt @map("updated_at") @db.Timestamptz()
+  
+  // Relationships
+  workerProfile   Worker?
+}
+
+// --- 3. Worker Model (CREATE TABLE workers) ---
+model Worker {
+  // Fields
+  id               String    @id @default(uuid()) @db.Uuid
+  userId           String    @unique @map("user_id") @db.Uuid
+  
+  profession       String    @db.VarChar(100)
+  bio              String?   @db.Text
+  experienceYears  Int       @map("experience_years")
+  rating           Float     @default(0.0) @db.Real // FLOAT for rating is acceptable
+  skills           String[]  // Prisma automatically maps String[] to TEXT[] in PostgreSQL
+  city             String?   @db.VarChar(100)
+  
+  createdAt        DateTime  @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt        DateTime  @updatedAt @map("updated_at") @db.Timestamptz()
+  
+  // Relationships
+  user             User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  gigs             Gig[]     // Worker ki multiple gigs ho sakti hain
+}
+
+// --- 4. Gig Model (CREATE TABLE gigs) ---
+model Gig {
+  // Fields
+  id               String    @id @default(uuid()) @db.Uuid
+  workerId         String    @map("worker_id") @db.Uuid
+  
+  title            String    @db.VarChar(255)
+  description      String    @db.Text
+  
+  category         String    @db.VarChar(100)
+  priceBase        Decimal   @map("price_base") @db.Decimal(10, 2) // NUMERIC(10, 2) in PG maps to Decimal/Float in Prisma
+  
+  isRemote         Boolean   @default(false) @map("is_remote")
+  serviceAreas     String[]  @map("service_areas")
+  
+  imageUrls        String[]  @map("image_urls")
+  
+  isActive         Boolean   @default(true) @map("is_active")
+  
+  createdAt        DateTime  @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt        DateTime  @updatedAt @map("updated_at") @db.Timestamptz()
+  
+  // Relationships
+  worker           Worker    @relation(fields: [workerId], references: [userId], onDelete: Cascade)
+  
+  // Custom Indexing for performance
+  @@index([category])
+  @@index([workerId])
+}

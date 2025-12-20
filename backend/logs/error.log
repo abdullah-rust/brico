@@ -1,0 +1,32 @@
+[2025-12-17 20:47:27] [31merror[39m: [31m1 se how[39m
+[2025-12-17 20:52:54] [31merror[39m: [31m1 se how[39m
+[2025-12-17 20:53:41] [31merror[39m: [31m1 se how[39m
+[2025-12-17 21:14:23] [31merror[39m: [31mLogIn ErrorPrismaClientValidationError: [39m
+[31mInvalid `prisma.user.findUnique()` invocation in[39m
+[31m/home/abdullah/Brico/backend/src/auth/login/login.ts:38:42[39m
+
+[31m  35 [39m
+[31m  36 const data: LoginStruct = resultParsed;[39m
+[31m  37 [39m
+[31m→ 38 const checkexist = await prisma.user.findUnique({[39m
+[31m       where: {[39m
+[31m         email: undefined,[39m
+[31m     ?   id?: String,[39m
+[31m     ?   AND?: UserWhereInput | UserWhereInput[],[39m
+[31m     ?   OR?: UserWhereInput[],[39m
+[31m     ?   NOT?: UserWhereInput | UserWhereInput[],[39m
+[31m     ?   password?: StringNullableFilter | String | Null,[39m
+[31m     ?   fullName?: StringFilter | String,[39m
+[31m     ?   role?: EnumRoleFilter | Role,[39m
+[31m     ?   createdAt?: DateTimeFilter | DateTime,[39m
+[31m     ?   updatedAt?: DateTimeFilter | DateTime,[39m
+[31m     ?   workerProfile?: WorkerNullableScalarRelationFilter | WorkerWhereInput | Null[39m
+[31m       },[39m
+[31m       select: {[39m
+[31m         id: true,[39m
+[31m         password: true[39m
+[31m       }[39m
+[31m     })[39m
+
+[31mArgument `where` of type UserWhereUniqueInput needs at least one of `id` or `email` arguments. Available options are marked with ?.[39m
+[2025-12-17 21:18:41] [31merror[39m: [31mLogin OTP Verification ErrorError: Cannot create Access Token: User ID is invalid or missing.[39m
