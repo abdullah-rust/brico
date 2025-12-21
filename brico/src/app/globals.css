@@ -97,3 +97,75 @@ a:hover {
 .btn:hover {
   opacity: 0.9;
 }
+
+/* swal css */
+
+/* Main Popup Box */
+.swal2-popup {
+  background-color: #121212 !important; /* Dark Theme */
+  border: 1px solid #333;
+  border-radius: 15px !important;
+  color: #fff !important;
+}
+
+/* Title aur Text */
+.swal2-title,
+.swal2-html-container {
+  color: #ffffff !important;
+  font-family: "Inter", sans-serif; /* Ya jo bhi aap use kar rahe ho */
+}
+
+/* Confirm Button (BRICO Orange) */
+.swal2-confirm {
+  background-color: #ff8c00 !important;
+  color: #000 !important; /* Dark text on orange */
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3) !important;
+}
+
+/* Cancel Button (BRICO Dark Blue) */
+.swal2-cancel {
+  background-color: #2c3e50 !important;
+  color: #fff !important;
+  border-radius: 8px !important;
+}
+
+/* Hover Effects */
+.swal2-confirm:hover {
+  background-color: #e67e00 !important;
+  transform: translateY(-2px);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* 2. Track (Scrollbar ka background rasta) */
+::-webkit-scrollbar-track {
+  background: #0d0d0d; /* Background ke saath match karega */
+  border-radius: 10px;
+}
+
+/* 3. Thumb (Wo hissa jo move karta hai) */
+::-webkit-scrollbar-thumb {
+  background: #2c2c2c; /* Default state mein thoda dark */
+  border-radius: 10px;
+  border: 2px solid #0d0d0d; /* Padding effect dene ke liye */
+  transition: all 0.3s ease;
+}
+
+/* 4. Hover State (Jab user scrollbar par mouse le jaye) */
+::-webkit-scrollbar-thumb:hover {
+  background: #ff8c00; /* BRICO Orange color */
+  box-shadow: 0 0 10px rgba(255, 140, 0, 0.5); /* Halka sa glow */
+}
+
+/* Firefox ke liye (Firefox webkit support nahi karta) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2c2c2c #0d0d0d;
+}

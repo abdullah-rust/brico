@@ -30,3 +30,7 @@
 
 [31mArgument `where` of type UserWhereUniqueInput needs at least one of `id` or `email` arguments. Available options are marked with ?.[39m
 [2025-12-17 21:18:41] [31merror[39m: [31mLogin OTP Verification ErrorError: Cannot create Access Token: User ID is invalid or missing.[39m
+[2025-12-21 19:34:31] [31merror[39m: [31mSingup OTP Sending Error[39m
+[2025-12-21 19:34:41] [31merror[39m: [31mSingup OTP Sending Error[39m
+[2025-12-21 19:48:26] [31merror[39m: [31mSignup OTP Verification ErrorError: secretOrPrivateKey must have a value[39m
+[2025-12-21 19:52:03] [31merror[39m: [31mLogin OTP Verification ErrorError: secretOrPrivateKey must have a value[39m

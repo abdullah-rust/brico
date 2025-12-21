@@ -1,20 +1,60 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 import Link from "next/link";
 import styles from "./page.module.css";
+import { useRouter } from "next/navigation";
+import api from "../utils/api";
+import Swal from "sweetalert2";
 
 const LoginPage = () => {
   const backgroundImage = "/montreal-dusk.jpg";
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Login form submitted");
+
+    Swal.fire({
+      title: "Logging in...",
+      text: "Please wait while we verify your account.",
+      allowOutsideClick: false,
+      showConfirmButton: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
+
+    try {
+      await api.post("/login", {
+        email,
+        password,
+      });
+
+      Swal.fire({
+        icon: "success",
+        title: "Account Verify!",
+        text: "Check your email for OTP verification.",
+        timer: 2000,
+        showConfirmButton: false,
+      });
+
+      router.push(`/verify-otp?email=${email}&type=login`);
+    } catch (e: any) {
+      Swal.fire({
+        icon: "error",
+        title: "Login Failed",
+        text: e.response?.data?.message || "Something went wrong!",
+        confirmButtonColor: "#ff8c00",
+      });
+      console.log(e);
+    }
   };
 
   const handleGoogleLogin = () => {
-    console.log("Google login clicked");
+    router.push("/api/auth/google");
   };
 
   return (
@@ -46,6 +86,8 @@ const LoginPage = () => {
               className={styles.input}
               placeholder="Email Address"
               required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
 
@@ -56,6 +98,8 @@ const LoginPage = () => {
               className={styles.input}
               placeholder="Password"
               required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
 

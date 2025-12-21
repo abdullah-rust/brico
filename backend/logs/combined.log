@@ -36,3 +36,7 @@
 [32m  id: '877c37d1-6cf2-437e-8893-c7f95ac11408',[39m
 [32m  code: '523858'[39m
 [32m}[39m
+[2025-12-21 19:34:31] [31merror[39m: [31mSingup OTP Sending Error[39m
+[2025-12-21 19:34:41] [31merror[39m: [31mSingup OTP Sending Error[39m
+[2025-12-21 19:48:26] [31merror[39m: [31mSignup OTP Verification ErrorError: secretOrPrivateKey must have a value[39m
+[2025-12-21 19:52:03] [31merror[39m: [31mLogin OTP Verification ErrorError: secretOrPrivateKey must have a value[39m

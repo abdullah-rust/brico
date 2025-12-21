@@ -3,6 +3,7 @@
 import { FaGoogle } from "react-icons/fa";
 import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 const WelcomePage = () => {
   // Aap yahan apni image ka path denge
@@ -18,7 +19,7 @@ const WelcomePage = () => {
   };
 
   const handleGoogle = () => {
-    console.log("Google auth");
+    router.push("/api/auth/google");
   };
 
   return (

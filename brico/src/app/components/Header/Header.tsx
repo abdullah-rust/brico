@@ -1,31 +1,36 @@
-// components/Header/Header.tsx
-
 import React from "react";
 import styles from "./Header.module.css";
-import { FaUserCircle, FaChevronDown, FaSearch } from "react-icons/fa";
+import { FaUserCircle, FaChevronDown, FaBell } from "react-icons/fa";
 
 const Header: React.FC = () => {
   return (
     <header className={styles.header}>
-      {/* Logo and Profile */}
-      <div className={styles.logoProfile}>
+      {/* Brand Section */}
+      <div className={styles.brandSection}>
         <div className={styles.logo}>BRICO</div>
-        <FaUserCircle className={styles.profileIcon} />
-        <FaChevronDown className={styles.dropdownIcon} />
       </div>
 
-      {/* Search Bar */}
-      <div className={styles.searchBar}>
-        <FaSearch className={styles.searchIcon} />
-        <input
-          type="text"
-          placeholder="Search for workers, maps..."
-          className={styles.searchInput}
-        />
+      {/* Center Section: Welcome Message (Mobile par hide kar sakte hain) */}
+      <div className={styles.welcomeSection}>
+        <p>
+          Welcome back, <span>Abdullah</span>
+        </p>
       </div>
 
-      {/* Action Button */}
-      <button className={styles.postGigBtn}>Post a Gig</button>
+      {/* Right Section: Actions & Profile */}
+      <div className={styles.actionsProfile}>
+        <div className={styles.iconWrapper}>
+          <FaBell className={styles.bellIcon} />
+          <span className={styles.notificationDot}></span>
+        </div>
+
+        <div className={styles.profileBox}>
+          <FaUserCircle className={styles.profileIcon} />
+          <FaChevronDown className={styles.dropdownIcon} />
+        </div>
+
+        <button className={styles.postGigBtn}>Post Gig</button>
+      </div>
     </header>
   );
 };

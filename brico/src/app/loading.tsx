@@ -1,48 +1,21 @@
-// app/dashboard/loading.tsx ya app/loading.tsx
+// components/MinimalLoader/MinimalLoader.tsx
 
 import React from "react";
 import styles from "./Loading.module.css";
 
-const LoadingPage: React.FC = () => {
+const MinimalLoader: React.FC = () => {
   return (
-    <div className={styles.loadingContainer}>
-      <div className={styles.bricoLoader}>
-        <div className={styles.cube}></div>
-        {/* BRICO Title ko animation ke saath */}
-        <h1 className={styles.logoTitle}>BRICO</h1>
-      </div>
+    // Poore viewport ko cover karega, z-index 9999 for overlay
+    <div className={styles.minimalLoaderOverlay}>
+      <div className={styles.loaderContent}>
+        {/* The Branded Spinner */}
+        <div className={styles.bricoSpinner}></div>
 
-      {/* Loading Bar ya Text */}
-      <div className={styles.loadingText}>Loading Resources...</div>
-
-      {/* Optional: Skeleton Placeholder for better UX on slower connections */}
-      <div className={styles.skeletonContainer}>
-        {/* Skeleton Header */}
-        <div className={styles.skeletonHeader}></div>
-
-        {/* Skeleton Tiles Grid */}
-        <div className={styles.skeletonTilesGrid}>
-          <div
-            className={`${styles.skeletonTile} ${styles.skeletonPulse}`}
-          ></div>
-          <div
-            className={`${styles.skeletonTile} ${styles.skeletonPulse}`}
-          ></div>
-          <div
-            className={`${styles.skeletonTile} ${styles.skeletonPulse}`}
-          ></div>
-        </div>
-
-        {/* Skeleton Buttons Grid */}
-        <div className={styles.skeletonButtonsGrid}>
-          <div className={styles.skeletonButton}></div>
-          <div className={styles.skeletonButton}></div>
-          <div className={styles.skeletonButton}></div>
-          <div className={styles.skeletonButton}></div>
-        </div>
+        {/* The BRICO Logo */}
+        <h1 className={styles.logoText}>BRICO</h1>
       </div>
     </div>
   );
 };
 
-export default LoadingPage;
+export default MinimalLoader;

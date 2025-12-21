@@ -1,8 +1,10 @@
+"use client";
 // pages/DashboardLayout.tsx (Ya components/Dashboard/DashboardLayout.tsx)
 
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./page.module.css"; // Iska CSS alag se
 import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 import FeatureTile from "./components/FeatureTile/FeatureTile";
 // React Icons
 import {
@@ -14,9 +16,10 @@ import {
   FaFolderOpen,
   FaSave,
 } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 
 const DashboardLayout: React.FC = () => {
-  // Fake image URLs: Aapko yeh images 'public' folder mein rakhni hongi
+  const router = useRouter();
   const imageTiles = [
     { id: 1, title: "Modern Villa", imageUrl: "/images/1.jpg" },
     { id: 2, title: "City Center Project", imageUrl: "/images/2.jpg" },
@@ -25,7 +28,7 @@ const DashboardLayout: React.FC = () => {
 
   // Feature buttons ka data (Image ke mutabiq colors aur icons)
   const featureButtons = [
-    { title: "Search Worker", icon: <FaSearch />, iconBg: "#9b59b6" },
+    { title: "Find Workers", icon: <FaSearch />, iconBg: "#9b59b6" },
     { title: "Maps House", icon: <FaMapMarkerAlt />, iconBg: "#3498db" },
     { title: "House Designs", icon: <FaHome />, iconBg: "#e67e22" },
     { title: "Saved Notes", icon: <FaBook />, iconBg: "#2ecc71" },
@@ -66,6 +69,7 @@ const DashboardLayout: React.FC = () => {
           ))}
         </div>
       </main>
+      <Footer />
     </div>
   );
 };

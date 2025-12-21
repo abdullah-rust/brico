@@ -1,7 +1,10 @@
 import { Request, Response } from "express";
 import logger from "../../utils/logger";
 import { OtpVerfication } from "./help";
-import { getVerificationCode } from "../../helpers/other";
+import {
+  deleteVerificationCode,
+  getVerificationCode,
+} from "../../helpers/other";
 import { createAccessToken, createRefreshToken } from "../../utils/jwt";
 import { prisma } from "../../lib/prisma";
 
@@ -48,7 +51,7 @@ export default async function SignupVerification(req: Request, res: Response) {
     if (verifiyCode.code !== data.code) {
       return res.status(400).json({ message: "Invalid code" });
     }
-
+    await deleteVerificationCode(verifiyCode.email);
     const createUser = await prisma.user.create({
       data: {
         email: verifiyCode.email,

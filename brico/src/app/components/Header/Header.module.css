@@ -1,37 +1,70 @@
-/* components/Header/Header.module.css (Responsive) */
-
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 20px; /* Mobile par padding kam */
-  background-color: #0d0d0d;
-  border-bottom: 1px solid #333;
-  flex-wrap: wrap; /* Agar zaroorat pare toh wrap ho jaye */
-}
+  padding: 0 20px;
+  height: 70px; /* Fixed Height */
+  background-color: rgba(13, 13, 13, 0.9); /* Glassmorphism look */
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #222;
 
-.logoProfile {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  order: 1; /* Mobile par logo pehle */
+  /* --- Fixed Position Logic --- */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Taake sab ke upar rahe */
 }
 
 .logo {
-  font-size: 1.3rem; /* Mobile par font size kam */
-  font-weight: 700;
-  letter-spacing: 1px;
-  display: flex;
-  align-items: center;
-  margin-right: 5px;
-  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #ff8c00; /* BRICO Orange */
 }
 
-.logoIcon {
-  font-size: 1.1rem;
-  color: #ff8c00;
-  margin-right: 3px;
-  transform: translateY(-2px);
+.welcomeSection {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.welcomeSection span {
+  color: #fff;
+  font-weight: 600;
+}
+
+.actionsProfile {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.iconWrapper {
+  position: relative;
+  cursor: pointer;
+}
+
+.bellIcon {
+  font-size: 1.2rem;
+  color: #888;
+}
+
+.notificationDot {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 8px;
+  height: 8px;
+  background: #ff4d4d;
+  border-radius: 50%;
+  border: 2px solid #0d0d0d;
+}
+
+.profileBox {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
 }
 
 .profileIcon {
@@ -42,72 +75,44 @@
 .dropdownIcon {
   font-size: 0.7rem;
   color: #aaa;
-  display: none; /* Mobile par dropdown icon chipa sakte hain */
 }
 
-/* Search Bar Styling (Mobile) */
-.searchBar {
-  display: flex;
-  align-items: center;
-  background-color: #2c2c2c;
-  border-radius: 8px;
-  padding: 8px 15px;
-  flex-grow: 1;
-  width: 100%; /* Mobile par poori width le le */
-  max-width: none;
-  margin: 10px 0; /* Logo aur buttons se alag */
-  order: 3; /* Mobile par search bar neeche */
-}
-
-.searchIcon {
-  color: #888;
-  margin-right: 10px;
-}
-
-.searchInput {
-  border: none;
-  background: none;
-  color: #fff;
-  font-size: 0.9rem;
-  width: 100%;
-}
-
-/* Post Gig Button */
 .postGigBtn {
   background-color: #ff8c00;
   color: #0d0d0d;
   border: none;
-  padding: 8px 15px; /* Mobile par padding kam */
-  border-radius: 8px;
-  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-weight: 700;
   cursor: pointer;
-  order: 2; /* Mobile par right side */
+  transition: transform 0.2s;
 }
 
-/* --- Desktop Styles (Media Query) --- */
-@media (min-width: 768px) {
+.postGigBtn:active {
+  transform: scale(0.95);
+}
+
+/* --- Mobile Fixes --- */
+@media (max-width: 768px) {
   .header {
-    padding: 15px 40px;
-    flex-wrap: nowrap;
+    height: 60px;
+    padding: 0 15px;
   }
-  .logoProfile {
-    order: unset;
+
+  .welcomeSection {
+    display: none; /* Mobile par user name hide kar dein space bachane ke liye */
   }
+
   .logo {
-    font-size: 1.5rem;
-    margin-right: 20px;
+    font-size: 1.2rem;
   }
-  .dropdownIcon {
-    display: block; /* Desktop par dikhayen */
-  }
-  .searchBar {
-    margin: 0 30px;
-    max-width: 600px;
-    order: unset;
-    width: auto;
-  }
+
   .postGigBtn {
-    padding: 10px 25px;
-    order: unset;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  .actionsProfile {
+    gap: 12px;
   }
 }
