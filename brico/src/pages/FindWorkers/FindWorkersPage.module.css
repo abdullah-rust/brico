@@ -1,0 +1,84 @@
+.page {
+  background: #f8fafc;
+  min-height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ye container header aur categories ko top par chipka dega */
+.stickyHeader {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #f8fafc; /* Background zaroori hai warna content piche se nazar aayega */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Optional: halka sa shadow */
+}
+
+.categoryScroll {
+  display: flex;
+  gap: 12px;
+  padding: 10px 20px 15px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.categoryScroll::-webkit-scrollbar {
+  display: none;
+}
+
+.catActive,
+.catInactive {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  padding: 8px 20px;
+  border-radius: 100px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.catActive {
+  background: #11d4b4;
+  color: white;
+  border: none;
+  font-weight: 600;
+}
+
+.catInactive {
+  background: white;
+  color: #64748b;
+  border: 1px solid #f1f5f9;
+  font-weight: 500;
+}
+
+.content {
+  padding: 20px 20px 100px 20px; /* Niche space for BottomNav */
+  flex: 1;
+}
+
+.sectionTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.sectionTitle h2 {
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0;
+}
+
+.sectionTitle button {
+  color: #11d4b4;
+  background: none;
+  border: none;
+  font-weight: 600;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

@@ -1,0 +1,40 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: transparent;
+}
+.greeting {
+  font-size: 14px;
+  color: #64748b;
+  font-weight: 500;
+}
+.userName {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111817;
+  margin-top: -2px;
+}
+.notifBtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+.dot {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 8px;
+  height: 8px;
+  background: #f97316;
+  border: 2px solid white;
+  border-radius: 50%;
+}

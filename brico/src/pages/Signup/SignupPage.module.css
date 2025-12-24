@@ -1,0 +1,190 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 667px; /* Fixed Height */
+  background-color: #f6f8f8;
+  overflow: hidden;
+}
+
+.header {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  flex-shrink: 0;
+}
+
+.backBtn {
+  background: transparent;
+  border: none;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mainContent {
+  flex: 1;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* This keeps everything perfectly aligned */
+  padding-bottom: 20px;
+}
+
+.topSection {
+  margin-bottom: 10px;
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #111817;
+}
+
+.highlight {
+  color: #11d4b4; /* Primary Teal */
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #618983;
+  margin-top: 4px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.inputGroup label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111817;
+  margin-left: 4px;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputField {
+  width: 100%;
+  height: 48px; /* Slightly more compact */
+  background: white;
+  border: 1px solid #dbe6e4;
+  border-radius: 12px;
+  padding: 0 44px 0 16px;
+  font-size: 15px;
+  outline: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.inputIcon,
+.toggleBtn {
+  position: absolute;
+  right: 16px;
+  color: #618983;
+}
+
+.toggleBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.termsWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 4px;
+}
+
+.termsWrapper label {
+  font-size: 12px;
+  color: #618983;
+}
+
+.linkText {
+  color: #11d4b4;
+  font-weight: 600;
+}
+
+.signupBtn {
+  width: 100%;
+  height: 52px;
+  background: #f97316; /* Secondary Orange */
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 700;
+  box-shadow: 0 8px 15px rgba(249, 115, 22, 0.2);
+}
+
+.footerArea {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.divider {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #dbe6e4;
+}
+
+.divider span {
+  font-size: 12px;
+  color: #618983;
+}
+
+.googleBtn {
+  width: 100%;
+  height: 48px;
+  background: white;
+  border: 1px solid #dbe6e4;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.loginText {
+  font-size: 14px;
+  color: #111817;
+}
+
+.loginLink {
+  color: #11d4b4;
+  font-weight: 700;
+  cursor: pointer;
+}

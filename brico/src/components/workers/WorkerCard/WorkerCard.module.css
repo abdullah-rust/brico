@@ -1,0 +1,156 @@
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid #f1f5f9;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s;
+}
+
+.card:active {
+  transform: scale(0.98);
+}
+
+.topSection {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.imageWrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.workerImg {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  object-fit: cover;
+  background: #f1f5f9;
+}
+
+.verifiedIcon {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  background: white;
+  color: #22c55e;
+  border-radius: 50%;
+  font-size: 18px;
+  border: 2px solid white;
+}
+
+.info {
+  flex: 1;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111817;
+  margin: 0;
+}
+
+.ratingBadge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #f8fafc;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #111817;
+}
+
+.starIcon {
+  color: #f87f43;
+}
+
+.role {
+  font-size: 13px;
+  color: #11d4b4;
+  font-weight: 600;
+  margin: 2px 0 8px 0;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.dot {
+  width: 4px;
+  height: 4px;
+  background: #cbd5e1;
+  border-radius: 50%;
+}
+
+.available {
+  color: #10b981;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
+
+.bottomSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.rateLabel {
+  font-size: 10px;
+  font-weight: 800;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.price {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111817;
+  margin: 0;
+}
+
+.price span {
+  font-size: 12px;
+  font-weight: 400;
+  color: #64748b;
+}
+
+.bookBtn {
+  background: #11d4b4;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(17, 212, 180, 0.2);
+}
+
+.contactBtn {
+  background: rgba(17, 212, 180, 0.1);
+  color: #0eb59a;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 14px;
+}

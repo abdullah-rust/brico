@@ -1,0 +1,86 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px; /* Gap thora kam kiya */
+  padding: 10px 20px;
+}
+
+/* Base style for all cards */
+.cardBase {
+  border: none;
+  border-radius: 20px; /* Thore aur rounded */
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); /* Premium feel transition */
+  text-align: left; /* Button default center karta hai, humein left chahiye */
+}
+
+/* Click effect - Ab button hawa mein nahi udega, balkay dabega */
+.cardBase:active {
+  transform: scale(0.95);
+  filter: brightness(0.95);
+}
+
+.largeCardTeal {
+  composes: cardBase;
+  background: #e6f9f7;
+  height: 120px; /* Size chota kiya 144px se */
+}
+
+.largeCardOrange {
+  composes: cardBase;
+  background: #fff5ed;
+  height: 120px; /* Size chota kiya */
+}
+
+.smallCard {
+  composes: cardBase;
+  background: white;
+  height: 100px; /* Mazeed compact */
+  border: 1px solid #f1f5f9;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.iconCircle {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px; /* Squircle shape */
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #11d4b4;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.largeCardOrange .iconCircle {
+  color: #f87f43;
+}
+
+.textBottom .title {
+  font-weight: 700;
+  font-size: 14px; /* Text thora chota */
+  color: #111817;
+  margin: 0;
+}
+
+.textBottom .desc {
+  font-size: 11px;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.smallIcon {
+  color: #64748b;
+  margin-bottom: 8px;
+}
+
+.smallTitle {
+  font-weight: 700;
+  font-size: 13px;
+  color: #111817;
+  margin: 0;
+}

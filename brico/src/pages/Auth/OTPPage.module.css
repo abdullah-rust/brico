@@ -1,0 +1,164 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 667px; /* Fixed iPhone SE height */
+  background-color: #f6f8f8;
+  overflow: hidden;
+}
+
+.header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.backBtn {
+  background: transparent;
+  border: none;
+  color: #10221f;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mainContent {
+  flex: 1;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Important for SE fit */
+  padding-bottom: 40px;
+}
+
+.topSection {
+  margin-top: 20px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #10221f;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 15px;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+.phone {
+  color: #10221f;
+  font-weight: 600;
+}
+
+.otpWrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 30px 0;
+}
+
+.otpInput {
+  width: 45px; /* Perfect for 6 digits on small screens */
+  height: 56px;
+  background: white;
+  border: 1px solid #dbe6e4;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  color: #10221f;
+  transition: all 0.2s;
+  outline: none;
+}
+
+.otpInput:focus {
+  border-color: #11d4b4;
+  box-shadow: 0 0 10px rgba(17, 212, 180, 0.2);
+  transform: translateY(-2px);
+}
+
+.timerSection {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.timerSection p {
+  font-size: 14px;
+  color: #64748b;
+}
+
+.timer {
+  color: #11d4b4;
+  font-weight: 700;
+}
+
+.resendBtn {
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: #11d4b4;
+  opacity: 0.6;
+}
+
+.verifyBtn {
+  width: 100%;
+  height: 56px;
+  background: #ff7043; /* Your CTA Orange */
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 17px;
+  font-weight: 700;
+  box-shadow: 0 8px 15px rgba(255, 112, 67, 0.2);
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.verifyBtn:active {
+  transform: scale(0.98);
+}
+
+/* CSS logic for clean UI and hiding arrows */
+.otpInput {
+  width: 44px;
+  height: 52px;
+  background: white;
+  border: 2px solid #e6dfdb;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  color: #10221f;
+  outline: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Jab box focus ho toh FAANG apps ki tarah highlight ho */
+.otpInput:focus {
+  border-color: #11d4b4;
+  box-shadow: 0 0 0 4px rgba(17, 212, 180, 0.15);
+  background-color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Chrome/Safari/Edge se arrows hatao */
+.otpInput::-webkit-outer-spin-button,
+.otpInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.verifyBtn:disabled {
+  background: #ccc;
+  box-shadow: none;
+  cursor: not-allowed;
+}

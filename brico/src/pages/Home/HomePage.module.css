@@ -1,0 +1,134 @@
+/* 1. Main Container - No more white gaps! */
+.container {
+  height: 100vh;
+  height: 100dvh; /* Dynamic viewport for modern mobiles */
+  width: 100%;
+  max-width: 480px; /* Bare screens par phailne se rokne ke liye */
+  margin: 0 auto;
+  background-color: #f6f8f8;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+/* 2. Sticky Header & Search area */
+.topSticky {
+  background-color: #f6f8f8;
+  z-index: 50;
+  flex-shrink: 0;
+}
+
+/* 3. Scrollable Content Area */
+.scrollArea {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 100px; /* BottomNav ke liye space */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  -webkit-overflow-scrolling: touch;
+}
+
+.scrollArea::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+/* 4. Section Headers */
+.sectionHeader {
+  padding: 20px 20px 10px 20px;
+}
+
+.sectionHeader h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111817;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+
+/* 5. Active Project Card (The fix you asked for) */
+.bannerSection {
+  padding: 0 20px;
+  margin-bottom: 24px;
+}
+
+.projectBanner {
+  background: white;
+  padding: 12px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #f1f5f9;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease;
+}
+
+.projectBanner:active {
+  transform: scale(0.98);
+}
+
+.pInfo {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.projectImage {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  object-fit: cover;
+  background-color: #f1f5f9;
+}
+
+.activeTag {
+  color: #11d4b4;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+}
+
+.projectName {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111817;
+  margin: 2px 0 0 0;
+}
+
+.arrowBtn {
+  background: #f8fafc;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  cursor: pointer;
+}
+
+.arrowBtn span {
+  font-size: 24px;
+}
+
+/* 6. Utility for Dark Mode support (Optional but good) */
+:global(.dark) .container {
+  background-color: #10221f;
+}
+
+:global(.dark) .projectBanner {
+  background-color: #191c1c;
+  border-color: #2c3333;
+}
+
+:global(.dark) .projectName {
+  color: white;
+}
+
+:global(.dark) .topSticky {
+  background-color: #10221f;
+}

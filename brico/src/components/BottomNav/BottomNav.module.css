@@ -1,0 +1,63 @@
+.nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 70px; /* Thori height barha di hai */
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid #f1f5f9;
+  padding: 0 4px;
+  z-index: 1000;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.navItem,
+.navItemActive {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px 0;
+  gap: 4px;
+  transition: all 0.2s ease;
+  min-width: 0; /* Taake text truncate ho sake agar space kam ho */
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8; /* Default color */
+  transition: transform 0.2s ease;
+}
+
+.labelText {
+  font-size: 10px; /* Items zyada hain toh font thora chota */
+  font-weight: 600;
+  color: #94a3b8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.navItemActive .iconWrapper {
+  color: #11d4b4;
+  transform: translateY(-2px);
+}
+
+.navItemActive .labelText {
+  color: #11d4b4;
+}
+
+/* Dark Mode support agar chahiye ho */
+:global(.dark) .nav {
+  background-color: #1a2e2b;
+  border-top-color: #253835;
+}

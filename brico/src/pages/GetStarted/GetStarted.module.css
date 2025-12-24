@@ -1,0 +1,147 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 667px; /* iPhone SE Fixed Height */
+  background-color: #f6f8f8;
+  overflow: hidden; /* Strict No Scroll */
+}
+
+.heroSection {
+  position: relative;
+  width: 100%;
+  height: 220px; /* Reduced for SE to fit 3 buttons below */
+  border-radius: 0 0 32px 32px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.bgImage {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1),
+    transparent,
+    rgba(0, 0, 0, 0.3)
+  );
+}
+
+.logoBadgeContainer {
+  position: absolute;
+  top: 30px; /* Adjusted for SE */
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.logoBadge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 6px 14px;
+  border-radius: 50px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.logoIcon {
+  color: #17cfb0;
+  font-size: 18px;
+}
+
+.brandText {
+  font-size: 13px;
+  font-weight: 800;
+  color: #11211e;
+  text-transform: uppercase;
+}
+
+.contentBody {
+  height: 447px; /* Remaining space */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; /* Spreads content, buttons, and footer */
+  padding: 20px 24px 15px;
+  text-align: center;
+}
+
+.title {
+  font-size: 26px; /* Slightly smaller to save space */
+  font-weight: 800;
+  line-height: 1.1;
+  color: #111817;
+  margin-bottom: 8px;
+}
+
+.description {
+  font-size: 14px;
+  color: rgba(17, 24, 23, 0.6);
+  line-height: 1.3;
+}
+
+.buttonGroup {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Tight gap for 3 buttons */
+}
+
+.buttonGroup button {
+  width: 100%;
+  height: 50px; /* Standard app button height */
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.googleBtn {
+  background-color: #17cfb0;
+  color: #111817;
+}
+
+.signupBtn {
+  background-color: #11211e;
+  color: white;
+}
+
+.loginBtn {
+  background-color: transparent;
+  border: 1.5px solid rgba(17, 24, 23, 0.1) !important;
+  color: #111817;
+}
+
+.btnIconLarge {
+  font-size: 22px;
+}
+
+.footer {
+  padding-top: 10px;
+}
+
+.footer p {
+  font-size: 10px;
+  color: rgba(17, 24, 23, 0.4);
+}
+
+.legalLink {
+  color: #17cfb0;
+  font-weight: 600;
+}

@@ -1,0 +1,160 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 667px; /* iPhone SE Lock */
+  background-color: #f8f7f5;
+  overflow: hidden;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  flex-shrink: 0;
+}
+
+.backBtn {
+  background: transparent;
+  border: none;
+  color: #181411;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+.mainContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0 24px;
+}
+
+.topSection {
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.logoBox {
+  width: 48px;
+  height: 48px;
+  background-color: #f47b25;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  box-shadow: 0 8px 15px rgba(244, 123, 37, 0.15);
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #181411;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  color: #8a7260;
+  font-size: 15px;
+}
+
+.form {
+  height: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.inputGroup label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #181411;
+}
+
+.inputField,
+.passwordWrapper {
+  width: 100%;
+  height: 52px;
+  background: white;
+  border: 1px solid #e6dfdb;
+  border-radius: 12px;
+  padding: 0 16px;
+  font-size: 16px;
+}
+
+.passwordWrapper {
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.passwordInput {
+  flex: 1;
+  height: 100%;
+  border: none;
+  background: transparent;
+  padding: 0 16px;
+  outline: none;
+}
+
+.toggleBtn {
+  background: transparent;
+  border: none;
+  padding: 0 16px;
+  color: #8a7260;
+}
+
+.forgotPass {
+  text-align: right;
+}
+
+.forgotPass a {
+  font-size: 13px;
+  font-weight: 700;
+  color: #f47b25;
+  text-decoration: none;
+}
+
+.loginBtn {
+  width: 100%;
+  height: 54px;
+  background: #f47b25;
+  color: white;
+  border: none;
+  border-radius: 50px; /* Rounded pill style for modern app feel */
+  font-size: 17px;
+  font-weight: 700;
+  margin-top: 10px;
+  box-shadow: 0 8px 16px rgba(244, 123, 37, 0.2);
+}
+
+.footer {
+  height: 77px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer p {
+  font-size: 14px;
+  color: #181411;
+}
+
+.signUpLink {
+  color: #f47b25;
+  font-weight: 700;
+  margin-left: 4px;
+}

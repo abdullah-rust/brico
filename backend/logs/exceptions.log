@@ -1,0 +1,11 @@
+[2025-12-23 21:53:56] [31merror[39m: TypeError: OAuth2Strategy requires a clientID option
+    at Strategy.OAuth2Strategy (C:\projects\brico\backend\node_modules\.pnpm\passport-oauth2@1.8.0\node_modules\passport-oauth2\lib\strategy.js:87:34)
+    at new Strategy (C:\projects\brico\backend\node_modules\.pnpm\passport-google-oauth20@2.0.0\node_modules\passport-google-oauth20\lib\strategy.js:52:18)
+    at Object.<anonymous> (C:\projects\brico\backend\src\auth\index.ts:14:3)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1761:14)
+    at Module._compile (C:\projects\brico\backend\node_modules\.pnpm\source-map-support@0.5.21\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\ABDULL~1\AppData\Local\Temp\ts-node-dev-hook-8038767551440837.js:69:33)
+    at node:internal/modules/cjs/loader:1893:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\ABDULL~1\AppData\Local\Temp\ts-node-dev-hook-8038767551440837.js:114:20)
+    at require.extensions.<computed> (C:\Users\ABDULL~1\AppData\Local\Temp\ts-node-dev-hook-8038767551440837.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\projects\brico\backend\node_modules\.pnpm\ts-node-dev@2.0.0_@types+node@25.0.2_typescript@5.9.3\node_modules\ts-node-dev\lib\hook.js:63:13)
