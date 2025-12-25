@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { MdFoundation, MdArrowForward } from "react-icons/md";
+import { MdArrowForward } from "react-icons/md";
 import styles from "./WelcomePage.module.css";
 
 const WelcomePage: React.FC = () => {

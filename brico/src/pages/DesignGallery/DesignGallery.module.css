@@ -5,74 +5,69 @@
   background-color: #f6f8f8;
 }
 
+/* Dono cheezon ko ek saath stick karne ke liye */
+.stickyTop {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #f6f8f8;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+}
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px;
-  background: rgba(246, 248, 248, 0.95);
-  backdrop-filter: blur(8px);
-  position: sticky;
-  top: 0;
-  z-index: 50;
+  padding: 16px 20px;
 }
 
 .headerTitle {
-  flex: 1;
-  text-align: center;
-  font-size: 1.25rem;
+  font-size: 20px;
   font-weight: 800;
   color: #111817;
   margin: 0;
-  padding-left: 40px; /* Offset for search icon to center title */
 }
 
 .iconBtn {
   background: none;
   border: none;
   color: #111817;
-  padding: 8px;
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 
-/* Filters */
+/* Filters Scroll logic */
 .filterContainer {
   padding: 8px 0 16px;
-  background: #f6f8f8;
-  position: sticky;
-  top: 60px;
-  z-index: 40;
 }
 
 .filterScroll {
   display: flex;
   gap: 12px;
-  padding: 0 16px;
+  padding: 0 20px;
   overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
 }
 
 .filterScroll::-webkit-scrollbar {
-  display: none;
+  display: none; /* Chrome/Safari */
 }
 
 .filterBtn,
 .filterBtnActive {
-  flex-shrink: 0;
-  height: 36px;
-  padding: 0 20px;
+  flex: 0 0 auto; /* Buttons ko shrink hone se rokna */
+  padding: 8px 20px;
   border-radius: 12px;
-  font-size: 0.85rem;
+  font-size: 14px;
   font-weight: 600;
   border: 1px solid #e2e8f0;
-  cursor: pointer;
+  white-space: nowrap;
   transition: all 0.2s;
 }
 
 .filterBtn {
   background: white;
-  color: #111817;
+  color: #64748b;
 }
 
 .filterBtnActive {
@@ -82,26 +77,25 @@
   box-shadow: 0 4px 12px rgba(17, 212, 180, 0.2);
 }
 
-/* Masonry Layout */
+/* Masonry Grid */
 .scrollArea {
   flex: 1;
-  padding: 0 16px 100px; /* Space for bottom nav */
+  padding: 10px 16px 100px;
   overflow-y: auto;
 }
 
 .masonryGrid {
   column-count: 2;
-  column-gap: 16px;
+  column-gap: 12px;
 }
 
 .designCard {
   break-inside: avoid;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   border-radius: 16px;
   overflow: hidden;
   position: relative;
   background: white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .imageWrapper {
@@ -119,7 +113,7 @@
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent 60%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent 70%);
 }
 
 .favBtn {
@@ -129,8 +123,8 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(4px);
   color: white;
   border: none;
   display: flex;
@@ -140,15 +134,15 @@
 
 .cardContent {
   position: absolute;
-  bottom: 12px;
-  left: 12px;
-  right: 12px;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
 }
 
 .categoryBadge {
   background: #11d4b4;
   color: #111817;
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 800;
   padding: 2px 6px;
   border-radius: 4px;
@@ -157,9 +151,9 @@
 
 .designTitle {
   color: white;
-  font-size: 0.85rem;
-  font-weight: 700;
-  margin-top: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 4px 0 0;
   line-height: 1.2;
 }
 

@@ -1,7 +1,6 @@
-import React from "react";
+import React from "react"; // 1. useEffect add kiya
 import { useNavigate } from "react-router-dom";
 import { MdConstruction, MdEmail, MdPersonAdd } from "react-icons/md";
-import { FcGoogle } from "react-icons/fc";
 import styles from "./GetStarted.module.css";
 
 const GetStarted: React.FC = () => {
@@ -9,7 +8,7 @@ const GetStarted: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      {/* Hero Section - Image with Logo Badge */}
+      {/* Hero Section */}
       <div className={styles.heroSection}>
         <div
           className={styles.bgImage}
@@ -44,18 +43,9 @@ const GetStarted: React.FC = () => {
           </p>
         </div>
 
-        {/* Action Buttons - 3 Buttons as requested */}
+        {/* Action Buttons */}
         <div className={styles.buttonGroup}>
-          {/* Google Button */}
-          <button
-            className={styles.googleBtn}
-            onClick={() => console.log("Google Login")}
-          >
-            <FcGoogle className={styles.btnIconLarge} />
-            <span>Continue with Google</span>
-          </button>
-
-          {/* Signup Button (Solid Primary) */}
+          {/* Signup Button */}
           <button
             className={styles.signupBtn}
             onClick={() => navigate("/signup")}
@@ -64,7 +54,7 @@ const GetStarted: React.FC = () => {
             <span>Create Account</span>
           </button>
 
-          {/* Login Button (Outline) */}
+          {/* Login Button */}
           <button
             className={styles.loginBtn}
             onClick={() => navigate("/login")}

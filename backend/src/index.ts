@@ -10,38 +10,11 @@ dotenv.config();
 const app = express();
 const PORT = process.env["PORT"] || 4000;
 
-// Allowed origins list
-const allowedOrigins = [
-  "http://localhost:3000",
-  "http://localhost:3001",
-  "http://localhost:5173", // Vite dev server
-  "http://localhost:8080",
-  "http://127.0.0.1:3000",
-  "http://127.0.0.1:5173",
-  "https://yourdomain.com",
-  "https://localhost",
-  // Add more production domains here
-];
-
 // CORS Configuration with dynamic origin
 app.use(
   cors({
-    origin: function (origin, callback) {
-      // Development mein allow all, production mein check karo
-      if (!origin) return callback(null, true); // For mobile apps or server-to-server calls
-
-      if (process.env["NODE_ENV"] === "development") {
-        // Development mode - sab ko allow karo
-        return callback(null, true);
-      }
-
-      // Production mode - sirf allowed origins ko allow karo
-      if (allowedOrigins.indexOf(origin) !== -1) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
+    // 'true' ka matlab hai ke jo bhi request bhej raha hai usay allow karo (Dynamic Origin)
+    origin: true,
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     allowedHeaders: [
       "Content-Type",
@@ -50,11 +23,8 @@ app.use(
       "X-Requested-With",
       "Origin",
     ],
-    exposedHeaders: ["Content-Length", "X-Request-Id"],
-    credentials: true, // Agar cookies/authentication chahiye to true rakho
-    maxAge: 86400, // 24 hours - preflight cache duration
-    preflightContinue: false,
-    optionsSuccessStatus: 204,
+    credentials: true, // Cookies aur Auth headers ke liye zaroori hai
+    optionsSuccessStatus: 200, // Legacy browsers ke liye
   })
 );
 

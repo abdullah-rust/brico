@@ -81,7 +81,11 @@ export default async function SignupVerification(req: Request, res: Response) {
     res.cookie("access_token", accessToken, cookieOptions);
     res.cookie("refresh_token", refreshToken, cookieOptions);
 
-    return res.status(200).json({ message: "SignUp Successful" });
+    return res.status(200).json({
+      message: "SignUp Successful",
+      token1: accessToken,
+      token2: refreshToken,
+    });
   } catch (e) {
     logger.error("Signup OTP Verification Error" + e);
     return res.status(500).json({ message: "Internal Server Error" });

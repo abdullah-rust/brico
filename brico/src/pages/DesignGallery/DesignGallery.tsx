@@ -12,6 +12,8 @@ const DesignGallery: React.FC = () => {
     "10 Marla",
     "Floor Plans",
     "Spanish",
+    "Modern",
+    "Minimalist",
   ];
 
   const designs = [
@@ -24,7 +26,7 @@ const DesignGallery: React.FC = () => {
     },
     {
       id: 2,
-      title: "5 Marla Open Concept Map",
+      title: "5 Marla Open Concept",
       category: "Floor Plan",
       img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDrEOL-OcoBjJnnYz4jDKhOwDOvXTMiADoF4AlogG-4yekhedGv53YS5FX7UaFNG4I7hijxUIYqSwklXSLyZUkxNrcM79PJ_UCdT2dSxCqLb3k-BlEaHPji5VboBbafk_8qO8OuzKqrTTiavzGHRVTLW0IB3mEIgIbcc_xinC5XYqM7c_ngTg_uwxT9_X_5crQdAb1w-Yi8xoR3yMwZfXN11JHIeJRcmBMk9i3_jBojSRwMAobT2iHS-S7uQUfWf9y221knL_BjXn-9",
       ratio: styles.aspect43,
@@ -59,30 +61,39 @@ const DesignGallery: React.FC = () => {
     },
   ];
 
+  // Important: Ye function Swiper ko block karega jab hum filter swipe karenge
+  const handleTouch = (e: React.TouchEvent) => e.stopPropagation();
+
   return (
     <div className={styles.pageWrapper}>
-      {/* Top Header */}
-      <header className={styles.header}>
-        <h1 className={styles.headerTitle}>Design Gallery</h1>
-        <button className={styles.iconBtn}>
-          <MdSearch size={24} />
-        </button>
-      </header>
+      {/* Fixed Top Container */}
+      <div className={styles.stickyTop}>
+        <header className={styles.header}>
+          <h1 className={styles.headerTitle}>Design Gallery</h1>
+          <button className={styles.iconBtn}>
+            <MdSearch size={24} />
+          </button>
+        </header>
 
-      {/* Filters (Horizontal Scroll) */}
-      <div className={styles.filterContainer}>
-        <div className={styles.filterScroll}>
-          {filters.map((f) => (
-            <button
-              key={f}
-              onClick={() => setActiveFilter(f)}
-              className={
-                activeFilter === f ? styles.filterBtnActive : styles.filterBtn
-              }
-            >
-              {f}
-            </button>
-          ))}
+        {/* Filters with touch propagation fix */}
+        <div className={styles.filterContainer}>
+          <div
+            className={styles.filterScroll}
+            onTouchStart={handleTouch}
+            onTouchMove={handleTouch}
+          >
+            {filters.map((f) => (
+              <button
+                key={f}
+                onClick={() => setActiveFilter(f)}
+                className={
+                  activeFilter === f ? styles.filterBtnActive : styles.filterBtn
+                }
+              >
+                {f}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -96,6 +107,7 @@ const DesignGallery: React.FC = () => {
                   src={design.img}
                   alt={design.title}
                   className={styles.image}
+                  loading="lazy"
                 />
                 <div className={styles.overlay} />
                 <button className={styles.favBtn}>

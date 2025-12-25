@@ -69,7 +69,13 @@ export default async function LoginVerification(req: Request, res: Response) {
     res.cookie("access_token", accessToken, cookieOptions);
     res.cookie("refresh_token", refreshToken, cookieOptions);
 
-    return res.status(200).json({ message: "Login Successful" });
+    return res
+      .status(200)
+      .json({
+        message: "Login Successful",
+        token1: accessToken,
+        token2: refreshToken,
+      });
   } catch (e) {
     logger.error("Login OTP Verification Error" + e);
     return res.status(500).json({ message: "Internal Server Error" });

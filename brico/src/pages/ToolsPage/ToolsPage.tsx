@@ -11,7 +11,7 @@ import {
   MdPayments,
   MdViewInAr,
   MdHomeRepairService,
-  MdFormatPaint, // MdViewInAr use kiya hai yahan
+  MdFormatPaint,
   MdSolarPower,
   MdChevronRight,
   MdWater,
@@ -19,6 +19,9 @@ import {
 import styles from "./ToolsPage.module.css";
 
 const ToolsPage: React.FC = () => {
+  // Swiper conflict fix function
+  const handleTouch = (e: React.TouchEvent) => e.stopPropagation();
+
   const favorites = [
     {
       id: 1,
@@ -44,6 +47,12 @@ const ToolsPage: React.FC = () => {
       icon: <MdWaterDrop />,
       colorClass: styles.bgPurple,
     },
+    {
+      id: 5,
+      label: "Bricks",
+      icon: <MdConstruction />,
+      colorClass: styles.bgPrimary,
+    },
   ];
 
   const calculators = [
@@ -67,7 +76,7 @@ const ToolsPage: React.FC = () => {
       desc: "Concrete & tank",
       icon: <MdViewInAr />,
       color: styles.blue,
-    }, // Change here
+    },
     {
       id: 4,
       title: "Flooring",
@@ -110,13 +119,17 @@ const ToolsPage: React.FC = () => {
       </header>
 
       <div className={styles.scrollArea}>
-        {/* Favorites Section */}
+        {/* Favorites Section - Horizontal Swipe Fixed */}
         <section className={styles.section}>
           <div className={styles.sectionHeader}>
             <h3 className={styles.sectionTitle}>Favorites</h3>
             <button className={styles.textBtn}>Edit</button>
           </div>
-          <div className={styles.horizontalScroll}>
+          <div
+            className={styles.horizontalScroll}
+            onTouchStart={handleTouch}
+            onTouchMove={handleTouch}
+          >
             {favorites.map((fav) => (
               <div key={fav.id} className={styles.favItem}>
                 <div className={`${styles.favIconBox} ${fav.colorClass}`}>
@@ -138,10 +151,7 @@ const ToolsPage: React.FC = () => {
               </div>
               <div className={styles.featuredText}>
                 <h4>Material Estimator</h4>
-                <p>
-                  Calculate exact quantities for bricks, cement, and sand needed
-                  for your wall.
-                </p>
+                <p>Calculate exact quantities for bricks, cement, and sand.</p>
               </div>
             </div>
             <div className={styles.featuredFooter}>

@@ -1,35 +1,140 @@
+/* --- Global Variables & App Layout --- */
 :root {
   --primary: #17cfb0;
+  --primary-dark: #11d4b4;
   --bg-light: #f6f8f8;
   --text-dark: #111817;
+  --text-muted: #618983;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  -webkit-user-select: none; /* App feel: no text selection */
+  -webkit-user-select: none; /* Mobile app feel: no text selection */
   touch-action: manipulation; /* No double tap zoom */
+  -webkit-tap-highlight-color: transparent; /* Remove blue highlight on tap */
 }
 
 html,
 body,
 #root {
   width: 100%;
-  height: 100dvh; /* iPhone SE fixed height */
+  height: 100dvh; /* Dynamic viewport height for mobile */
   max-height: 100dvh;
-  overflow: hidden; /* No scroll allowed at all */
+  overflow: hidden; /* Prevent body scroll */
   font-family: "Inter", sans-serif;
   background-color: var(--bg-light);
+  color: var(--text-dark);
 }
 
-/* Screen wrapper to center on bigger phones */
+/* Screen wrapper to center on bigger phones/desktops */
 .app-container {
   width: 100%;
   height: 100%;
-  max-width: 430px; /* Max width for large phones */
+  max-width: 430px; /* Mobile width constraint */
   margin: 0 auto;
   position: relative;
   display: flex;
   flex-direction: column;
+  background-color: white; /* Contrast for the mobile 'frame' */
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.05);
+}
+
+/* --- SweetAlert2 Custom Theme by Abdullah --- */
+
+/* Modal Box Styling */
+.swal2-popup {
+  width: 90% !important; /* Mobile padding from sides */
+  max-width: 340px !important;
+  background: #ffffff !important;
+  border-radius: 28px !important; /* Extra rounded for premium feel */
+  padding: 1.5rem 1rem !important;
+  font-family: "Inter", sans-serif !important;
+  box-shadow: 0 15px 40px rgba(16, 34, 31, 0.15) !important;
+}
+
+/* Dark Mode support */
+.dark .swal2-popup {
+  background: #1a2c29 !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Title Styling */
+.swal2-title {
+  font-size: 1.2rem !important;
+  font-weight: 800 !important;
+  color: var(--text-dark) !important;
+  padding-top: 10px !important;
+  letter-spacing: -0.02em;
+}
+
+.dark .swal2-title {
+  color: #ffffff !important;
+}
+
+/* Content/Text Styling */
+.swal2-html-container {
+  font-size: 0.85rem !important;
+  color: var(--text-muted) !important;
+  line-height: 1.6 !important;
+  margin: 0.5rem 1rem !important;
+}
+
+/* Buttons container optimization */
+.swal2-actions {
+  width: 100% !important;
+  margin-top: 1.5rem !important;
+  gap: 12px !important;
+}
+
+/* Confirm Button (Full touch-friendly) */
+.swal2-confirm {
+  flex: 1 !important;
+  background-color: var(--primary) !important;
+  border-radius: 16px !important;
+  padding: 14px !important;
+  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+  box-shadow: 0 6px 15px rgba(23, 207, 176, 0.25) !important;
+  margin: 0 !important;
+}
+
+/* Cancel Button */
+.swal2-cancel {
+  flex: 1 !important;
+  background-color: #f1f5f9 !important;
+  color: #64748b !important;
+  border-radius: 16px !important;
+  padding: 14px !important;
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  margin: 0 !important;
+}
+
+/* Icons Customization */
+.swal2-icon {
+  transform: scale(0.85) !important; /* Slightly smaller for mobile */
+  margin-bottom: 5px !important;
+}
+
+.swal2-icon.swal2-success {
+  border-color: var(--primary) !important;
+  color: var(--primary) !important;
+}
+
+.swal2-success-ring {
+  border: 0.25em solid rgba(23, 207, 176, 0.2) !important;
+}
+
+.swal2-icon.swal2-success [class^="swal2-success-line"] {
+  background-color: var(--primary) !important;
+}
+
+/* Footer Fix for Mobile */
+.swal2-footer {
+  border-top: 1px solid #f1f5f9 !important;
+  font-size: 0.75rem !important;
+  color: var(--text-muted) !important;
 }
