@@ -13,8 +13,8 @@ const PORT = process.env["PORT"] || 4000;
 // CORS Configuration with dynamic origin
 app.use(
   cors({
-    // 'true' ka matlab hai ke jo bhi request bhej raha hai usay allow karo (Dynamic Origin)
-    origin: true,
+    // Ab tumhara PC aur Mobile dono origins allow hain
+    origin: ["http://localhost:5173", "http://192.168.100.5:5173"],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     allowedHeaders: [
       "Content-Type",
@@ -22,12 +22,12 @@ app.use(
       "Accept",
       "X-Requested-With",
       "Origin",
+      "x-refresh-token", // Jani ye header bhi add kar lo kyunke hum silent refresh use kar rahe hain
     ],
-    credentials: true, // Cookies aur Auth headers ke liye zaroori hai
-    optionsSuccessStatus: 200, // Legacy browsers ke liye
+    credentials: true,
+    optionsSuccessStatus: 200,
   })
 );
-
 app.use(express.json());
 app.use(cookieParser());
 app.use("/", router);

@@ -1,3 +1,4 @@
+// src/services/AuthService.ts
 import { SecureStoragePlugin } from "capacitor-secure-storage-plugin";
 
 export const AuthService = {
@@ -29,6 +30,17 @@ export const AuthService = {
   async clearToken(keyName: string) {
     try {
       await SecureStoragePlugin.remove({ key: keyName });
+      return true;
+    } catch (e) {
+      return false;
+    }
+  },
+
+  // Simple clear all tokens function
+  async clearAllTokens() {
+    try {
+      await AuthService.clearToken("access_token");
+      await AuthService.clearToken("refresh_token");
       return true;
     } catch (e) {
       return false;

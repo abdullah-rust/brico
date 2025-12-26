@@ -34,6 +34,9 @@ const GetStarted = lazy(() => import("./pages/GetStarted/GetStarted"));
 const LoginPage = lazy(() => import("./pages/Login/LoginPage"));
 const SignupPage = lazy(() => import("./pages/Signup/SignupPage"));
 const OTPPage = lazy(() => import("./pages/Auth/OTPPage"));
+const EditProfilePage = lazy(
+  () => import("./pages/EditProfilePage/EditProfilePage")
+);
 
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState("home");
@@ -226,6 +229,19 @@ const App: React.FC = () => {
               )
             }
           />
+
+          <Route
+            path="/edit-profile"
+            element={
+              isAuthenticated ? (
+                <AnimatedPage>
+                  <EditProfilePage />
+                </AnimatedPage>
+              ) : (
+                <Navigate to="/" replace />
+              )
+            }
+          />
         </Routes>
       </AnimatePresence>
     </Suspense>
@@ -233,3 +249,5 @@ const App: React.FC = () => {
 };
 
 export default App;
+
+EditProfilePage;

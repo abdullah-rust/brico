@@ -43,7 +43,6 @@ export type WorkerMinAggregateOutputType = {
   bio: string | null
   experienceYears: number | null
   rating: number | null
-  city: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -55,7 +54,6 @@ export type WorkerMaxAggregateOutputType = {
   bio: string | null
   experienceYears: number | null
   rating: number | null
-  city: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -68,7 +66,6 @@ export type WorkerCountAggregateOutputType = {
   experienceYears: number
   rating: number
   skills: number
-  city: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -92,7 +89,6 @@ export type WorkerMinAggregateInputType = {
   bio?: true
   experienceYears?: true
   rating?: true
-  city?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -104,7 +100,6 @@ export type WorkerMaxAggregateInputType = {
   bio?: true
   experienceYears?: true
   rating?: true
-  city?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -117,7 +112,6 @@ export type WorkerCountAggregateInputType = {
   experienceYears?: true
   rating?: true
   skills?: true
-  city?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -217,7 +211,6 @@ export type WorkerGroupByOutputType = {
   experienceYears: number
   rating: number
   skills: string[]
-  city: string | null
   createdAt: Date
   updatedAt: Date
   _count: WorkerCountAggregateOutputType | null
@@ -253,7 +246,6 @@ export type WorkerWhereInput = {
   experienceYears?: Prisma.IntFilter<"Worker"> | number
   rating?: Prisma.FloatFilter<"Worker"> | number
   skills?: Prisma.StringNullableListFilter<"Worker">
-  city?: Prisma.StringNullableFilter<"Worker"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Worker"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Worker"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -268,7 +260,6 @@ export type WorkerOrderByWithRelationInput = {
   experienceYears?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   skills?: Prisma.SortOrder
-  city?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
@@ -286,7 +277,6 @@ export type WorkerWhereUniqueInput = Prisma.AtLeast<{
   experienceYears?: Prisma.IntFilter<"Worker"> | number
   rating?: Prisma.FloatFilter<"Worker"> | number
   skills?: Prisma.StringNullableListFilter<"Worker">
-  city?: Prisma.StringNullableFilter<"Worker"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Worker"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Worker"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -301,7 +291,6 @@ export type WorkerOrderByWithAggregationInput = {
   experienceYears?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   skills?: Prisma.SortOrder
-  city?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.WorkerCountOrderByAggregateInput
@@ -322,7 +311,6 @@ export type WorkerScalarWhereWithAggregatesInput = {
   experienceYears?: Prisma.IntWithAggregatesFilter<"Worker"> | number
   rating?: Prisma.FloatWithAggregatesFilter<"Worker"> | number
   skills?: Prisma.StringNullableListFilter<"Worker">
-  city?: Prisma.StringNullableWithAggregatesFilter<"Worker"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Worker"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Worker"> | Date | string
 }
@@ -334,7 +322,6 @@ export type WorkerCreateInput = {
   experienceYears: number
   rating?: number
   skills?: Prisma.WorkerCreateskillsInput | string[]
-  city?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutWorkerProfileInput
@@ -349,7 +336,6 @@ export type WorkerUncheckedCreateInput = {
   experienceYears: number
   rating?: number
   skills?: Prisma.WorkerCreateskillsInput | string[]
-  city?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   gigs?: Prisma.GigUncheckedCreateNestedManyWithoutWorkerInput
@@ -362,7 +348,6 @@ export type WorkerUpdateInput = {
   experienceYears?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   skills?: Prisma.WorkerUpdateskillsInput | string[]
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutWorkerProfileNestedInput
@@ -377,7 +362,6 @@ export type WorkerUncheckedUpdateInput = {
   experienceYears?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   skills?: Prisma.WorkerUpdateskillsInput | string[]
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   gigs?: Prisma.GigUncheckedUpdateManyWithoutWorkerNestedInput
@@ -391,7 +375,6 @@ export type WorkerCreateManyInput = {
   experienceYears: number
   rating?: number
   skills?: Prisma.WorkerCreateskillsInput | string[]
-  city?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -403,7 +386,6 @@ export type WorkerUpdateManyMutationInput = {
   experienceYears?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   skills?: Prisma.WorkerUpdateskillsInput | string[]
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -416,7 +398,6 @@ export type WorkerUncheckedUpdateManyInput = {
   experienceYears?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   skills?: Prisma.WorkerUpdateskillsInput | string[]
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -442,7 +423,6 @@ export type WorkerCountOrderByAggregateInput = {
   experienceYears?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   skills?: Prisma.SortOrder
-  city?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -459,7 +439,6 @@ export type WorkerMaxOrderByAggregateInput = {
   bio?: Prisma.SortOrder
   experienceYears?: Prisma.SortOrder
   rating?: Prisma.SortOrder
-  city?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -471,7 +450,6 @@ export type WorkerMinOrderByAggregateInput = {
   bio?: Prisma.SortOrder
   experienceYears?: Prisma.SortOrder
   rating?: Prisma.SortOrder
-  city?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -564,7 +542,6 @@ export type WorkerCreateWithoutUserInput = {
   experienceYears: number
   rating?: number
   skills?: Prisma.WorkerCreateskillsInput | string[]
-  city?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   gigs?: Prisma.GigCreateNestedManyWithoutWorkerInput
@@ -577,7 +554,6 @@ export type WorkerUncheckedCreateWithoutUserInput = {
   experienceYears: number
   rating?: number
   skills?: Prisma.WorkerCreateskillsInput | string[]
-  city?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   gigs?: Prisma.GigUncheckedCreateNestedManyWithoutWorkerInput
@@ -606,7 +582,6 @@ export type WorkerUpdateWithoutUserInput = {
   experienceYears?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   skills?: Prisma.WorkerUpdateskillsInput | string[]
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   gigs?: Prisma.GigUpdateManyWithoutWorkerNestedInput
@@ -619,7 +594,6 @@ export type WorkerUncheckedUpdateWithoutUserInput = {
   experienceYears?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   skills?: Prisma.WorkerUpdateskillsInput | string[]
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   gigs?: Prisma.GigUncheckedUpdateManyWithoutWorkerNestedInput
@@ -632,7 +606,6 @@ export type WorkerCreateWithoutGigsInput = {
   experienceYears: number
   rating?: number
   skills?: Prisma.WorkerCreateskillsInput | string[]
-  city?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutWorkerProfileInput
@@ -646,7 +619,6 @@ export type WorkerUncheckedCreateWithoutGigsInput = {
   experienceYears: number
   rating?: number
   skills?: Prisma.WorkerCreateskillsInput | string[]
-  city?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -674,7 +646,6 @@ export type WorkerUpdateWithoutGigsInput = {
   experienceYears?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   skills?: Prisma.WorkerUpdateskillsInput | string[]
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutWorkerProfileNestedInput
@@ -688,7 +659,6 @@ export type WorkerUncheckedUpdateWithoutGigsInput = {
   experienceYears?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   skills?: Prisma.WorkerUpdateskillsInput | string[]
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -732,7 +702,6 @@ export type WorkerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   experienceYears?: boolean
   rating?: boolean
   skills?: boolean
-  city?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -748,7 +717,6 @@ export type WorkerSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   experienceYears?: boolean
   rating?: boolean
   skills?: boolean
-  city?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -762,7 +730,6 @@ export type WorkerSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   experienceYears?: boolean
   rating?: boolean
   skills?: boolean
-  city?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -776,12 +743,11 @@ export type WorkerSelectScalar = {
   experienceYears?: boolean
   rating?: boolean
   skills?: boolean
-  city?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type WorkerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "profession" | "bio" | "experienceYears" | "rating" | "skills" | "city" | "createdAt" | "updatedAt", ExtArgs["result"]["worker"]>
+export type WorkerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "profession" | "bio" | "experienceYears" | "rating" | "skills" | "createdAt" | "updatedAt", ExtArgs["result"]["worker"]>
 export type WorkerInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   gigs?: boolean | Prisma.Worker$gigsArgs<ExtArgs>
@@ -808,7 +774,6 @@ export type $WorkerPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     experienceYears: number
     rating: number
     skills: string[]
-    city: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["worker"]>
@@ -1243,7 +1208,6 @@ export interface WorkerFieldRefs {
   readonly experienceYears: Prisma.FieldRef<"Worker", 'Int'>
   readonly rating: Prisma.FieldRef<"Worker", 'Float'>
   readonly skills: Prisma.FieldRef<"Worker", 'String[]'>
-  readonly city: Prisma.FieldRef<"Worker", 'String'>
   readonly createdAt: Prisma.FieldRef<"Worker", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Worker", 'DateTime'>
 }

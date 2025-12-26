@@ -12,10 +12,7 @@ import { UploadFileInput, GetFileResult } from "../types/S3Helper";
 // ============================
 // 1. UPLOAD FILE FUNCTION
 // ============================
-export const uploadFile = async (
-  file: UploadFileInput,
-  folder: string = "uploads"
-): Promise<string> => {
+export const uploadFile = async (file: UploadFileInput): Promise<string> => {
   if (!file || !file.buffer) {
     throw new Error("Invalid file provided");
   }
@@ -24,7 +21,7 @@ export const uploadFile = async (
   const timestamp = Date.now();
   const random = Math.random().toString(36).substring(2, 10);
   const sanitizedName = file.originalname.replace(/[^a-zA-Z0-9.-]/g, "-");
-  const fileKey = `${folder}/${timestamp}-${random}-${sanitizedName}`;
+  const fileKey = `${timestamp}-${random}-${sanitizedName}`;
 
   // Upload to S3
   const command = new PutObjectCommand({

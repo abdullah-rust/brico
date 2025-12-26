@@ -78,6 +78,9 @@ export const UserScalarFieldEnum = {
   password: 'password',
   fullName: 'fullName',
   role: 'role',
+  profilePicture: 'profilePicture',
+  phoneNumber: 'phoneNumber',
+  address: 'address',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -93,7 +96,6 @@ export const WorkerScalarFieldEnum = {
   experienceYears: 'experienceYears',
   rating: 'rating',
   skills: 'skills',
-  city: 'city',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

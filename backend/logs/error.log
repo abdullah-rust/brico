@@ -34,3 +34,65 @@
 [2025-12-21 19:34:41] [31merror[39m: [31mSingup OTP Sending Error[39m
 [2025-12-21 19:48:26] [31merror[39m: [31mSignup OTP Verification ErrorError: secretOrPrivateKey must have a value[39m
 [2025-12-21 19:52:03] [31merror[39m: [31mLogin OTP Verification ErrorError: secretOrPrivateKey must have a value[39m
+[2025-12-26 18:38:43] [31merror[39m: [31mSingup ErrorPrismaClientKnownRequestError: [39m
+[31mInvalid `prisma.user.findUnique()` invocation in[39m
+[31mC:\projects\brico\backend\src\auth\signup\signup.ts:38:42[39m
+
+[31m  35 [39m
+[31m  36 const data: SingupStruct = resultParsed.data;[39m
+[31m  37 [39m
+[31m→ 38 const checkexist = await prisma.user.findUnique([39m
+[31mThe column `(not available)` does not exist in the current database.[39m
+[2025-12-26 18:40:20] [31merror[39m: [31mSingup ErrorPrismaClientKnownRequestError: [39m
+[31mInvalid `prisma.user.findUnique()` invocation in[39m
+[31mC:\projects\brico\backend\src\auth\signup\signup.ts:38:42[39m
+
+[31m  35 [39m
+[31m  36 const data: SingupStruct = resultParsed.data;[39m
+[31m  37 [39m
+[31m→ 38 const checkexist = await prisma.user.findUnique([39m
+[31mThe column `(not available)` does not exist in the current database.[39m
+[2025-12-27 02:56:45] [31merror[39m: [31mUnhandled error: Unexpected field[39m
+[2025-12-27 02:58:16] [31merror[39m: [31mUnhandled error: Unexpected field[39m
+[2025-12-27 03:00:58] [31merror[39m: [31mError Updating profilePrismaClientValidationError: [39m
+[31mInvalid `prisma.worker.upsert()` invocation in[39m
+[31mC:\projects\brico\backend\src\profile\profileUpdater.ts:53:25[39m
+
+[31m  50   },[39m
+[31m  51 });[39m
+[31m  52 [39m
+[31m→ 53 await prisma.worker.upsert({[39m
+[31m       where: {[39m
+[31m         userId: "a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef"[39m
+[31m       },[39m
+[31m       create: {[39m
+[31m         userId: "a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef",[39m
+[31m         bio: "I am a best worker in construction ",[39m
+[31m         skills: [[39m
+[31m           "Masonry",[39m
+[31m           "Tiling",[39m
+[31m           "Flooring",[39m
+[31m           "Drywall",[39m
+[31m           "Plumbing",[39m
+[31m           "Engineer"[39m
+[31m         ],[39m
+[31m         experienceYears: "5",[39m
+[31m                          ~~~[39m
+[31m         profession: "UNKNOWN"[39m
+[31m       },[39m
+[31m       update: {[39m
+[31m         bio: "I am a best worker in construction ",[39m
+[31m         skills: [[39m
+[31m           "Masonry",[39m
+[31m           "Tiling",[39m
+[31m           "Flooring",[39m
+[31m           "Drywall",[39m
+[31m           "Plumbing",[39m
+[31m           "Engineer"[39m
+[31m         ],[39m
+[31m         experienceYears: "5"[39m
+[31m       }[39m
+[31m     })[39m
+
+[31mArgument `experienceYears`: Invalid value provided. Expected Int, provided String.[39m
+[2025-12-27 03:18:22] [31merror[39m: [31mUnhandled error: File too large[39m
