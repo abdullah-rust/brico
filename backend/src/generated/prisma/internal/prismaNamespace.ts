@@ -705,12 +705,16 @@ export const GigScalarFieldEnum = {
   description: 'description',
   category: 'category',
   priceBase: 'priceBase',
-  isRemote: 'isRemote',
+  lat: 'lat',
+  lng: 'lng',
+  locationName: 'locationName',
   serviceAreas: 'serviceAreas',
   imageUrls: 'imageUrls',
   isActive: 'isActive',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  phone: 'phone',
+  rateType: 'rateType'
 } as const
 
 export type GigScalarFieldEnum = (typeof GigScalarFieldEnum)[keyof typeof GigScalarFieldEnum]

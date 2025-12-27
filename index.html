@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Brico Create Gig</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#11d4b4",
+              "primary-dark": "#0eb59a",
+              accent: "#F97316", // Orange as requested
+              "accent-hover": "#EA580C",
+              "background-light": "#f6f8f8",
+              "background-dark": "#10221f",
+              "surface-light": "#ffffff",
+              "surface-dark": "#1a302d",
+            },
+            fontFamily: {
+              display: ["Inter", "sans-serif"],
+              body: ["Inter", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+              lg: "1rem",
+              xl: "1.5rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Custom scrollbar hiding for clean UI */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col"
+  >
+    <!-- Top App Bar -->
+    <header
+      class="sticky top-0 z-50 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md px-4 py-3 flex items-center justify-between border-b border-gray-200 dark:border-gray-800"
+    >
+      <button
+        class="flex items-center justify-center p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
+      >
+        <span
+          class="material-symbols-outlined text-slate-800 dark:text-slate-100"
+          >arrow_back</span
+        >
+      </button>
+      <h1
+        class="text-lg font-bold text-slate-900 dark:text-white flex-1 text-center"
+      >
+        Create New Gig
+      </h1>
+      <button
+        class="text-primary font-semibold text-base hover:text-primary-dark transition-colors px-2"
+      >
+        Save
+      </button>
+    </header>
+    <!-- Main Content -->
+    <main class="flex-1 w-full max-w-md mx-auto pb-32">
+      <!-- Portfolio Section -->
+      <section class="mt-6 px-4">
+        <h2 class="text-slate-900 dark:text-white text-lg font-bold mb-3">
+          Portfolio
+        </h2>
+        <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">
+          Upload photos or videos of your best work to attract more clients.
+        </p>
+        <div class="flex gap-3 overflow-x-auto no-scrollbar pb-2">
+          <!-- Add Button -->
+          <button
+            class="flex-shrink-0 w-24 h-24 rounded-xl border-2 border-dashed border-primary bg-primary/5 dark:bg-primary/10 flex flex-col items-center justify-center gap-1 hover:bg-primary/10 transition-colors group"
+          >
+            <span
+              class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform"
+              >add_a_photo</span
+            >
+            <span class="text-xs font-medium text-primary">Add</span>
+          </button>
+          <!-- Existing Images -->
+          <div
+            class="relative flex-shrink-0 w-24 h-24 rounded-xl overflow-hidden group"
+          >
+            <div
+              class="absolute inset-0 bg-cover bg-center"
+              data-alt="Worker fixing a pipe with tools"
+              style="
+                background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAMFSOta31fBBbkdzIO7yVGMQJ-kS1JyEZ61qBM1t5fFuI1GdxugZsKepRDSRHgEpUnMowxz7Zj8BtRhXasxC73vyQc449qYcQbFiwUzkdhIfhkR19OQie06HV5HtUTu1-bnpt5NqSBjYxh9stc8LAaKPwb7JfG_mSrMTq_TcSzvo4KEDmvNamomdoCOIQQfw9-hUn-KgdjzwNrxWH1KcwiZgIGLCadR8WH_5itxV4izs6ZKFU-X83BohkvasOYhONPTye1s2xO3K2Y');
+              "
+            ></div>
+            <button
+              class="absolute top-1 right-1 bg-black/50 p-1 rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <span class="material-symbols-outlined text-[16px]">close</span>
+            </button>
+          </div>
+          <div
+            class="relative flex-shrink-0 w-24 h-24 rounded-xl overflow-hidden group"
+          >
+            <div
+              class="absolute inset-0 bg-cover bg-center"
+              data-alt="Electrician wiring a panel"
+              style="
+                background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA9dNvqTJVlthVjIP__nTZOcw2cghTo6J_2o5qV7h8uNMInIO_130l0wBCWz_MvulxWaGF5LS1U9R_SxiS_gX0LnZnyChXfLu899FYcSC1Cv0eyPYTrlV3dcU7T-GYs46wz5VV4EktAWqS3KNbAvqjnkQFcnvQLVPHc4YD12FAwNy3CGHBvxB8l34_DH-T6YnBrOxFlPLBL6LckCGziLjLU_b_GYy2qhyoxC5kddzL7vpPB5EtMbkSi1nmMUBHJRl83QRfHzOLekiNz');
+              "
+            ></div>
+            <button
+              class="absolute top-1 right-1 bg-black/50 p-1 rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <span class="material-symbols-outlined text-[16px]">close</span>
+            </button>
+          </div>
+          <div
+            class="relative flex-shrink-0 w-24 h-24 rounded-xl overflow-hidden group"
+          >
+            <div
+              class="absolute inset-0 bg-cover bg-center"
+              data-alt="Architectural plan and blueprint"
+              style="
+                background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBCKHSxA2uTd1BPjVIgOOFPWEB73Nucjo65WpvA_PvsAXRtM5M0QUFS20p-PS3VgfZ5W6CldNP9EI-Zr49OLuBJ33URnDQe5JqtCm44j5s10IhcxfxfopYYkyLSYgvR-0GST_IfJZ9Usv1RycnkGNjPyf3puaxeF3mQeljHVWmsqIWs-F4KDEtil8lIQBEa2dxVUTZR7PwQx6m7hor5NmY0kPAIo6DumqD3SE87XcesR12ZE73YYuyPiG-r6ZzCx8L1a1s7pL9iXQ4s');
+              "
+            ></div>
+            <button
+              class="absolute top-1 right-1 bg-black/50 p-1 rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <span class="material-symbols-outlined text-[16px]">close</span>
+            </button>
+          </div>
+        </div>
+      </section>
+      <!-- Service Details Section -->
+      <section class="mt-8 px-4 flex flex-col gap-6">
+        <h2 class="text-slate-900 dark:text-white text-lg font-bold">
+          Service Details
+        </h2>
+        <!-- Gig Title -->
+        <label class="flex flex-col gap-2">
+          <span class="text-slate-700 dark:text-slate-300 text-sm font-medium"
+            >Gig Title</span
+          >
+          <input
+            class="w-full h-14 rounded-xl bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 focus:border-primary focus:ring-1 focus:ring-primary px-4 text-slate-900 dark:text-white placeholder:text-slate-400 transition-all outline-none"
+            placeholder="e.g., Experienced Plumber for Home Repairs"
+            type="text"
+          />
+        </label>
+        <!-- Category Chips -->
+        <div class="flex flex-col gap-2">
+          <span class="text-slate-700 dark:text-slate-300 text-sm font-medium"
+            >Category</span
+          >
+          <div class="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+            <button
+              class="flex-shrink-0 px-4 py-2 rounded-full bg-primary text-white text-sm font-medium border border-primary transition-colors"
+            >
+              Plumbing
+            </button>
+            <button
+              class="flex-shrink-0 px-4 py-2 rounded-full bg-surface-light dark:bg-surface-dark text-slate-600 dark:text-slate-300 border border-gray-200 dark:border-gray-700 hover:border-primary hover:text-primary transition-colors text-sm font-medium"
+            >
+              Electrical
+            </button>
+            <button
+              class="flex-shrink-0 px-4 py-2 rounded-full bg-surface-light dark:bg-surface-dark text-slate-600 dark:text-slate-300 border border-gray-200 dark:border-gray-700 hover:border-primary hover:text-primary transition-colors text-sm font-medium"
+            >
+              Masonry
+            </button>
+            <button
+              class="flex-shrink-0 px-4 py-2 rounded-full bg-surface-light dark:bg-surface-dark text-slate-600 dark:text-slate-300 border border-gray-200 dark:border-gray-700 hover:border-primary hover:text-primary transition-colors text-sm font-medium"
+            >
+              Carpentry
+            </button>
+          </div>
+        </div>
+        <!-- Description -->
+        <label class="flex flex-col gap-2">
+          <span class="text-slate-700 dark:text-slate-300 text-sm font-medium"
+            >Description of Services</span
+          >
+          <textarea
+            class="w-full min-h-[120px] rounded-xl bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 focus:border-primary focus:ring-1 focus:ring-primary px-4 py-3 text-slate-900 dark:text-white placeholder:text-slate-400 transition-all outline-none resize-none"
+            placeholder="Describe your experience, tools you bring, and specific services you offer..."
+          ></textarea>
+          <div class="flex justify-end text-xs text-slate-400">0/500</div>
+        </label>
+        <!-- Pricing -->
+        <div class="grid grid-cols-2 gap-4">
+          <label class="flex flex-col gap-2">
+            <span class="text-slate-700 dark:text-slate-300 text-sm font-medium"
+              >Price</span
+            >
+            <div class="relative">
+              <span
+                class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-medium"
+                >₹</span
+              >
+              <input
+                class="w-full h-14 rounded-xl bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 focus:border-primary focus:ring-1 focus:ring-primary pl-8 pr-4 text-slate-900 dark:text-white placeholder:text-slate-400 transition-all outline-none"
+                placeholder="0"
+                type="number"
+              />
+            </div>
+          </label>
+          <label class="flex flex-col gap-2">
+            <span class="text-slate-700 dark:text-slate-300 text-sm font-medium"
+              >Rate Type</span
+            >
+            <div class="relative">
+              <select
+                class="w-full h-14 rounded-xl bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 focus:border-primary focus:ring-1 focus:ring-primary px-4 text-slate-900 dark:text-white appearance-none outline-none"
+              >
+                <option>Per Day</option>
+                <option>Per Hour</option>
+                <option>Fixed Rate</option>
+              </select>
+              <span
+                class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-500"
+              >
+                <span class="material-symbols-outlined text-xl"
+                  >expand_more</span
+                >
+              </span>
+            </div>
+          </label>
+        </div>
+      </section>
+      <!-- Availability & Contact -->
+      <section class="mt-8 px-4 flex flex-col gap-6">
+        <h2 class="text-slate-900 dark:text-white text-lg font-bold">
+          Availability &amp; Contact
+        </h2>
+        <!-- Availability -->
+        <label class="flex flex-col gap-2">
+          <span class="text-slate-700 dark:text-slate-300 text-sm font-medium"
+            >Working Hours</span
+          >
+          <div class="relative">
+            <input
+              class="w-full h-14 rounded-xl bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 focus:border-primary focus:ring-1 focus:ring-primary pl-12 pr-4 text-slate-900 dark:text-white placeholder:text-slate-400 transition-all outline-none"
+              placeholder="e.g., Mon-Sat, 9am - 6pm"
+              type="text"
+            />
+            <span
+              class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
+            >
+              <span class="material-symbols-outlined">calendar_month</span>
+            </span>
+          </div>
+        </label>
+        <!-- Phone Number -->
+        <label class="flex flex-col gap-2">
+          <span class="text-slate-700 dark:text-slate-300 text-sm font-medium"
+            >Contact Number <span class="text-red-500">*</span></span
+          >
+          <div class="flex gap-3">
+            <div class="relative w-24 flex-shrink-0">
+              <select
+                class="w-full h-14 rounded-xl bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 focus:border-primary focus:ring-1 focus:ring-primary pl-3 pr-8 text-slate-900 dark:text-white appearance-none outline-none"
+              >
+                <option>+91</option>
+                <option>+880</option>
+                <option>+94</option>
+                <option>+977</option>
+              </select>
+              <span
+                class="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-slate-500"
+              >
+                <span class="material-symbols-outlined text-lg"
+                  >expand_more</span
+                >
+              </span>
+            </div>
+            <input
+              class="flex-1 h-14 rounded-xl bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 focus:border-primary focus:ring-1 focus:ring-primary px-4 text-slate-900 dark:text-white placeholder:text-slate-400 transition-all outline-none"
+              placeholder="Mobile number"
+              type="tel"
+              value="9876543210"
+            />
+          </div>
+          <p class="text-xs text-slate-500 dark:text-slate-400 pl-1">
+            This number will be visible to potential clients.
+          </p>
+        </label>
+      </section>
+    </main>
+    <!-- Sticky Bottom CTA -->
+    <div
+      class="fixed bottom-[80px] left-0 right-0 z-40 px-4 pb-4 w-full max-w-md mx-auto pointer-events-none"
+    >
+      <button
+        class="w-full h-14 rounded-xl bg-accent hover:bg-accent-hover text-white text-lg font-bold shadow-lg shadow-orange-500/30 flex items-center justify-center gap-2 transition-all transform active:scale-95 pointer-events-auto"
+      >
+        <span>Publish Gig</span>
+        <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+      </button>
+    </div>
+    <!-- Bottom Navigation -->
+
+    <!-- Spacer for iOS home indicator if needed -->
+    <div
+      class="h-6 w-full bg-white dark:bg-background-dark fixed bottom-0 z-50"
+    ></div>
+  </body>
+</html>

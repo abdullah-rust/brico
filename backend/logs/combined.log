@@ -256,3 +256,170 @@
 [2025-12-27 03:44:32] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
 [2025-12-27 03:44:58] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
 [2025-12-27 03:44:58] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 17:56:09] [33mwarn[39m: [33mAccess token expired, checking refresh token...[39m
+[2025-12-27 17:56:10] [33mwarn[39m: [33mAccess token expired, checking refresh token...[39m
+[2025-12-27 17:56:10] [32minfo[39m: [32mToken refreshed successfully for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 17:56:10] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 17:56:11] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 17:57:05] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 17:57:05] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 17:58:29] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 17:58:29] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:00:55] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:00:55] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:01:06] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:01:06] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:01:11] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:01:11] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:01:13] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:01:13] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:01:15] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:01:15] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:02:27] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:02:27] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:02:52] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:02:52] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:03:24] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:03:24] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:08:38] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:08:38] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:08:46] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:08:46] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:09:07] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:09:07] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:09:09] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:09:09] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:12:39] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:12:39] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:12:49] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:12:49] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:15:45] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:15:45] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:15:47] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:15:47] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:16:08] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:16:08] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:18:02] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:18:02] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:18:42] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:18:42] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:19:06] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 18:19:06] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 19:24:34] [33mwarn[39m: [33mAccess token expired, checking refresh token...[39m
+[2025-12-27 19:24:34] [33mwarn[39m: [33mAccess token expired, checking refresh token...[39m
+[2025-12-27 19:24:34] [32minfo[39m: [32mToken refreshed successfully for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 19:24:34] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 19:24:34] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 19:26:32] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 19:26:32] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 19:27:03] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 19:27:03] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 19:29:18] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 19:31:07] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 19:31:07] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 19:31:07] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 19:31:07] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 19:31:13] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 19:31:13] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 19:32:25] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 19:32:25] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 19:32:38] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 19:32:38] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 19:32:44] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 19:32:44] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 19:33:35] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 19:33:35] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 19:34:45] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 19:34:45] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 19:34:59] [32minfo[39m: [32mfile added [object Object][39m
+[2025-12-27 19:35:02] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 19:35:02] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 19:37:27] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 19:37:27] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 20:00:37] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 20:00:37] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 20:15:30] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 20:15:30] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 20:19:04] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 20:19:05] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 20:19:46] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 20:19:46] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 20:23:05] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 20:23:06] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 20:25:04] [33mwarn[39m: [33mAccess token expired, checking refresh token...[39m
+[2025-12-27 20:25:04] [33mwarn[39m: [33mAccess token expired, checking refresh token...[39m
+[2025-12-27 20:25:04] [32minfo[39m: [32mToken refreshed successfully for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 20:25:04] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 20:25:04] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 20:30:02] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 20:30:02] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 20:36:22] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 20:36:22] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 20:36:52] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 20:36:53] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 20:37:03] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 20:37:04] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 20:43:01] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 20:43:01] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 20:57:28] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 20:57:28] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 20:59:11] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 20:59:11] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 21:04:37] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 21:04:37] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 21:22:26] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 21:22:26] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 22:56:04] [32minfo[39m: [32mfile added [object Object][39m
+[2025-12-27 22:56:04] [32minfo[39m: [32mfile added [object Object][39m
+[2025-12-27 22:56:04] [32minfo[39m: [32mfile added [object Object][39m
+[2025-12-27 22:56:04] [32minfo[39m: [32mfile added [object Object][39m
+[2025-12-27 22:56:04] [32minfo[39m: [32mfile added [object Object][39m
+[2025-12-27 22:56:04] [32minfo[39m: [32mImages uploaded to S3 for User undefined. Keys: 1766858164430-uu76yhf2-124317.jpg, 1766858164434-22xmarnr-120289.jpg, 1766858164434-bz9wwosz-120292.jpg, 1766858164435-axqwywha-120289.jpg, 1766858164435-t2ydbwqk-117406.jpg[39m
+[2025-12-27 22:56:05] [31merror[39m: [31mError Publishing Gig: [39m
+[31mInvalid `prisma.gig.create()` invocation in[39m
+[31mC:\projects\brico\backend\src\gigs\publishGig.ts:65:37[39m
+
+[31m  62 );[39m
+[31m  63 [39m
+[31m  64 // 4. Save to Database[39m
+[31m→ 65 const newGig = await prisma.gig.create({[39m
+[31m       data: {[39m
+[31m         workerId: undefined,[39m
+[31m         title: "Building creation ",[39m
+[31m         description: "Main building create kar skta hon wagerah wagerha ",[39m
+[31m         category: "Mason",[39m
+[31m         priceBase: new Prisma.Decimal("2000"),[39m
+[31m         lat: 33.686897,[39m
+[31m         lng: 72.8292111,[39m
+[31m         locationName: "Block B, Islamabad Capital Territory",[39m
+[31m         phone: "3403810358",[39m
+[31m         rateType: "Per Day",[39m
+[31m         serviceAreas: [[39m
+[31m           "Block B, Islamabad Capital Territory"[39m
+[31m         ],[39m
+[31m         imageUrls: [[39m
+[31m           "1766858164430-uu76yhf2-124317.jpg",[39m
+[31m           "1766858164434-22xmarnr-120289.jpg",[39m
+[31m           "1766858164434-bz9wwosz-120292.jpg",[39m
+[31m           "1766858164435-axqwywha-120289.jpg",[39m
+[31m           "1766858164435-t2ydbwqk-117406.jpg"[39m
+[31m         ],[39m
+[31m     +   worker: {[39m
+[31m     +     create: WorkerCreateWithoutGigsInput | WorkerUncheckedCreateWithoutGigsInput,[39m
+[31m     +     connectOrCreate: WorkerCreateOrConnectWithoutGigsInput,[39m
+[31m     +     connect: WorkerWhereUniqueInput[39m
+[31m     +   }[39m
+[31m       }[39m
+[31m     })[39m
+
+[31mArgument `worker` is missing.[39m
+[2025-12-27 22:58:31] [33mwarn[39m: [33mAccess token expired, checking refresh token...[39m
+[2025-12-27 22:58:31] [32minfo[39m: [32mToken refreshed successfully for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 22:58:32] [32minfo[39m: [32mfile added [object Object][39m
+[2025-12-27 22:58:32] [32minfo[39m: [32mfile added [object Object][39m
+[2025-12-27 22:58:32] [32minfo[39m: [32mfile added [object Object][39m
+[2025-12-27 22:58:32] [32minfo[39m: [32mfile added [object Object][39m
+[2025-12-27 22:58:32] [32minfo[39m: [32mfile added [object Object][39m
+[2025-12-27 22:58:32] [32minfo[39m: [32mImages uploaded to S3 for User a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef. Keys: 1766858312674-1j3s4c8i-124317.jpg, 1766858312681-ebh2khnu-120289.jpg, 1766858312682-pzwbeaeg-120292.jpg, 1766858312682-mp9dwrvj-120289.jpg, 1766858312683-jvroz5lg-117406.jpg[39m
+[2025-12-27 22:58:41] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-27 22:58:41] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m

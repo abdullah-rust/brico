@@ -4,11 +4,14 @@ import {
   MdExpandMore,
   MdNotifications,
   MdSearch,
-  MdTune,
 } from "react-icons/md";
 import styles from "./ExploreHeader.module.css";
 
-const ExploreHeader: React.FC = () => {
+interface Props {
+  location: string;
+}
+
+const ExploreHeader: React.FC<Props> = ({ location }) => {
   return (
     <header className={styles.header}>
       <div className={styles.locationRow}>
@@ -19,7 +22,7 @@ const ExploreHeader: React.FC = () => {
           <div>
             <p className={styles.locLabel}>Current Location</p>
             <div className={styles.locName}>
-              Bandra West, Mumbai <MdExpandMore />
+              {location} <MdExpandMore />
             </div>
           </div>
         </div>
@@ -32,9 +35,6 @@ const ExploreHeader: React.FC = () => {
       <div className={styles.searchWrapper}>
         <MdSearch className={styles.searchIcon} />
         <input type="text" placeholder="Find electricians, masons..." />
-        <button className={styles.filterBtn}>
-          <MdTune />
-        </button>
       </div>
     </header>
   );

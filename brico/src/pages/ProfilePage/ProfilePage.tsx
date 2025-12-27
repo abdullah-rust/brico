@@ -165,9 +165,7 @@ const ProfilePage: React.FC = () => {
 
             <div className={styles.userInfo}>
               <h1 className={styles.userName}>{user.fullName}</h1>
-              <span className={styles.badge}>
-                {user.role === "worker" ? "Professional" : "Client"}
-              </span>
+              <span className={styles.badge}>{user.role}</span>
               <p className={styles.userContact}>{user.email}</p>
             </div>
 
@@ -299,14 +297,15 @@ const ProfilePage: React.FC = () => {
             <p className={styles.groupLabel}>Services</p>
             <MenuButton
               icon={<MdWorkOutline />}
-              title="My Services"
-              desc="Manage offered services"
+              title="My Gigs"
+              desc="Manage Your services"
             />
             <div className={styles.divider} />
             <MenuButton
-              icon={<MdBuild />}
-              title="Equipment"
-              desc="Tools & machinery"
+              icon={<MdAdd />}
+              title="Create New Gig"
+              desc="Offer Your Services"
+              onClick={() => navigate("/create-gig")}
             />
           </div>
 

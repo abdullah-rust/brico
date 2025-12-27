@@ -1,4 +1,4 @@
-import React, { useState, useRef, Suspense, lazy, useEffect } from "react";
+import React, { useState, useEffect, Suspense, lazy } from "react";
 import {
   Route,
   Routes,
@@ -7,9 +7,6 @@ import {
   Navigate,
 } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Controller } from "swiper/modules";
-import type { Swiper as SwiperType } from "swiper";
 import { App as CapacitorApp } from "@capacitor/app";
 
 import { AuthService } from "./utils/AuthService";
@@ -17,10 +14,9 @@ import BottomNav from "./components/BottomNav/BottomNav";
 import PageLoader from "./components/Loader/PageLoader";
 import AnimatedPage from "./components/AnimatedPage/AnimatedPage";
 
-import "swiper/css";
 import "./App.css";
 
-// Lazy Imports
+// Lazy Imports (Performance ke liye behtareen hain)
 const HomePage = lazy(() => import("./pages/Home/HomePage"));
 const ProjectsPage = lazy(() => import("./pages/ProjectsPage/ProjectsPage"));
 const DesignGallery = lazy(() => import("./pages/DesignGallery/DesignGallery"));
@@ -37,35 +33,23 @@ const OTPPage = lazy(() => import("./pages/Auth/OTPPage"));
 const EditProfilePage = lazy(
   () => import("./pages/EditProfilePage/EditProfilePage")
 );
+const CreateGigPage = lazy(() => import("./pages/CreateGigPage/CreateGigPage"));
 
 const App: React.FC = () => {
-  const [activeTab, setActiveTab] = useState("home");
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
-  const swiperRef = useRef<SwiperType | null>(null);
   const location = useLocation();
   const navigate = useNavigate();
-  const tabs = ["home", "projects", "designs", "explore", "tools", "profile"];
 
+  // Auth logic - optimized
   useEffect(() => {
     const checkAuth = async () => {
-      // Check for access_token specifically
       const token = await AuthService.getToken("access_token");
       setIsAuthenticated(!!token);
     };
     checkAuth();
   }, [location.pathname]);
 
-  // Handle Swiper initialization and control
-  useEffect(() => {
-    if (swiperRef.current && activeTab) {
-      const tabIndex = tabs.indexOf(activeTab);
-      if (tabIndex !== -1) {
-        // Smooth transition without animation if user clicked bottom nav
-        swiperRef.current.slideTo(tabIndex, 0); // 0 speed for instant jump
-      }
-    }
-  }, [activeTab]);
-
+  // Capacitor Back Button Logic
   useEffect(() => {
     const backHandler = CapacitorApp.addListener("backButton", () => {
       if (location.pathname === "/" || location.pathname === "/welcome") {
@@ -79,175 +63,182 @@ const App: React.FC = () => {
     };
   }, [location.pathname, navigate]);
 
-  // Handle Swiper slide change
-  const handleSlideChange = (swiper: SwiperType) => {
-    const newTab = tabs[swiper.activeIndex];
-    if (newTab !== activeTab) {
-      setActiveTab(newTab);
-    }
-  };
-
-  // Handle tab click from bottom nav
-  const handleTabClick = (tabId: string) => {
-    const tabIndex = tabs.indexOf(tabId);
-    if (tabIndex !== -1 && swiperRef.current) {
-      setActiveTab(tabId);
-      // Smooth sliding animation with 300ms
-      swiperRef.current.slideTo(tabIndex, 300);
-    }
-  };
-
   if (isAuthenticated === null) return <PageLoader />;
+
+  // Yeh function check karega ke BottomNav dikhana hai ya nahi
+  const showBottomNav =
+    isAuthenticated &&
+    ["/", "/projects", "/designs", "/explore", "/tools", "/profile"].includes(
+      location.pathname
+    );
 
   return (
     <Suspense fallback={<PageLoader />}>
-      <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          <Route
-            path="/"
-            element={
-              isAuthenticated ? (
-                <AnimatedPage>
-                  <div className="app-layout">
-                    <main className="main-content">
-                      <Swiper
-                        modules={[Controller]}
-                        onSlideChange={handleSlideChange}
-                        onSwiper={(swiper) => (swiperRef.current = swiper)}
-                        speed={300}
-                        touchRatio={0.6} // Yeh 1 se 0.6 kar do (easier to drag)
-                        shortSwipes={true} // Yeh true kar do (allows short swipes)
-                        resistanceRatio={0.85} // Yeh 0 se 0.85 kar do (elastic effect)
-                        followFinger={true}
-                        threshold={2} // Yeh 5 se 2 kar do (less distance needed)
-                        simulateTouch={true}
-                        allowTouchMove={true}
-                        autoHeight={false}
-                        slidesPerView={1}
-                        spaceBetween={0}
-                        touchAngle={30} // Yeh 45 se 30 kar do (wider touch area)
-                        longSwipesRatio={0.2} // Yeh add karo
-                        longSwipesMs={150} // Yeh add karo
-                        grabCursor={true} // Yeh add karo
-                        className="main-swiper"
-                        style={{
-                          height: "100%",
-                          width: "100%",
-                          overflow: "hidden",
-                        }}
-                      >
-                        <SwiperSlide className="custom-slide">
-                          <HomePage />
-                        </SwiperSlide>
-                        <SwiperSlide className="custom-slide">
-                          <ProjectsPage />
-                        </SwiperSlide>
-                        <SwiperSlide className="custom-slide">
-                          <DesignGallery />
-                        </SwiperSlide>
-                        <SwiperSlide className="custom-slide">
-                          <FindWorkersPage />
-                        </SwiperSlide>
-                        <SwiperSlide className="custom-slide">
-                          <ToolsPage />
-                        </SwiperSlide>
-                        <SwiperSlide className="custom-slide">
-                          <ProfilePage />
-                        </SwiperSlide>
-                      </Swiper>
-                    </main>
-                    <BottomNav
-                      activeTab={activeTab}
-                      setActiveTab={handleTabClick}
-                    />
-                  </div>
-                </AnimatedPage>
-              ) : (
-                <Navigate to="/welcome" replace />
-              )
-            }
-          />
+      <div className="app-container">
+        <main className="main-content">
+          <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname}>
+              {/* Main Tabs as Routes */}
+              <Route
+                path="/"
+                element={
+                  isAuthenticated ? (
+                    <AnimatedPage>
+                      <HomePage />
+                    </AnimatedPage>
+                  ) : (
+                    <Navigate to="/welcome" replace />
+                  )
+                }
+              />
+              <Route
+                path="/projects"
+                element={
+                  <AnimatedPage>
+                    <ProjectsPage />
+                  </AnimatedPage>
+                }
+              />
+              <Route
+                path="/designs"
+                element={
+                  <AnimatedPage>
+                    <DesignGallery />
+                  </AnimatedPage>
+                }
+              />
+              <Route
+                path="/explore"
+                element={
+                  <AnimatedPage>
+                    <FindWorkersPage />
+                  </AnimatedPage>
+                }
+              />
+              <Route
+                path="/tools"
+                element={
+                  <AnimatedPage>
+                    <ToolsPage />
+                  </AnimatedPage>
+                }
+              />
+              <Route
+                path="/profile"
+                element={
+                  <AnimatedPage>
+                    <ProfilePage />
+                  </AnimatedPage>
+                }
+              />
 
-          {/* Auth Routes with Protection */}
-          <Route
-            path="/welcome"
-            element={
-              isAuthenticated ? (
-                <Navigate to="/" replace />
-              ) : (
-                <AnimatedPage>
-                  <WelcomePage />
-                </AnimatedPage>
-              )
-            }
-          />
-          <Route
-            path="/get-started"
-            element={
-              isAuthenticated ? (
-                <Navigate to="/" replace />
-              ) : (
-                <AnimatedPage>
-                  <GetStarted />
-                </AnimatedPage>
-              )
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              isAuthenticated ? (
-                <Navigate to="/" replace />
-              ) : (
-                <AnimatedPage>
-                  <LoginPage />
-                </AnimatedPage>
-              )
-            }
-          />
-          <Route
-            path="/signup"
-            element={
-              isAuthenticated ? (
-                <Navigate to="/" replace />
-              ) : (
-                <AnimatedPage>
-                  <SignupPage />
-                </AnimatedPage>
-              )
-            }
-          />
-          <Route
-            path="/otp"
-            element={
-              isAuthenticated ? (
-                <Navigate to="/" replace />
-              ) : (
-                <AnimatedPage>
-                  <OTPPage />
-                </AnimatedPage>
-              )
-            }
-          />
+              {/* Auth Routes */}
+              <Route
+                path="/welcome"
+                element={
+                  !isAuthenticated ? (
+                    <AnimatedPage>
+                      <WelcomePage />
+                    </AnimatedPage>
+                  ) : (
+                    <Navigate to="/" replace />
+                  )
+                }
+              />
+              <Route
+                path="/get-started"
+                element={
+                  !isAuthenticated ? (
+                    <AnimatedPage>
+                      <GetStarted />
+                    </AnimatedPage>
+                  ) : (
+                    <Navigate to="/" replace />
+                  )
+                }
+              />
+              <Route
+                path="/login"
+                element={
+                  !isAuthenticated ? (
+                    <AnimatedPage>
+                      <LoginPage />
+                    </AnimatedPage>
+                  ) : (
+                    <Navigate to="/" replace />
+                  )
+                }
+              />
+              <Route
+                path="/signup"
+                element={
+                  !isAuthenticated ? (
+                    <AnimatedPage>
+                      <SignupPage />
+                    </AnimatedPage>
+                  ) : (
+                    <Navigate to="/" replace />
+                  )
+                }
+              />
+              <Route
+                path="/otp"
+                element={
+                  !isAuthenticated ? (
+                    <AnimatedPage>
+                      <OTPPage />
+                    </AnimatedPage>
+                  ) : (
+                    <Navigate to="/" replace />
+                  )
+                }
+              />
 
-          <Route
-            path="/edit-profile"
-            element={
-              isAuthenticated ? (
-                <AnimatedPage>
-                  <EditProfilePage />
-                </AnimatedPage>
-              ) : (
-                <Navigate to="/" replace />
-              )
+              {/* Other Pages */}
+              <Route
+                path="/edit-profile"
+                element={
+                  isAuthenticated ? (
+                    <AnimatedPage>
+                      <EditProfilePage />
+                    </AnimatedPage>
+                  ) : (
+                    <Navigate to="/login" replace />
+                  )
+                }
+              />
+
+              <Route
+                path="/create-gig"
+                element={
+                  isAuthenticated ? (
+                    <AnimatedPage>
+                      <CreateGigPage />
+                    </AnimatedPage>
+                  ) : (
+                    <Navigate to="/login" replace />
+                  )
+                }
+              />
+            </Routes>
+          </AnimatePresence>
+        </main>
+
+        {showBottomNav && (
+          <BottomNav
+            activeTab={
+              location.pathname === "/"
+                ? "home"
+                : location.pathname.substring(1)
+            }
+            setActiveTab={(tabId) =>
+              navigate(tabId === "home" ? "/" : `/${tabId}`)
             }
           />
-        </Routes>
-      </AnimatePresence>
+        )}
+      </div>
     </Suspense>
   );
 };
 
 export default App;
-
-EditProfilePage;

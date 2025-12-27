@@ -10,6 +10,7 @@ import {
 } from "react-icons/md";
 import styles from "./EditProfilePage.module.css";
 import api from "../../utils/api";
+import Swal from "sweetalert2";
 
 interface EditProfileData {
   fullName: string;
@@ -21,6 +22,7 @@ interface EditProfileData {
   experienceYears: number;
   rating: number;
   profileImage?: string; // ✅ added
+  role: string;
 }
 
 interface Skill {
@@ -45,6 +47,7 @@ const EditProfilePage: React.FC = () => {
     experienceYears: 0,
     rating: 0,
     profileImage: "",
+    role: "",
   });
 
   const availableSkills: Skill[] = [
@@ -72,8 +75,6 @@ const EditProfilePage: React.FC = () => {
       const res = await api.get("/user/profile");
       const data = res.data;
 
-      console.log(res.data);
-
       setProfileData({
         fullName: data.fullName || "",
         email: data.email || "",
@@ -84,14 +85,20 @@ const EditProfilePage: React.FC = () => {
         experienceYears: data.experienceYears || 0,
         rating: data.rating || 0,
         profileImage: data.profilePicture || "",
+        role: data.role || "",
       });
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error fetching profile:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Connection Error",
+        text: "We couldn't load your profile. Please check your internet connection.",
+        confirmButtonColor: "#11d4b4",
+      });
     } finally {
       setLoading(false);
     }
   };
-
   const handleInputChange = (
     field: keyof EditProfileData,
     value: string | number
@@ -120,9 +127,18 @@ const EditProfilePage: React.FC = () => {
   };
 
   const handleSaveProfile = async () => {
+    // Basic Validation
+    if (!profileData.fullName || !profileData.phoneNumber) {
+      return Swal.fire({
+        icon: "warning",
+        title: "Missing Information",
+        text: "Full Name and Phone Number are required fields.",
+        confirmButtonColor: "#11d4b4",
+      });
+    }
+
     try {
       setSaving(true);
-
       const formData = new FormData();
       formData.append("fullName", profileData.fullName);
       formData.append("phoneNumber", profileData.phoneNumber);
@@ -132,24 +148,43 @@ const EditProfilePage: React.FC = () => {
         "experienceYears",
         profileData.experienceYears.toString()
       );
+      formData.append("role", profileData.role);
 
       profileData.skills.forEach((skill) => {
         formData.append("skills[]", skill);
       });
 
-      // Image file key ko backend se match karo
       if (imageFile) {
-        formData.append("profilePicture", imageFile); // ✅ FIXED: "profileImage" ki jagah "profilePicture"
+        formData.append("profilePicture", imageFile);
       }
 
-      await api.post("/update-profile", formData, {
+      await api.post("/user/update-profile", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
+      // Professional Success Notification
+      await Swal.fire({
+        icon: "success",
+        title: "Profile Updated!",
+        text: "Your changes have been saved successfully.",
+        timer: 2000,
+        showConfirmButton: false,
+        timerProgressBar: true,
+      });
+
       window.history.back();
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error saving profile:", error);
-      alert("Failed to save profile. Please try again.");
+
+      // Dynamic Error Message from Backend
+      Swal.fire({
+        icon: "error",
+        title: "Save Failed",
+        text:
+          error.response?.data?.message ||
+          "Something went wrong while saving. Please try again.",
+        confirmButtonColor: "#ef4444",
+      });
     } finally {
       setSaving(false);
     }
@@ -236,6 +271,7 @@ const EditProfilePage: React.FC = () => {
         {/* Form Fields */}
         <div className={styles.formContainer}>
           {/* Name Field */}
+
           <div className={styles.formGroup}>
             <label className={styles.formLabel}>Full Name</label>
             <div className={styles.inputWrapper}>
@@ -250,6 +286,21 @@ const EditProfilePage: React.FC = () => {
             </div>
           </div>
 
+          <div className={styles.formGroup}>
+            <label className={styles.formLabel}>Role Name</label>
+            <div className={styles.inputWrapper}>
+              <input
+                type="text"
+                className={styles.formInput}
+                placeholder="Enter your role"
+                value={profileData.role}
+                onChange={(e) =>
+                  handleInputChange("role", e.target.value.toUpperCase())
+                }
+              />
+              <MdPerson className={styles.inputIcon} />
+            </div>
+          </div>
           {/* Phone Field */}
           <div className={styles.formGroup}>
             <label className={styles.formLabel}>Phone Number</label>

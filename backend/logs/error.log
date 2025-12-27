@@ -96,3 +96,41 @@
 
 [31mArgument `experienceYears`: Invalid value provided. Expected Int, provided String.[39m
 [2025-12-27 03:18:22] [31merror[39m: [31mUnhandled error: File too large[39m
+[2025-12-27 22:56:05] [31merror[39m: [31mError Publishing Gig: [39m
+[31mInvalid `prisma.gig.create()` invocation in[39m
+[31mC:\projects\brico\backend\src\gigs\publishGig.ts:65:37[39m
+
+[31m  62 );[39m
+[31m  63 [39m
+[31m  64 // 4. Save to Database[39m
+[31m→ 65 const newGig = await prisma.gig.create({[39m
+[31m       data: {[39m
+[31m         workerId: undefined,[39m
+[31m         title: "Building creation ",[39m
+[31m         description: "Main building create kar skta hon wagerah wagerha ",[39m
+[31m         category: "Mason",[39m
+[31m         priceBase: new Prisma.Decimal("2000"),[39m
+[31m         lat: 33.686897,[39m
+[31m         lng: 72.8292111,[39m
+[31m         locationName: "Block B, Islamabad Capital Territory",[39m
+[31m         phone: "3403810358",[39m
+[31m         rateType: "Per Day",[39m
+[31m         serviceAreas: [[39m
+[31m           "Block B, Islamabad Capital Territory"[39m
+[31m         ],[39m
+[31m         imageUrls: [[39m
+[31m           "1766858164430-uu76yhf2-124317.jpg",[39m
+[31m           "1766858164434-22xmarnr-120289.jpg",[39m
+[31m           "1766858164434-bz9wwosz-120292.jpg",[39m
+[31m           "1766858164435-axqwywha-120289.jpg",[39m
+[31m           "1766858164435-t2ydbwqk-117406.jpg"[39m
+[31m         ],[39m
+[31m     +   worker: {[39m
+[31m     +     create: WorkerCreateWithoutGigsInput | WorkerUncheckedCreateWithoutGigsInput,[39m
+[31m     +     connectOrCreate: WorkerCreateOrConnectWithoutGigsInput,[39m
+[31m     +     connect: WorkerWhereUniqueInput[39m
+[31m     +   }[39m
+[31m       }[39m
+[31m     })[39m
+
+[31mArgument `worker` is missing.[39m

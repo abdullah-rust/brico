@@ -4,6 +4,7 @@ import profileRouter from "../profile";
 import checkJWT from "../middleware/checkJWT";
 import RefreshToken from "../middleware/RefreshRoute";
 import { serveFile } from "../controllers/filesController";
+import GigRouter from "../gigs";
 
 const router = Router();
 
@@ -20,5 +21,6 @@ router.post("/refresh", RefreshToken);
 // 4. Profile routes ko "/user" ya "/profile" ka prefix do (Secure)
 // Ab update-profile ban jayega /profile/update-profile
 router.use("/user", checkJWT, profileRouter);
+router.use("/gigs", GigRouter);
 
 export default router;
