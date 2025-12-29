@@ -113,6 +113,8 @@ const CreateGigPage: React.FC = () => {
         formData.append("portfolio", imgFile); // Aap "portfolio" naam use kar rahe hain
       });
 
+      formData.append("availability", JSON.stringify(schedule));
+
       // 6. Update Swal to Uploading
       Swal.fire({
         title: "Publishing Gig...",
@@ -147,6 +149,25 @@ const CreateGigPage: React.FC = () => {
         "error"
       );
     }
+  };
+
+  const initialSchedule = {
+    Monday: { from: "09:00", to: "18:00", closed: false },
+    Tuesday: { from: "09:00", to: "18:00", closed: false },
+    Wednesday: { from: "09:00", to: "18:00", closed: false },
+    Thursday: { from: "09:00", to: "18:00", closed: false },
+    Friday: { from: "09:00", to: "18:00", closed: false },
+    Saturday: { from: "09:00", to: "18:00", closed: false },
+    Sunday: { from: "00:00", to: "00:00", closed: true },
+  };
+
+  const [schedule, setSchedule] = useState(initialSchedule);
+
+  const handleScheduleChange = (day: string, field: string, value: any) => {
+    setSchedule((prev: any) => ({
+      ...prev,
+      [day]: { ...prev[day], [field]: value },
+    }));
   };
 
   return (
@@ -269,25 +290,49 @@ const CreateGigPage: React.FC = () => {
             </div>
           </div>
 
-          <div className={styles.inputGroup}>
-            <label htmlFor="workingHours">Working Hours *</label>
-            <div className={styles.iconInput}>
-              <MdCalendarMonth />
-              <input
-                id="workingHours"
-                {...register("workingHours", {
-                  required: "Working hours are required",
-                })}
-                placeholder="Mon-Sat, 9am-6pm"
-              />
-            </div>
-            {errors.workingHours && (
-              <span className={styles.error}>
-                {errors.workingHours.message}
-              </span>
-            )}
-          </div>
+          <div className={styles.scheduleSection}>
+            <label>
+              <MdCalendarMonth /> Weekly Availability *
+            </label>
+            <div className={styles.scheduleGrid}>
+              {Object.keys(schedule).map((day) => (
+                <div key={day} className={styles.dayRow}>
+                  <span className={styles.dayName}>{day.substring(0, 3)}</span>
 
+                  <div className={styles.timeInputs}>
+                    <input
+                      type="time"
+                      disabled={schedule[day as keyof typeof schedule].closed}
+                      value={schedule[day as keyof typeof schedule].from}
+                      onChange={(e) =>
+                        handleScheduleChange(day, "from", e.target.value)
+                      }
+                    />
+                    <span>-</span>
+                    <input
+                      type="time"
+                      disabled={schedule[day as keyof typeof schedule].closed}
+                      value={schedule[day as keyof typeof schedule].to}
+                      onChange={(e) =>
+                        handleScheduleChange(day, "to", e.target.value)
+                      }
+                    />
+                  </div>
+
+                  <label className={styles.switch}>
+                    <input
+                      type="checkbox"
+                      checked={!schedule[day as keyof typeof schedule].closed}
+                      onChange={(e) =>
+                        handleScheduleChange(day, "closed", !e.target.checked)
+                      }
+                    />
+                    <span className={styles.slider}></span>
+                  </label>
+                </div>
+              ))}
+            </div>
+          </div>
           <div className={styles.inputGroup}>
             <label htmlFor="phone">Contact Number *</label>
             <input

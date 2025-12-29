@@ -125,7 +125,7 @@ const SignupPage: React.FC = () => {
       };
 
       // Make API call using your axios instance
-      await api.post("/signup", signupData);
+      await api.post("/auth/signup", signupData);
 
       // Close loading alert
       Swal.close();

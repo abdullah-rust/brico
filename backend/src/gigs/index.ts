@@ -2,6 +2,8 @@ import { Router } from "express";
 import multer from "multer";
 import PublishGig from "./publishGig";
 import checkJWT from "../middleware/checkJWT";
+import GetNearbyGigs from "./getNearbyGigs";
+import GetGigDetails from "./GetGigDetails";
 
 const GigRouter = Router();
 
@@ -26,5 +28,7 @@ const upload = multer({
 // 2. Route Definition
 // "portfolio" wahi name hai jo tumhare frontend (formData) mein hai
 GigRouter.post("/publish", checkJWT, upload.array("portfolio", 5), PublishGig);
+GigRouter.post("/get-gigs", checkJWT, GetNearbyGigs);
+GigRouter.get("/details/:id", checkJWT, GetGigDetails);
 
 export default GigRouter;

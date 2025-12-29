@@ -34,6 +34,7 @@ const EditProfilePage = lazy(
   () => import("./pages/EditProfilePage/EditProfilePage")
 );
 const CreateGigPage = lazy(() => import("./pages/CreateGigPage/CreateGigPage"));
+const GigDetailPage = lazy(() => import("./pages/GigDetailPage/GigDetailPage"));
 
 const App: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
@@ -214,6 +215,18 @@ const App: React.FC = () => {
                   isAuthenticated ? (
                     <AnimatedPage>
                       <CreateGigPage />
+                    </AnimatedPage>
+                  ) : (
+                    <Navigate to="/login" replace />
+                  )
+                }
+              />
+              <Route
+                path="/gig-detail/:id"
+                element={
+                  isAuthenticated ? (
+                    <AnimatedPage>
+                      <GigDetailPage />
                     </AnimatedPage>
                   ) : (
                     <Navigate to="/login" replace />

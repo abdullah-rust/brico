@@ -92,7 +92,7 @@ const LoginPage: React.FC = () => {
       });
 
       // Make API call using your axios instance
-      await api.post("/login", formData);
+      await api.post("/auth/login", formData);
 
       // Close loading alert
       Swal.close();

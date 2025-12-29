@@ -134,3 +134,23 @@
 [31m     })[39m
 
 [31mArgument `worker` is missing.[39m
+[2025-12-29 16:39:39] [31merror[39m: [31mNearby Gigs Error: [39m
+[31mInvalid `prisma.$queryRaw()` invocation:[39m
+
+
+[31mRaw query failed. Code: `42601`. Message: `syntax error at or near "$4"`[39m
+[2025-12-29 16:39:39] [31merror[39m: [31mNearby Gigs Error: [39m
+[31mInvalid `prisma.$queryRaw()` invocation:[39m
+
+
+[31mRaw query failed. Code: `42601`. Message: `syntax error at or near "$4"`[39m
+[2025-12-29 16:39:44] [31merror[39m: [31mNearby Gigs Error: [39m
+[31mInvalid `prisma.$queryRaw()` invocation:[39m
+
+
+[31mRaw query failed. Code: `42601`. Message: `syntax error at or near "$4"`[39m
+[2025-12-29 16:39:44] [31merror[39m: [31mNearby Gigs Error: [39m
+[31mInvalid `prisma.$queryRaw()` invocation:[39m
+
+
+[31mRaw query failed. Code: `42601`. Message: `syntax error at or near "$4"`[39m

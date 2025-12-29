@@ -1,23 +1,22 @@
 import { Request, Response } from "express";
 import { prisma } from "../lib/prisma";
 import logger from "../utils/logger";
-import { uploadFile, deleteFile } from "../helpers/s3Helpers"; // Delete function import kiya
+import { uploadFile, deleteFile } from "../helpers/s3Helpers";
 import { Prisma } from "../generated/prisma/client";
 
 export default async function PublishGig(req: Request, res: Response) {
-  // imageKeys ko top level par rakha hai taake 'catch' block isse access kar sake
   let imageKeys: string[] = [];
 
   try {
     const userId = (req as any).userId;
 
-    // 1. Files aur Data Check (Sab se pehle validation taake upload fuzool na ho)
     if (!req.files || (req.files as Express.Multer.File[]).length === 0) {
       return res
         .status(400)
         .json({ message: "Please upload minimum 1 image!" });
     }
 
+    // 1. Destructure availability from req.body
     const {
       title,
       category,
@@ -28,8 +27,10 @@ export default async function PublishGig(req: Request, res: Response) {
       locationName,
       phone,
       rateType,
+      availability, // <--- Frontend se JSON string aaye gi
     } = req.body;
 
+    // Validation (Availability ko bhi check kar lete hain)
     if (
       !title ||
       !category ||
@@ -39,17 +40,25 @@ export default async function PublishGig(req: Request, res: Response) {
       !lng ||
       !locationName ||
       !phone ||
-      !rateType
+      !rateType ||
+      !availability
     ) {
       return res
         .status(400)
-        .json({ message: "All fields are required, jani!" });
+        .json({ message: "All fields including schedule are required, jani!" });
+    }
+
+    // 2. JSON Parse Availability
+    let parsedAvailability;
+    try {
+      parsedAvailability = JSON.parse(availability);
+    } catch (parseErr) {
+      return res.status(400).json({ message: "Invalid availability format!" });
     }
 
     const files = req.files as Express.Multer.File[];
 
-    // 2. Parallel Upload to S3
-    //
+    // 3. Parallel Upload to S3
     const uploadPromises = files.map((file) =>
       uploadFile({
         buffer: file.buffer,
@@ -61,7 +70,7 @@ export default async function PublishGig(req: Request, res: Response) {
     imageKeys = await Promise.all(uploadPromises);
     logger.info(`Images uploaded to S3. Keys: ${imageKeys.join(", ")}`);
 
-    // 3. Save to Database
+    // 4. Save to Database
     const newGig = await prisma.gig.create({
       data: {
         workerId: userId,
@@ -74,8 +83,8 @@ export default async function PublishGig(req: Request, res: Response) {
         locationName: locationName,
         phone: phone,
         rateType: rateType,
-        serviceAreas: [locationName],
         imageUrls: imageKeys,
+        availability: parsedAvailability, // <--- Ye ab DB mein JSON ban kar jaye ga
       },
     });
 
@@ -85,20 +94,16 @@ export default async function PublishGig(req: Request, res: Response) {
       gigId: newGig.id,
     });
   } catch (e: any) {
-    // 4. ROLLBACK LOGIC: Agar DB fail hua toh S3 se images urha do
-    //
+    // 5. ROLLBACK LOGIC (Always clean up S3 if DB fails)
     if (imageKeys.length > 0) {
       logger.warn(
-        `Database operation failed Cleaning up ${imageKeys.length} images from S3.`
+        `Database operation failed. Cleaning up ${imageKeys.length} images.`
       );
-
-      // Images delete karne ka process (Async but no need to wait for response in main flow)
       imageKeys.forEach(async (key) => {
         try {
           await deleteFile(key);
-          logger.info(`Successfully rolled back/deleted: ${key}`);
         } catch (delErr) {
-          logger.error(`Failed to delete ${key} during rollback: ${delErr}`);
+          logger.error(`Failed to delete ${key}: ${delErr}`);
         }
       });
     }

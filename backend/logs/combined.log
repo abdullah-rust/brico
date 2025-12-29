@@ -423,3 +423,86 @@
 [2025-12-27 22:58:32] [32minfo[39m: [32mImages uploaded to S3 for User a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef. Keys: 1766858312674-1j3s4c8i-124317.jpg, 1766858312681-ebh2khnu-120289.jpg, 1766858312682-pzwbeaeg-120292.jpg, 1766858312682-mp9dwrvj-120289.jpg, 1766858312683-jvroz5lg-117406.jpg[39m
 [2025-12-27 22:58:41] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
 [2025-12-27 22:58:41] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-29 16:13:38] [33mwarn[39m: [33mAccess token expired, checking refresh token...[39m
+[2025-12-29 16:13:38] [33mwarn[39m: [33mAccess token expired, checking refresh token...[39m
+[2025-12-29 16:13:38] [32minfo[39m: [32mToken refreshed successfully for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-29 16:13:38] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-29 16:13:38] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-29 16:13:46] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-29 16:13:46] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-29 16:13:57] [32minfo[39m: [32mfile added [object Object][39m
+[2025-12-29 16:13:57] [32minfo[39m: [32mNew profile picture uploaded for user a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef: 1767006837045-x8ij70wz-124570.jpg[39m
+[2025-12-29 16:13:59] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-29 16:13:59] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-29 16:14:17] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-29 16:14:17] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-29 16:39:39] [31merror[39m: [31mNearby Gigs Error: [39m
+[31mInvalid `prisma.$queryRaw()` invocation:[39m
+
+
+[31mRaw query failed. Code: `42601`. Message: `syntax error at or near "$4"`[39m
+[2025-12-29 16:39:39] [31merror[39m: [31mNearby Gigs Error: [39m
+[31mInvalid `prisma.$queryRaw()` invocation:[39m
+
+
+[31mRaw query failed. Code: `42601`. Message: `syntax error at or near "$4"`[39m
+[2025-12-29 16:39:44] [31merror[39m: [31mNearby Gigs Error: [39m
+[31mInvalid `prisma.$queryRaw()` invocation:[39m
+
+
+[31mRaw query failed. Code: `42601`. Message: `syntax error at or near "$4"`[39m
+[2025-12-29 16:39:44] [31merror[39m: [31mNearby Gigs Error: [39m
+[31mInvalid `prisma.$queryRaw()` invocation:[39m
+
+
+[31mRaw query failed. Code: `42601`. Message: `syntax error at or near "$4"`[39m
+[2025-12-29 16:45:32] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-29 16:45:32] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-29 16:52:47] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-29 16:52:47] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-29 17:03:25] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-29 17:03:25] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-29 17:03:35] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-29 17:03:35] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-29 17:03:37] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-29 17:03:37] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-29 17:03:42] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-29 17:03:42] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-29 17:14:29] [33mwarn[39m: [33mAccess token expired, checking refresh token...[39m
+[2025-12-29 17:14:29] [32minfo[39m: [32mToken refreshed successfully for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-29 17:22:38] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-29 17:22:38] [32minfo[39m: [32mProfile fetched for user: a9c539fe-7b0c-4eb8-bc5c-0b31e8abd7ef[39m
+[2025-12-29 17:34:40] [32minfo[39m: [32mProfile fetched for user: 2d71c429-3300-4483-80d4-990ed7e3ff13[39m
+[2025-12-29 17:34:41] [32minfo[39m: [32mProfile fetched for user: 2d71c429-3300-4483-80d4-990ed7e3ff13[39m
+[2025-12-29 17:34:50] [32minfo[39m: [32mProfile fetched for user: 2d71c429-3300-4483-80d4-990ed7e3ff13[39m
+[2025-12-29 17:34:50] [32minfo[39m: [32mProfile fetched for user: 2d71c429-3300-4483-80d4-990ed7e3ff13[39m
+[2025-12-29 17:35:31] [32minfo[39m: [32mProfile fetched for user: 2d71c429-3300-4483-80d4-990ed7e3ff13[39m
+[2025-12-29 17:35:31] [32minfo[39m: [32mProfile fetched for user: 2d71c429-3300-4483-80d4-990ed7e3ff13[39m
+[2025-12-29 17:35:36] [32minfo[39m: [32mProfile fetched for user: 2d71c429-3300-4483-80d4-990ed7e3ff13[39m
+[2025-12-29 17:35:36] [32minfo[39m: [32mProfile fetched for user: 2d71c429-3300-4483-80d4-990ed7e3ff13[39m
+[2025-12-29 17:36:52] [32minfo[39m: [32mfile added [object Object][39m
+[2025-12-29 17:36:52] [32minfo[39m: [32mNew profile picture uploaded for user 2d71c429-3300-4483-80d4-990ed7e3ff13: 1767011812568-mdlolo65-124404.webp[39m
+[2025-12-29 17:36:55] [32minfo[39m: [32mProfile fetched for user: 2d71c429-3300-4483-80d4-990ed7e3ff13[39m
+[2025-12-29 17:36:55] [32minfo[39m: [32mProfile fetched for user: 2d71c429-3300-4483-80d4-990ed7e3ff13[39m
+[2025-12-29 17:50:56] [32minfo[39m: [32mfile added [object Object][39m
+[2025-12-29 17:50:56] [32minfo[39m: [32mfile added [object Object][39m
+[2025-12-29 17:50:56] [32minfo[39m: [32mfile added [object Object][39m
+[2025-12-29 17:50:56] [32minfo[39m: [32mfile added [object Object][39m
+[2025-12-29 17:50:56] [32minfo[39m: [32mImages uploaded to S3. Keys: 1767012656587-x5k4dq5k-123098.jpg, 1767012656594-gmpg592c-120289.jpg, 1767012656594-9quq0s7q-120292.jpg, 1767012656595-6ywhr4eb-117406.jpg[39m
+[2025-12-29 17:51:00] [32minfo[39m: [32mProfile fetched for user: 2d71c429-3300-4483-80d4-990ed7e3ff13[39m
+[2025-12-29 17:51:00] [32minfo[39m: [32mProfile fetched for user: 2d71c429-3300-4483-80d4-990ed7e3ff13[39m
+[2025-12-29 17:51:24] [32minfo[39m: [32mProfile fetched for user: 2d71c429-3300-4483-80d4-990ed7e3ff13[39m
+[2025-12-29 17:51:24] [32minfo[39m: [32mProfile fetched for user: 2d71c429-3300-4483-80d4-990ed7e3ff13[39m
+[2025-12-29 17:51:27] [32minfo[39m: [32mProfile fetched for user: 2d71c429-3300-4483-80d4-990ed7e3ff13[39m
+[2025-12-29 17:51:27] [32minfo[39m: [32mProfile fetched for user: 2d71c429-3300-4483-80d4-990ed7e3ff13[39m
+[2025-12-29 17:51:30] [32minfo[39m: [32mProfile fetched for user: 2d71c429-3300-4483-80d4-990ed7e3ff13[39m
+[2025-12-29 17:51:30] [32minfo[39m: [32mProfile fetched for user: 2d71c429-3300-4483-80d4-990ed7e3ff13[39m
+[2025-12-29 17:55:12] [32minfo[39m: [32mProfile fetched for user: 2d71c429-3300-4483-80d4-990ed7e3ff13[39m
+[2025-12-29 17:55:12] [32minfo[39m: [32mProfile fetched for user: 2d71c429-3300-4483-80d4-990ed7e3ff13[39m
+[2025-12-29 18:34:35] [33mwarn[39m: [33mAccess token expired, checking refresh token...[39m
+[2025-12-29 18:34:35] [33mwarn[39m: [33mAccess token expired, checking refresh token...[39m
+[2025-12-29 18:34:35] [32minfo[39m: [32mToken refreshed successfully for user: 2d71c429-3300-4483-80d4-990ed7e3ff13[39m
+[2025-12-29 19:03:35] [32minfo[39m: [32mProfile fetched for user: 2d71c429-3300-4483-80d4-990ed7e3ff13[39m
+[2025-12-29 19:03:35] [32minfo[39m: [32mProfile fetched for user: 2d71c429-3300-4483-80d4-990ed7e3ff13[39m
+[2025-12-29 19:03:41] [32minfo[39m: [32mProfile fetched for user: 2d71c429-3300-4483-80d4-990ed7e3ff13[39m
+[2025-12-29 19:03:41] [32minfo[39m: [32mProfile fetched for user: 2d71c429-3300-4483-80d4-990ed7e3ff13[39m

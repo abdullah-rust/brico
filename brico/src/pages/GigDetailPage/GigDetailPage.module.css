@@ -1,0 +1,500 @@
+/* Main Container - FIXED SCROLL */
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #f8fafc;
+  font-family: "Inter", sans-serif;
+  color: #1e293b;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Section */
+.header {
+  flex-shrink: 0;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  z-index: 100;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.headerButton {
+  background: #f1f5f9;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #475569;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.headerButton:hover {
+  background: #e2e8f0;
+}
+
+.headerTitle {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* Main Content Area - SCROLL FIXED */
+.main {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 20px 16px 100px; /* Bottom padding for button */
+  max-width: 500px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Profile Section */
+.profileSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.profileImageContainer {
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.profileImage {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background-color: #e2e8f0;
+}
+
+.verifiedBadge {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background: #11d4b4;
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profileName {
+  font-size: 22px;
+  font-weight: 800;
+  margin: 0 0 4px;
+  color: #1e293b;
+}
+
+.profileTitle {
+  color: #11d4b4;
+  font-weight: 600;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Stats Grid */
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.statCard {
+  background: white;
+  padding: 16px;
+  border-radius: 16px;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s;
+}
+
+.statCard:hover {
+  transform: translateY(-2px);
+}
+
+.statValue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 4px;
+}
+
+.starIcon {
+  color: #f59e0b;
+  font-size: 18px;
+}
+
+.locationText {
+  font-size: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  display: inline-block;
+}
+
+.statLabel {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 2px;
+  font-weight: 500;
+}
+
+/* Portfolio Gallery */
+.gallery {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 8px 0 16px;
+  margin: 0 -8px;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+.gallery::-webkit-scrollbar {
+  height: 4px;
+}
+
+.gallery::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.gallery::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 2px;
+}
+
+.galleryImg {
+  width: 200px;
+  height: 140px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid #e2e8f0;
+  transition: transform 0.3s;
+}
+
+.galleryImg:hover {
+  transform: scale(1.02);
+}
+
+/* Gig Card Section */
+.gigCard {
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  margin: 24px 0;
+  border-left: 5px solid #11d4b4;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.serviceTag {
+  display: inline-block;
+  background: rgba(17, 212, 180, 0.1);
+  color: #11d4b4;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+.gigTitle {
+  font-size: 22px;
+  font-weight: 800;
+  margin: 12px 0;
+  color: #1e293b;
+  line-height: 1.3;
+}
+
+.priceContainer {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.price {
+  font-size: 32px;
+  font-weight: 800;
+  color: #ff8c42;
+}
+
+.rateType {
+  color: #64748b;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* Weekly Schedule */
+.weeklyCard {
+  background: white;
+  border-radius: 16px;
+  padding: 4px 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.dayRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 8px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.dayRow:last-child {
+  border-bottom: none;
+}
+
+.todayRow {
+  background: #f0fdfa;
+  border-radius: 10px;
+  margin: 4px 0;
+  padding: 12px 8px;
+  color: #11d4b4;
+  font-weight: 700;
+}
+
+.dayName {
+  font-size: 14px;
+  font-weight: 600;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.todayIndicator {
+  color: #11d4b4;
+  font-size: 20px;
+  line-height: 0;
+}
+
+.openTime {
+  color: #334155;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.closedStatus {
+  color: #ef4444;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* Sections */
+.section {
+  margin-bottom: 28px;
+}
+
+.sectionTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: #64748b;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+}
+
+.description {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #475569;
+  white-space: pre-line;
+}
+
+/* Bottom Contact Bar */
+.bottomBar {
+  flex-shrink: 0;
+  padding: 16px;
+  background: white;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.contactButton {
+  width: 100%;
+  max-width: 450px;
+  background: linear-gradient(135deg, #ff8c42, #ff6b35);
+  color: white;
+  padding: 18px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 18px;
+  box-shadow: 0 10px 25px rgba(255, 140, 66, 0.3);
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.contactButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(255, 140, 66, 0.4);
+}
+
+.contactButton:active {
+  transform: translateY(0);
+}
+
+.arrowIcon {
+  font-size: 20px;
+  transition: transform 0.3s;
+}
+
+.contactButton:hover .arrowIcon {
+  transform: translateX(4px);
+}
+
+/* Global Helpers */
+.spacer {
+  height: 20px;
+}
+
+.loading,
+.error {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 16px;
+  color: #64748b;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.loading {
+  color: #11d4b4;
+}
+
+.error {
+  color: #ef4444;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .main {
+    padding: 16px 12px 100px;
+  }
+
+  .header {
+    height: 56px;
+    padding: 0 12px;
+  }
+
+  .profileImage {
+    width: 90px;
+    height: 90px;
+  }
+
+  .profileName {
+    font-size: 20px;
+  }
+
+  .gigTitle {
+    font-size: 20px;
+  }
+
+  .price {
+    font-size: 28px;
+  }
+
+  .statCard {
+    padding: 14px;
+  }
+
+  .galleryImg {
+    width: 180px;
+    height: 130px;
+  }
+
+  .contactButton {
+    padding: 16px;
+    font-size: 17px;
+  }
+
+  .bottomBar {
+    padding: 12px;
+  }
+}
+
+/* Custom Scrollbar for Main */
+.main::-webkit-scrollbar {
+  width: 6px;
+}
+
+.main::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 10px;
+}
+
+.main::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+.main::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Smooth Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.profileSection,
+.statsGrid,
+.gigCard,
+.section {
+  animation: fadeIn 0.4s ease-out forwards;
+}

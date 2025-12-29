@@ -21,12 +21,14 @@ interface WorkerProps {
 }
 
 const WorkerCard: React.FC<WorkerProps> = (props) => {
+  const url = import.meta.env.VITE_API_URL;
+
   return (
     <div className={styles.card}>
       <div className={styles.topSection}>
         <div className={styles.imageWrapper}>
           <img
-            src={props.image}
+            src={`${url}/files/${props.image}`}
             alt={props.name}
             className={styles.workerImg}
           />
@@ -70,7 +72,7 @@ const WorkerCard: React.FC<WorkerProps> = (props) => {
         <button
           className={props.available ? styles.bookBtn : styles.contactBtn}
         >
-          {props.available ? "Book Now" : "Contact"}
+          {props.available ? "Contact Now" : "Contact"}
         </button>
       </div>
     </div>

@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  MdLocationOn,
-  MdExpandMore,
-  MdNotifications,
-  MdSearch,
-} from "react-icons/md";
+import { MdLocationOn, MdExpandMore, MdNotifications } from "react-icons/md";
 import styles from "./ExploreHeader.module.css";
 
 interface Props {
@@ -30,11 +25,6 @@ const ExploreHeader: React.FC<Props> = ({ location }) => {
           <MdNotifications />
           <span className={styles.badge}></span>
         </button>
-      </div>
-
-      <div className={styles.searchWrapper}>
-        <MdSearch className={styles.searchIcon} />
-        <input type="text" placeholder="Find electricians, masons..." />
       </div>
     </header>
   );

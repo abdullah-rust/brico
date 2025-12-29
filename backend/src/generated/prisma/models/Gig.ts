@@ -82,8 +82,8 @@ export type GigCountAggregateOutputType = {
   lat: number
   lng: number
   locationName: number
-  serviceAreas: number
   imageUrls: number
+  availability: number
   isActive: number
   createdAt: number
   updatedAt: number
@@ -149,8 +149,8 @@ export type GigCountAggregateInputType = {
   lat?: true
   lng?: true
   locationName?: true
-  serviceAreas?: true
   imageUrls?: true
+  availability?: true
   isActive?: true
   createdAt?: true
   updatedAt?: true
@@ -255,8 +255,8 @@ export type GigGroupByOutputType = {
   lat: number
   lng: number
   locationName: string
-  serviceAreas: string[]
   imageUrls: string[]
+  availability: runtime.JsonValue
   isActive: boolean
   createdAt: Date
   updatedAt: Date
@@ -297,8 +297,8 @@ export type GigWhereInput = {
   lat?: Prisma.FloatFilter<"Gig"> | number
   lng?: Prisma.FloatFilter<"Gig"> | number
   locationName?: Prisma.StringFilter<"Gig"> | string
-  serviceAreas?: Prisma.StringNullableListFilter<"Gig">
   imageUrls?: Prisma.StringNullableListFilter<"Gig">
+  availability?: Prisma.JsonFilter<"Gig">
   isActive?: Prisma.BoolFilter<"Gig"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Gig"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Gig"> | Date | string
@@ -317,8 +317,8 @@ export type GigOrderByWithRelationInput = {
   lat?: Prisma.SortOrder
   lng?: Prisma.SortOrder
   locationName?: Prisma.SortOrder
-  serviceAreas?: Prisma.SortOrder
   imageUrls?: Prisma.SortOrder
+  availability?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -340,8 +340,8 @@ export type GigWhereUniqueInput = Prisma.AtLeast<{
   lat?: Prisma.FloatFilter<"Gig"> | number
   lng?: Prisma.FloatFilter<"Gig"> | number
   locationName?: Prisma.StringFilter<"Gig"> | string
-  serviceAreas?: Prisma.StringNullableListFilter<"Gig">
   imageUrls?: Prisma.StringNullableListFilter<"Gig">
+  availability?: Prisma.JsonFilter<"Gig">
   isActive?: Prisma.BoolFilter<"Gig"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Gig"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Gig"> | Date | string
@@ -360,8 +360,8 @@ export type GigOrderByWithAggregationInput = {
   lat?: Prisma.SortOrder
   lng?: Prisma.SortOrder
   locationName?: Prisma.SortOrder
-  serviceAreas?: Prisma.SortOrder
   imageUrls?: Prisma.SortOrder
+  availability?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -387,8 +387,8 @@ export type GigScalarWhereWithAggregatesInput = {
   lat?: Prisma.FloatWithAggregatesFilter<"Gig"> | number
   lng?: Prisma.FloatWithAggregatesFilter<"Gig"> | number
   locationName?: Prisma.StringWithAggregatesFilter<"Gig"> | string
-  serviceAreas?: Prisma.StringNullableListFilter<"Gig">
   imageUrls?: Prisma.StringNullableListFilter<"Gig">
+  availability?: Prisma.JsonWithAggregatesFilter<"Gig">
   isActive?: Prisma.BoolWithAggregatesFilter<"Gig"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Gig"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Gig"> | Date | string
@@ -405,8 +405,8 @@ export type GigCreateInput = {
   lat: number
   lng: number
   locationName: string
-  serviceAreas?: Prisma.GigCreateserviceAreasInput | string[]
   imageUrls?: Prisma.GigCreateimageUrlsInput | string[]
+  availability: Prisma.JsonNullValueInput | runtime.InputJsonValue
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -425,8 +425,8 @@ export type GigUncheckedCreateInput = {
   lat: number
   lng: number
   locationName: string
-  serviceAreas?: Prisma.GigCreateserviceAreasInput | string[]
   imageUrls?: Prisma.GigCreateimageUrlsInput | string[]
+  availability: Prisma.JsonNullValueInput | runtime.InputJsonValue
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -443,8 +443,8 @@ export type GigUpdateInput = {
   lat?: Prisma.FloatFieldUpdateOperationsInput | number
   lng?: Prisma.FloatFieldUpdateOperationsInput | number
   locationName?: Prisma.StringFieldUpdateOperationsInput | string
-  serviceAreas?: Prisma.GigUpdateserviceAreasInput | string[]
   imageUrls?: Prisma.GigUpdateimageUrlsInput | string[]
+  availability?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -463,8 +463,8 @@ export type GigUncheckedUpdateInput = {
   lat?: Prisma.FloatFieldUpdateOperationsInput | number
   lng?: Prisma.FloatFieldUpdateOperationsInput | number
   locationName?: Prisma.StringFieldUpdateOperationsInput | string
-  serviceAreas?: Prisma.GigUpdateserviceAreasInput | string[]
   imageUrls?: Prisma.GigUpdateimageUrlsInput | string[]
+  availability?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -482,8 +482,8 @@ export type GigCreateManyInput = {
   lat: number
   lng: number
   locationName: string
-  serviceAreas?: Prisma.GigCreateserviceAreasInput | string[]
   imageUrls?: Prisma.GigCreateimageUrlsInput | string[]
+  availability: Prisma.JsonNullValueInput | runtime.InputJsonValue
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -500,8 +500,8 @@ export type GigUpdateManyMutationInput = {
   lat?: Prisma.FloatFieldUpdateOperationsInput | number
   lng?: Prisma.FloatFieldUpdateOperationsInput | number
   locationName?: Prisma.StringFieldUpdateOperationsInput | string
-  serviceAreas?: Prisma.GigUpdateserviceAreasInput | string[]
   imageUrls?: Prisma.GigUpdateimageUrlsInput | string[]
+  availability?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -519,8 +519,8 @@ export type GigUncheckedUpdateManyInput = {
   lat?: Prisma.FloatFieldUpdateOperationsInput | number
   lng?: Prisma.FloatFieldUpdateOperationsInput | number
   locationName?: Prisma.StringFieldUpdateOperationsInput | string
-  serviceAreas?: Prisma.GigUpdateserviceAreasInput | string[]
   imageUrls?: Prisma.GigUpdateimageUrlsInput | string[]
+  availability?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -548,8 +548,8 @@ export type GigCountOrderByAggregateInput = {
   lat?: Prisma.SortOrder
   lng?: Prisma.SortOrder
   locationName?: Prisma.SortOrder
-  serviceAreas?: Prisma.SortOrder
   imageUrls?: Prisma.SortOrder
+  availability?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -645,10 +645,6 @@ export type GigUncheckedUpdateManyWithoutWorkerNestedInput = {
   deleteMany?: Prisma.GigScalarWhereInput | Prisma.GigScalarWhereInput[]
 }
 
-export type GigCreateserviceAreasInput = {
-  set: string[]
-}
-
 export type GigCreateimageUrlsInput = {
   set: string[]
 }
@@ -659,11 +655,6 @@ export type DecimalFieldUpdateOperationsInput = {
   decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
   multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
   divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
-}
-
-export type GigUpdateserviceAreasInput = {
-  set?: string[]
-  push?: string | string[]
 }
 
 export type GigUpdateimageUrlsInput = {
@@ -684,8 +675,8 @@ export type GigCreateWithoutWorkerInput = {
   lat: number
   lng: number
   locationName: string
-  serviceAreas?: Prisma.GigCreateserviceAreasInput | string[]
   imageUrls?: Prisma.GigCreateimageUrlsInput | string[]
+  availability: Prisma.JsonNullValueInput | runtime.InputJsonValue
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -702,8 +693,8 @@ export type GigUncheckedCreateWithoutWorkerInput = {
   lat: number
   lng: number
   locationName: string
-  serviceAreas?: Prisma.GigCreateserviceAreasInput | string[]
   imageUrls?: Prisma.GigCreateimageUrlsInput | string[]
+  availability: Prisma.JsonNullValueInput | runtime.InputJsonValue
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -750,8 +741,8 @@ export type GigScalarWhereInput = {
   lat?: Prisma.FloatFilter<"Gig"> | number
   lng?: Prisma.FloatFilter<"Gig"> | number
   locationName?: Prisma.StringFilter<"Gig"> | string
-  serviceAreas?: Prisma.StringNullableListFilter<"Gig">
   imageUrls?: Prisma.StringNullableListFilter<"Gig">
+  availability?: Prisma.JsonFilter<"Gig">
   isActive?: Prisma.BoolFilter<"Gig"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Gig"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Gig"> | Date | string
@@ -768,8 +759,8 @@ export type GigCreateManyWorkerInput = {
   lat: number
   lng: number
   locationName: string
-  serviceAreas?: Prisma.GigCreateserviceAreasInput | string[]
   imageUrls?: Prisma.GigCreateimageUrlsInput | string[]
+  availability: Prisma.JsonNullValueInput | runtime.InputJsonValue
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -786,8 +777,8 @@ export type GigUpdateWithoutWorkerInput = {
   lat?: Prisma.FloatFieldUpdateOperationsInput | number
   lng?: Prisma.FloatFieldUpdateOperationsInput | number
   locationName?: Prisma.StringFieldUpdateOperationsInput | string
-  serviceAreas?: Prisma.GigUpdateserviceAreasInput | string[]
   imageUrls?: Prisma.GigUpdateimageUrlsInput | string[]
+  availability?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -804,8 +795,8 @@ export type GigUncheckedUpdateWithoutWorkerInput = {
   lat?: Prisma.FloatFieldUpdateOperationsInput | number
   lng?: Prisma.FloatFieldUpdateOperationsInput | number
   locationName?: Prisma.StringFieldUpdateOperationsInput | string
-  serviceAreas?: Prisma.GigUpdateserviceAreasInput | string[]
   imageUrls?: Prisma.GigUpdateimageUrlsInput | string[]
+  availability?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -822,8 +813,8 @@ export type GigUncheckedUpdateManyWithoutWorkerInput = {
   lat?: Prisma.FloatFieldUpdateOperationsInput | number
   lng?: Prisma.FloatFieldUpdateOperationsInput | number
   locationName?: Prisma.StringFieldUpdateOperationsInput | string
-  serviceAreas?: Prisma.GigUpdateserviceAreasInput | string[]
   imageUrls?: Prisma.GigUpdateimageUrlsInput | string[]
+  availability?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -843,8 +834,8 @@ export type GigSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = ru
   lat?: boolean
   lng?: boolean
   locationName?: boolean
-  serviceAreas?: boolean
   imageUrls?: boolean
+  availability?: boolean
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -863,8 +854,8 @@ export type GigSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extension
   lat?: boolean
   lng?: boolean
   locationName?: boolean
-  serviceAreas?: boolean
   imageUrls?: boolean
+  availability?: boolean
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -883,8 +874,8 @@ export type GigSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extension
   lat?: boolean
   lng?: boolean
   locationName?: boolean
-  serviceAreas?: boolean
   imageUrls?: boolean
+  availability?: boolean
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -903,8 +894,8 @@ export type GigSelectScalar = {
   lat?: boolean
   lng?: boolean
   locationName?: boolean
-  serviceAreas?: boolean
   imageUrls?: boolean
+  availability?: boolean
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -912,7 +903,7 @@ export type GigSelectScalar = {
   rateType?: boolean
 }
 
-export type GigOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "workerId" | "title" | "description" | "category" | "priceBase" | "lat" | "lng" | "locationName" | "serviceAreas" | "imageUrls" | "isActive" | "createdAt" | "updatedAt" | "phone" | "rateType", ExtArgs["result"]["gig"]>
+export type GigOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "workerId" | "title" | "description" | "category" | "priceBase" | "lat" | "lng" | "locationName" | "imageUrls" | "availability" | "isActive" | "createdAt" | "updatedAt" | "phone" | "rateType", ExtArgs["result"]["gig"]>
 export type GigInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   worker?: boolean | Prisma.WorkerDefaultArgs<ExtArgs>
 }
@@ -938,8 +929,8 @@ export type $GigPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
     lat: number
     lng: number
     locationName: string
-    serviceAreas: string[]
     imageUrls: string[]
+    availability: runtime.JsonValue
     isActive: boolean
     createdAt: Date
     updatedAt: Date
@@ -1378,8 +1369,8 @@ export interface GigFieldRefs {
   readonly lat: Prisma.FieldRef<"Gig", 'Float'>
   readonly lng: Prisma.FieldRef<"Gig", 'Float'>
   readonly locationName: Prisma.FieldRef<"Gig", 'String'>
-  readonly serviceAreas: Prisma.FieldRef<"Gig", 'String[]'>
   readonly imageUrls: Prisma.FieldRef<"Gig", 'String[]'>
+  readonly availability: Prisma.FieldRef<"Gig", 'Json'>
   readonly isActive: Prisma.FieldRef<"Gig", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"Gig", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Gig", 'DateTime'>

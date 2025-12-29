@@ -113,7 +113,7 @@ const OTPPage: React.FC = () => {
       });
 
       const endpoint =
-        verificationType === "Signup" ? "/signup-otp" : "/login-otp";
+        verificationType === "Signup" ? "/auth/signup-otp" : "/auth/login-otp";
       const response = await api.post(endpoint, { email, code: otpCode });
 
       await AuthService.setToken("access_token", response.data.token1);

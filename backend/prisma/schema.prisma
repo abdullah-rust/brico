@@ -74,8 +74,9 @@ model Gig {
   lng           Float    // Longitude for mapping
   locationName  String   @map("location_name") @db.VarChar(255) // "Zone III, Islamabad"
   
-  serviceAreas  String[] @map("service_areas")
+
   imageUrls     String[] @map("image_urls")
+  availability Json   @db.JsonB
   
   isActive      Boolean  @default(true) @map("is_active")
   createdAt     DateTime @default(now()) @map("created_at") @db.Timestamptz()

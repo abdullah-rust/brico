@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import ExploreHeader from "../../components/workers/ExploreHeader/ExploreHeader";
 import WorkerCard from "../../components/workers/WorkerCard/WorkerCard";
 import styles from "./FindWorkersPage.module.css";
-import { getNativeLocation } from "../../utils/getLocation";
-import { getAddressFromCoords } from "../../utils/getLocation";
+import {
+  getNativeLocation,
+  getAddressFromCoords,
+} from "../../utils/getLocation";
+import api from "../../utils/api";
+import { useNavigate } from "react-router-dom";
 
 interface Worker {
   id: string;
@@ -14,16 +18,17 @@ interface Worker {
   distance: string;
   price: string;
   available: boolean;
-  isVerified: boolean;
   image: string;
 }
 
 const FindWorkersPage: React.FC = () => {
   const [selectedCat, setSelectedCat] = useState("All");
   const [workers, setWorkers] = useState<Worker[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [userLocation, setUserLocation] = useState("");
-
+  const [loading, setLoading] = useState(false);
+  const [userLocationName, setUserLocationName] = useState("Detecting...");
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  const navigate = useNavigate();
   const categories = [
     "All",
     "Mason",
@@ -34,81 +39,78 @@ const FindWorkersPage: React.FC = () => {
     "Welder",
   ];
 
-  useEffect(() => {
-    const fetchWorkers = async () => {
-      setLoading(true);
+  // 1. Function to Fetch Gigs from Backend
+  const loadGigs = useCallback(
+    async (pageNum: number, category: string, reset: boolean = false) => {
       try {
-        setTimeout(() => {
-          const dummyWorkers: Worker[] = [
-            {
-              id: "1",
-              name: "Rajesh Kumar",
-              role: "Senior Mason",
-              category: "Mason",
-              rating: 4.8,
-              distance: "2.5 km",
-              price: "400",
-              available: false,
-              isVerified: true,
-              image:
-                "https://lh3.googleusercontent.com/aida-public/AB6AXuDSoP8DWQ69ZqMaRfe7xHd86kSU867Iq-WzKP8dbMAvpcaHyu9iOOGLPw_DAHB29xPG2A2oHZkFwNoxQ4Ln1tVppPWficU4GtDzCqBEWw6SnTJqUnLnZ05xMINrAWwOTyi6pkOn9pIOAqny2hizKSrRJolWvyu_PeQDnuuwpI5mhECm7IQz71Fs4sxKD9B7y-wK4fktLnFOFHpZWV5_ZwI1UTbRUXYbWppv6TDkpfuJcRYyftWcwob0KnBtTbZveepnb30b9KG1y9Zq",
-            },
-            {
-              id: "2",
-              name: "Amit Singh",
-              role: "Electrician",
-              category: "Electrician",
-              rating: 4.9,
-              distance: "1.2 km",
-              price: "500",
-              available: true,
-              isVerified: false,
-              image:
-                "https://lh3.googleusercontent.com/aida-public/AB6AXuDSoP8DWQ69ZqMaRfe7xHd86kSU867Iq-WzKP8dbMAvpcaHyu9iOOGLPw_DAHB29xPG2A2oHZkFwNoxQ4Ln1tVppPWficU4GtDzCqBEWw6SnTJqUnLnZ05xMINrAWwOTyi6pkOn9pIOAqny2hizKSrRJolWvyu_PeQDnuuwpI5mhECm7IQz71Fs4sxKD9B7y-wK4fktLnFOFHpZWV5_ZwI1UTbRUXYbWppv6TDkpfuJcRYyftWcwob0KnBtTbZveepnb30b9KG1y9Zq",
-            },
-            {
-              id: "3",
-              name: "Sajid Khan",
-              role: "Expert Plumber",
-              category: "Plumber",
-              rating: 4.5,
-              distance: "3.1 km",
-              price: "450",
-              available: true,
-              isVerified: true,
-              image:
-                "https://lh3.googleusercontent.com/aida-public/AB6AXuDSoP8DWQ69ZqMaRfe7xHd86kSU867Iq-WzKP8dbMAvpcaHyu9iOOGLPw_DAHB29xPG2A2oHZkFwNoxQ4Ln1tVppPWficU4GtDzCqBEWw6SnTJqUnLnZ05xMINrAWwOTyi6pkOn9pIOAqny2hizKSrRJolWvyu_PeQDnuuwpI5mhECm7IQz71Fs4sxKD9B7y-wK4fktLnFOFHpZWV5_ZwI1UTbRUXYbWppv6TDkpfuJcRYyftWcwob0KnBtTbZveepnb30b9KG1y9Zq",
-            },
-          ];
-          setWorkers(dummyWorkers);
+        setLoading(true);
+        const coords = await getNativeLocation();
+
+        if (!coords) {
           setLoading(false);
-        }, 600);
+          return;
+        }
+
+        // API Call
+        const response = await api.post(
+          `/gigs/get-gigs?page=${pageNum}&category=${category}`,
+          {
+            lat: coords.lat,
+            lng: coords.lng,
+          }
+        );
+
+        const newWorkers = response.data.data;
+
+        console.log(newWorkers);
+
+        if (reset) {
+          setWorkers(newWorkers);
+        } else {
+          setWorkers((prev) => [...prev, ...newWorkers]);
+        }
+
+        // Agar data limit se kam hai toh mazeed load nahi karega
+        setHasMore(newWorkers.length === 20);
+        setLoading(false);
       } catch (err) {
+        console.error("Error fetching gigs:", err);
         setLoading(false);
       }
-    };
+    },
+    []
+  );
 
-    const fetchLocation = async () => {
+  // 2. Initial Load: Location and First Page
+  useEffect(() => {
+    const init = async () => {
       const coords = await getNativeLocation();
       if (coords) {
         const address = await getAddressFromCoords(coords.lat, coords.lng);
-        setUserLocation(address?.shortName || "Unknown Location");
+        setUserLocationName(address?.shortName || "Unknown Location");
+        loadGigs(1, selectedCat, true);
       }
     };
-    fetchLocation();
-    fetchWorkers();
+    init();
   }, []);
 
-  const filteredWorkers =
-    selectedCat === "All"
-      ? workers
-      : workers.filter((w) => w.category === selectedCat);
+  // 3. Category Change Handler
+  useEffect(() => {
+    setPage(1);
+    loadGigs(1, selectedCat, true);
+  }, [selectedCat, loadGigs]);
+
+  // 4. Load More (Infinite Scroll Logic trigger)
+  const handleLoadMore = () => {
+    const nextPage = page + 1;
+    setPage(nextPage);
+    loadGigs(nextPage, selectedCat);
+  };
 
   return (
     <div className={styles.page}>
-      {/* Top Sticky Section */}
       <div className={styles.stickyHeader}>
-        <ExploreHeader location={userLocation} />
+        <ExploreHeader location={userLocationName} />
         <div className={styles.categoryScroll}>
           {categories.map((cat) => (
             <button
@@ -124,7 +126,6 @@ const FindWorkersPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Main Scrollable Content */}
       <div className={styles.content}>
         <div className={styles.sectionTitle}>
           <h2>
@@ -132,18 +133,31 @@ const FindWorkersPage: React.FC = () => {
               ? "Nearby Professionals"
               : `${selectedCat}s Near You`}
           </h2>
-          <button>See all</button>
         </div>
 
         <div className={styles.list}>
-          {loading ? (
-            <p className={styles.loader}>Finding professionals...</p>
-          ) : filteredWorkers.length > 0 ? (
-            filteredWorkers.map((worker) => (
+          {workers.map((worker) => (
+            <div
+              onClick={() =>
+                navigate(`/gig-detail/${worker.id}`, {
+                  state: { role: worker.role, img: worker.image },
+                })
+              }
+            >
               <WorkerCard key={worker.id} {...worker} />
-            ))
-          ) : (
-            <div className={styles.noData}>No {selectedCat}s available.</div>
+            </div>
+          ))}
+
+          {loading && <p className={styles.loader}>Finding professionals...</p>}
+
+          {!loading && hasMore && workers.length > 0 && (
+            <button className={styles.loadMoreBtn} onClick={handleLoadMore}>
+              Load More
+            </button>
+          )}
+
+          {!loading && workers.length === 0 && (
+            <div className={styles.noData}>No {selectedCat}s found nearby.</div>
           )}
         </div>
       </div>
