@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import ExploreHeader from "../../components/workers/ExploreHeader/ExploreHeader";
 import WorkerCard from "../../components/workers/WorkerCard/WorkerCard";
 import styles from "./FindWorkersPage.module.css";
@@ -8,6 +9,16 @@ import {
 } from "../../utils/getLocation";
 import api from "../../utils/api";
 import { useNavigate } from "react-router-dom";
+
+// 👇 Location ko module-level cache karo (sirf ek baar fetch ho)
+let locationPromise: Promise<{ lat: number; lng: number } | null> | null = null;
+
+const getLocationOnce = () => {
+  if (!locationPromise) {
+    locationPromise = getNativeLocation();
+  }
+  return locationPromise;
+};
 
 interface Worker {
   id: string;
@@ -21,13 +32,14 @@ interface Worker {
   image: string;
 }
 
+interface GigsResponse {
+  data: Worker[];
+  hasNextPage: boolean;
+}
+
 const FindWorkersPage: React.FC = () => {
   const [selectedCat, setSelectedCat] = useState("All");
-  const [workers, setWorkers] = useState<Worker[]>([]);
-  const [loading, setLoading] = useState(false);
   const [userLocationName, setUserLocationName] = useState("Detecting...");
-  const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
   const navigate = useNavigate();
   const categories = [
     "All",
@@ -39,72 +51,51 @@ const FindWorkersPage: React.FC = () => {
     "Welder",
   ];
 
-  // 1. Function to Fetch Gigs from Backend
-  const loadGigs = useCallback(
-    async (pageNum: number, category: string, reset: boolean = false) => {
-      try {
-        setLoading(true);
-        const coords = await getNativeLocation();
+  // 👇 Location & address detect karo sirf pehli baar
+  useEffect(() => {
+    const fetchLocation = async () => {
+      const coords = await getLocationOnce();
+      if (coords) {
+        const address = await getAddressFromCoords(coords.lat, coords.lng);
+        setUserLocationName(address?.shortName || "Unknown Location");
+      } else {
+        setUserLocationName("Location Unavailable");
+      }
+    };
+    fetchLocation();
+  }, []);
 
+  const { data, fetchNextPage, hasNextPage, isFetching, isLoading } =
+    useInfiniteQuery<GigsResponse>({
+      queryKey: ["gigs", selectedCat],
+      initialPageParam: 1, // ✅ Yeh naya requirement hai (v5+)
+      queryFn: async ({ pageParam }) => {
+        const coords = await getLocationOnce();
         if (!coords) {
-          setLoading(false);
-          return;
+          throw new Error("Location not available");
         }
 
-        // API Call
-        const response = await api.post(
-          `/gigs/get-gigs?page=${pageNum}&category=${category}`,
+        const res = await api.post(
+          `/gigs/get-gigs?page=${pageParam}&category=${selectedCat}`,
           {
             lat: coords.lat,
             lng: coords.lng,
           }
         );
+        return res.data; // expect: { data: Worker[], hasNextPage: boolean }
+      },
+      getNextPageParam: (lastPage, allPages) => {
+        return lastPage.hasNextPage ? allPages.length + 1 : undefined;
+      },
+      staleTime: 1000 * 60 * 5,
+      refetchOnWindowFocus: false,
+    });
+  const workers = data?.pages.flatMap((page) => page.data) || [];
 
-        const newWorkers = response.data.data;
-
-        console.log(newWorkers);
-
-        if (reset) {
-          setWorkers(newWorkers);
-        } else {
-          setWorkers((prev) => [...prev, ...newWorkers]);
-        }
-
-        // Agar data limit se kam hai toh mazeed load nahi karega
-        setHasMore(newWorkers.length === 20);
-        setLoading(false);
-      } catch (err) {
-        console.error("Error fetching gigs:", err);
-        setLoading(false);
-      }
-    },
-    []
-  );
-
-  // 2. Initial Load: Location and First Page
-  useEffect(() => {
-    const init = async () => {
-      const coords = await getNativeLocation();
-      if (coords) {
-        const address = await getAddressFromCoords(coords.lat, coords.lng);
-        setUserLocationName(address?.shortName || "Unknown Location");
-        loadGigs(1, selectedCat, true);
-      }
-    };
-    init();
-  }, []);
-
-  // 3. Category Change Handler
-  useEffect(() => {
-    setPage(1);
-    loadGigs(1, selectedCat, true);
-  }, [selectedCat, loadGigs]);
-
-  // 4. Load More (Infinite Scroll Logic trigger)
   const handleLoadMore = () => {
-    const nextPage = page + 1;
-    setPage(nextPage);
-    loadGigs(nextPage, selectedCat);
+    if (hasNextPage && !isFetching) {
+      fetchNextPage();
+    }
   };
 
   return (
@@ -138,25 +129,32 @@ const FindWorkersPage: React.FC = () => {
         <div className={styles.list}>
           {workers.map((worker) => (
             <div
+              key={worker.id}
               onClick={() =>
                 navigate(`/gig-detail/${worker.id}`, {
                   state: { role: worker.role, img: worker.image },
                 })
               }
             >
-              <WorkerCard key={worker.id} {...worker} />
+              <WorkerCard {...worker} />
             </div>
           ))}
 
-          {loading && <p className={styles.loader}>Finding professionals...</p>}
+          {isLoading && (
+            <p className={styles.loader}>Finding professionals...</p>
+          )}
 
-          {!loading && hasMore && workers.length > 0 && (
+          {isFetching && !isLoading && (
+            <p className={styles.loader}>Loading more...</p>
+          )}
+
+          {!isLoading && hasNextPage && (
             <button className={styles.loadMoreBtn} onClick={handleLoadMore}>
               Load More
             </button>
           )}
 
-          {!loading && workers.length === 0 && (
+          {!isLoading && workers.length === 0 && (
             <div className={styles.noData}>No {selectedCat}s found nearby.</div>
           )}
         </div>

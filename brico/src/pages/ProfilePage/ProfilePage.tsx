@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   MdEdit,
   MdSettingsApplications,
@@ -15,6 +15,7 @@ import {
   MdLocationOn,
   MdAdd,
 } from "react-icons/md";
+import { useQuery } from "@tanstack/react-query";
 import styles from "./ProfilePage.module.css";
 import api from "../../utils/api";
 import { useNavigate } from "react-router-dom";
@@ -35,36 +36,20 @@ interface UserProfile {
 }
 
 const ProfilePage: React.FC = () => {
-  // --- States ---
-  const [user, setUser] = useState<UserProfile | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
   const url = import.meta.env.VITE_API_URL;
 
-  // --- Fetch Data ---
-  useEffect(() => {
-    const fetchProfile = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        const res = await api.get("/user/profile");
-        setUser(res.data);
-        console.log(res.data);
-      } catch (err: any) {
-        console.error("Profile fetch error:", err);
-        setError(
-          err.response?.data?.message ||
-            "Failed to load profile. Please try again."
-        );
-        setUser(null);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProfile();
-  }, []);
+  const {
+    data: user,
+    isLoading: loading,
+    isError,
+    error,
+    refetch,
+  } = useQuery<UserProfile>({
+    queryKey: ["userProfile"],
+    queryFn: () => api.get("/user/profile").then((res) => res.data),
+    staleTime: 1000 * 60 * 5, // 5 minutes
+  });
 
   // --- Helper Functions ---
   const getUserInitials = (name: string) => {
@@ -103,18 +88,15 @@ const ProfilePage: React.FC = () => {
     );
   }
 
-  if (error || !user) {
+  if (isError || !user) {
     return (
       <div className={styles.errorWrapper}>
         <div className={styles.errorIcon}>⚠️</div>
         <h3 className={styles.errorTitle}>Profile Not Loaded</h3>
         <p className={styles.errorMessage}>
-          {error || "Failed to load profile. Please login again."}
+          {error?.message || "Failed to load profile. Please login again."}
         </p>
-        <button
-          className={styles.retryBtn}
-          onClick={() => window.location.reload()}
-        >
+        <button className={styles.retryBtn} onClick={() => refetch()}>
           Retry
         </button>
         <button className={styles.loginBtn} onClick={() => navigate("/login")}>

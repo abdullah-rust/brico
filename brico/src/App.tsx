@@ -35,6 +35,13 @@ const EditProfilePage = lazy(
 );
 const CreateGigPage = lazy(() => import("./pages/CreateGigPage/CreateGigPage"));
 const GigDetailPage = lazy(() => import("./pages/GigDetailPage/GigDetailPage"));
+const FrontElevationsPage = lazy(
+  () => import("./pages/DesignCategoryPage/FrontElevations")
+);
+const HouseMapsPage = lazy(() => import("./pages/HouseMaps/HouseMaps"));
+const CeilingDesignsPage = lazy(
+  () => import("./pages/CeilingDesigns/CeilingDesigns")
+);
 
 const App: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
@@ -227,6 +234,42 @@ const App: React.FC = () => {
                   isAuthenticated ? (
                     <AnimatedPage>
                       <GigDetailPage />
+                    </AnimatedPage>
+                  ) : (
+                    <Navigate to="/login" replace />
+                  )
+                }
+              />
+              <Route
+                path="/elevations"
+                element={
+                  isAuthenticated ? (
+                    <AnimatedPage>
+                      <FrontElevationsPage />
+                    </AnimatedPage>
+                  ) : (
+                    <Navigate to="/login" replace />
+                  )
+                }
+              />
+              <Route
+                path="/maps"
+                element={
+                  isAuthenticated ? (
+                    <AnimatedPage>
+                      <HouseMapsPage />
+                    </AnimatedPage>
+                  ) : (
+                    <Navigate to="/login" replace />
+                  )
+                }
+              />
+              <Route
+                path="/ceiling"
+                element={
+                  isAuthenticated ? (
+                    <AnimatedPage>
+                      <CeilingDesignsPage />
                     </AnimatedPage>
                   ) : (
                     <Navigate to="/login" replace />

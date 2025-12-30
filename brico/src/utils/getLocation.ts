@@ -1,13 +1,52 @@
+// utils/getLocation.ts
 import { Geolocation } from "@capacitor/geolocation";
 import Swal from "sweetalert2";
 import axios from "axios";
 
-export const getNativeLocation = async () => {
-  try {
-    // 1. Check current permission status
-    const status = await Geolocation.checkPermissions();
+// 👇 Cache key (private to this module)
+const LOCATION_CACHE_KEY = "__brico_user_location";
 
-    // 2. Agar permission "prompt" (nahi mili) ya "denied" hai, to request karo
+// 👇 Helper: sessionStorage se location nikalna
+const getCachedLocation = (): {
+  lat: number;
+  lng: number;
+  accuracy: number;
+} | null => {
+  try {
+    const item = sessionStorage.getItem(LOCATION_CACHE_KEY);
+    return item ? JSON.parse(item) : null;
+  } catch (e) {
+    console.warn("Failed to parse cached location", e);
+    return null;
+  }
+};
+
+// 👇 Helper: sessionStorage mein location save karna
+const setCachedLocation = (location: {
+  lat: number;
+  lng: number;
+  accuracy: number;
+}) => {
+  try {
+    sessionStorage.setItem(LOCATION_CACHE_KEY, JSON.stringify(location));
+  } catch (e) {
+    console.warn("Failed to cache location", e);
+  }
+};
+
+// ✅ MAIN FUNCTION: Components will ONLY call this
+export const getNativeLocation = async () => {
+  // 🔹 Step 1: Pehle cache check karo
+  const cached = getCachedLocation();
+  if (cached) {
+    console.log("✅ Location loaded from cache");
+    return cached;
+  }
+
+  // 🔹 Step 2: Agar cache nahi hai, toh fresh fetch karo
+  try {
+    // Permission check
+    const status = await Geolocation.checkPermissions();
     if (status.location === "denied" || status.location === "prompt") {
       const requestStatus = await Geolocation.requestPermissions();
       if (requestStatus.location !== "granted") {
@@ -15,17 +54,23 @@ export const getNativeLocation = async () => {
       }
     }
 
-    // 3. Ab accurate location nikalwao
+    // Actual location fetch
     const coordinates = await Geolocation.getCurrentPosition({
-      enableHighAccuracy: true, // GPS use karega
+      enableHighAccuracy: true,
       timeout: 10000,
     });
 
-    return {
+    const location = {
       lat: coordinates.coords.latitude,
       lng: coordinates.coords.longitude,
       accuracy: coordinates.coords.accuracy,
     };
+
+    // 🔹 Step 3: Cache karo future ke liye
+    setCachedLocation(location);
+
+    console.log("📍 Fresh location fetched and cached");
+    return location;
   } catch (error: any) {
     Swal.fire({
       icon: "error",
@@ -37,8 +82,10 @@ export const getNativeLocation = async () => {
   }
 };
 
-export const getAddressFromCoords = async (lat: any, lng: any) => {
+// ✅ Reverse Geocoding (unchanged — no caching needed here unless you want)
+export const getAddressFromCoords = async (lat: number, lng: number) => {
   try {
+    // ⚠️ Extra spaces remove kardiye URL se (bug fix!)
     const response = await axios.get(
       `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`
     );
@@ -46,8 +93,6 @@ export const getAddressFromCoords = async (lat: any, lng: any) => {
     const data = response.data;
     const addr = data.address;
 
-    // 1. Short Address Logic (UI ke liye)
-    // Priority: Block/Street -> Area -> City
     const area =
       addr.residential ||
       addr.suburb ||
@@ -61,13 +106,12 @@ export const getAddressFromCoords = async (lat: any, lng: any) => {
         ? `${area}, ${city}`
         : area || city || "Unknown Location";
 
-    // 2. Return everything (taake tum jahan chaho jo marzi use karo)
     return {
-      fullData: data, // Pura raw object (osm_id, importance etc)
-      addressDetails: addr, // Sirf address wala hissa
-      shortName: shortAddress, // "Block B, Islamabad"
-      city: city, // Filtering ke liye specific city
-      coords: { lat, lng }, // Original coordinates
+      fullData: data,
+      addressDetails: addr,
+      shortName: shortAddress,
+      city,
+      coords: { lat, lng },
     };
   } catch (error) {
     console.error("Reverse Geocoding Error:", error);

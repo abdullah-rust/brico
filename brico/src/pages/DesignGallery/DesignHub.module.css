@@ -1,0 +1,140 @@
+.pageWrapper {
+  min-height: 100vh;
+  background: #f8f9fa;
+  padding: 20px 16px;
+  padding-bottom: 80px; /* Navbar ke liye jagah */
+}
+
+.header {
+  margin-bottom: 24px;
+  margin-top: 10px;
+}
+
+.headerTitle {
+  font-size: 28px;
+  font-weight: 800;
+  color: #1a1a1a;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+
+.subTitle {
+  font-size: 14px;
+  color: #666;
+  font-weight: 400;
+}
+
+.gridContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.categoryCard {
+  position: relative;
+  height: 180px;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.categoryCard:active {
+  transform: scale(0.97);
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease;
+  z-index: 1;
+}
+
+/* Background ko halka dark karte hain taake text nazar aaye */
+.categoryCard::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.2) 60%,
+    transparent 100%
+  );
+  z-index: 2;
+}
+
+.categoryCard:hover .imageOverlay {
+  transform: scale(1.1);
+}
+
+.cardContent {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: white;
+}
+
+.iconCircle {
+  width: 56px;
+  height: 56px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.textData {
+  flex: 1;
+}
+
+.catTitle {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+  margin-bottom: 2px;
+}
+
+.catDesc {
+  font-size: 12px;
+  opacity: 0.9;
+  margin: 0;
+  font-weight: 300;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.catCount {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  background: #ffcc00; /* Yellow color for highlight */
+  color: #000;
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.arrowIcon {
+  opacity: 0.7;
+}
