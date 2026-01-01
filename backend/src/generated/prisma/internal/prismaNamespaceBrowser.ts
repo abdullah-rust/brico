@@ -53,7 +53,9 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   User: 'User',
   Worker: 'Worker',
-  Gig: 'Gig'
+  Gig: 'Gig',
+  DesignPost: 'DesignPost',
+  Admin: 'Admin'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -76,13 +78,13 @@ export const UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
   password: 'password',
-  fullName: 'fullName',
-  role: 'role',
-  profilePicture: 'profilePicture',
-  phoneNumber: 'phoneNumber',
-  address: 'address',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  address: 'address',
+  fullName: 'fullName',
+  phoneNumber: 'phoneNumber',
+  profilePicture: 'profilePicture',
+  role: 'role'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -110,19 +112,45 @@ export const GigScalarFieldEnum = {
   description: 'description',
   category: 'category',
   priceBase: 'priceBase',
-  lat: 'lat',
-  lng: 'lng',
-  locationName: 'locationName',
   imageUrls: 'imageUrls',
-  availability: 'availability',
   isActive: 'isActive',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
+  availability: 'availability',
+  lat: 'lat',
+  lng: 'lng',
+  locationName: 'locationName',
   phone: 'phone',
   rateType: 'rateType'
 } as const
 
 export type GigScalarFieldEnum = (typeof GigScalarFieldEnum)[keyof typeof GigScalarFieldEnum]
+
+
+export const DesignPostScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  imageUrl: 'imageUrl',
+  category: 'category',
+  sizeTag: 'sizeTag',
+  styleTag: 'styleTag',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type DesignPostScalarFieldEnum = (typeof DesignPostScalarFieldEnum)[keyof typeof DesignPostScalarFieldEnum]
+
+
+export const AdminScalarFieldEnum = {
+  id: 'id',
+  username: 'username',
+  password: 'password',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AdminScalarFieldEnum = (typeof AdminScalarFieldEnum)[keyof typeof AdminScalarFieldEnum]
 
 
 export const SortOrder = {

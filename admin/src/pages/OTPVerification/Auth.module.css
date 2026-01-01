@@ -1,0 +1,203 @@
+/* Container jo poore page ko center karega */
+.authWrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-main); /* Jo index.css mein set kiya tha */
+  font-family: "Inter", sans-serif;
+}
+
+/* Safaid card jis mein form hoga */
+.authCard {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 32px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  border: 1px solid var(--border-color);
+  animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Logo icon style */
+.logo {
+  width: 60px;
+  height: 60px;
+  background: var(--primary);
+  color: white;
+  font-size: 30px;
+  font-weight: 900;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  box-shadow: 0 8px 16px rgba(23, 207, 176, 0.2);
+}
+
+.authCard h1 {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+
+.authCard p {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+
+/* Input Fields Styling */
+.inputGroup {
+  text-align: left;
+  margin-bottom: 22px;
+}
+
+.inputGroup label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text-main);
+  padding-left: 4px;
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 14px;
+  border: 1px solid var(--border-color);
+  background: #fcfdfd;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.inputGroup input:focus {
+  border-color: var(--primary);
+  background: #ffffff;
+  box-shadow: 0 0 0 4px var(--primary-soft);
+}
+
+/* --- OTP Specific Styling --- */
+.otpContainer {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 30px 0;
+}
+
+.otpInput {
+  width: 48px;
+  height: 60px;
+  border: 2px solid var(--border-color);
+  border-radius: 14px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 800;
+  background: #fcfdfd;
+  color: var(--primary);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+}
+
+.otpInput:focus {
+  border-color: var(--primary);
+  background: #ffffff;
+  box-shadow: 0 0 0 4px var(--primary-soft);
+  transform: translateY(-2px);
+}
+
+/* Chrome/Safari se arrows hatane ke liye */
+.otpInput::-webkit-outer-spin-button,
+.otpInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Main Buttons */
+.authBtn {
+  width: 100%;
+  padding: 16px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(23, 207, 176, 0.2);
+}
+
+.authBtn:hover:not(:disabled) {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(23, 207, 176, 0.3);
+}
+
+.authBtn:active {
+  transform: translateY(0);
+}
+
+.authBtn:disabled {
+  background: var(--text-light);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Bottom Links */
+.toggleLink {
+  margin-top: 25px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.toggleLink span {
+  color: var(--primary);
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  margin-left: 5px;
+  transition: color 0.2s;
+}
+
+.toggleLink span:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+  .authCard {
+    margin: 20px;
+    padding: 30px 20px;
+  }
+
+  .otpInput {
+    width: 40px;
+    height: 52px;
+    font-size: 20px;
+  }
+
+  .otpContainer {
+    gap: 8px;
+  }
+}

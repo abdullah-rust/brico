@@ -1,5 +1,3 @@
-// File: path/to/jwt.ts (Updated)
-
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 
@@ -58,6 +56,32 @@ export async function verifyAccessToken(token: string): Promise<any | null> {
 export async function verifyRefreshToken(token: string): Promise<any | null> {
   try {
     return jwt.verify(token, REFRESH_SECRET);
+  } catch {
+    return null;
+  }
+}
+
+const ADMIN_JWT_SECRET = process.env["ADMIN_JWT_SECRET"]!;
+
+// Access Token for Admin
+export async function createAdminAccessToken(
+  username: string
+): Promise<string> {
+  if (!username) {
+    throw new Error("Cannot create Admin Token: Username is missing.");
+  }
+
+  return jwt.sign({ userId: username, role: "ADMIN" }, ADMIN_JWT_SECRET, {
+    expiresIn: "12h",
+  });
+}
+
+// Verify Admin Token
+export async function verifyAdminAccessToken(
+  token: string
+): Promise<any | null> {
+  try {
+    return jwt.verify(token, ADMIN_JWT_SECRET);
   } catch {
     return null;
   }

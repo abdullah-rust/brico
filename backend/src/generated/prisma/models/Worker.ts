@@ -248,8 +248,8 @@ export type WorkerWhereInput = {
   skills?: Prisma.StringNullableListFilter<"Worker">
   createdAt?: Prisma.DateTimeFilter<"Worker"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Worker"> | Date | string
-  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   gigs?: Prisma.GigListRelationFilter
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
 export type WorkerOrderByWithRelationInput = {
@@ -262,8 +262,8 @@ export type WorkerOrderByWithRelationInput = {
   skills?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  user?: Prisma.UserOrderByWithRelationInput
   gigs?: Prisma.GigOrderByRelationAggregateInput
+  user?: Prisma.UserOrderByWithRelationInput
 }
 
 export type WorkerWhereUniqueInput = Prisma.AtLeast<{
@@ -279,8 +279,8 @@ export type WorkerWhereUniqueInput = Prisma.AtLeast<{
   skills?: Prisma.StringNullableListFilter<"Worker">
   createdAt?: Prisma.DateTimeFilter<"Worker"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Worker"> | Date | string
-  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   gigs?: Prisma.GigListRelationFilter
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id" | "userId">
 
 export type WorkerOrderByWithAggregationInput = {
@@ -324,8 +324,8 @@ export type WorkerCreateInput = {
   skills?: Prisma.WorkerCreateskillsInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
-  user: Prisma.UserCreateNestedOneWithoutWorkerProfileInput
   gigs?: Prisma.GigCreateNestedManyWithoutWorkerInput
+  user: Prisma.UserCreateNestedOneWithoutWorkerProfileInput
 }
 
 export type WorkerUncheckedCreateInput = {
@@ -350,8 +350,8 @@ export type WorkerUpdateInput = {
   skills?: Prisma.WorkerUpdateskillsInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  user?: Prisma.UserUpdateOneRequiredWithoutWorkerProfileNestedInput
   gigs?: Prisma.GigUpdateManyWithoutWorkerNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutWorkerProfileNestedInput
 }
 
 export type WorkerUncheckedUpdateInput = {
@@ -704,8 +704,8 @@ export type WorkerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   skills?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   gigs?: boolean | Prisma.Worker$gigsArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.WorkerCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["worker"]>
 
@@ -749,8 +749,8 @@ export type WorkerSelectScalar = {
 
 export type WorkerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "profession" | "bio" | "experienceYears" | "rating" | "skills" | "createdAt" | "updatedAt", ExtArgs["result"]["worker"]>
 export type WorkerInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   gigs?: boolean | Prisma.Worker$gigsArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.WorkerCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type WorkerIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -763,8 +763,8 @@ export type WorkerIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
 export type $WorkerPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Worker"
   objects: {
-    user: Prisma.$UserPayload<ExtArgs>
     gigs: Prisma.$GigPayload<ExtArgs>[]
+    user: Prisma.$UserPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1170,8 +1170,8 @@ readonly fields: WorkerFieldRefs;
  */
 export interface Prisma__WorkerClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   gigs<T extends Prisma.Worker$gigsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Worker$gigsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GigPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.

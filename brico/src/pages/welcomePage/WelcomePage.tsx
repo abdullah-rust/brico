@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { MdArrowForward } from "react-icons/md";
 import styles from "./WelcomePage.module.css";
+import image from "/welcome.webp";
 
 const WelcomePage: React.FC = () => {
   const navigate = useNavigate();
@@ -16,11 +17,7 @@ const WelcomePage: React.FC = () => {
       {/* 2. Hero Area (Fixed Height: 300px) */}
       <main className={styles.heroSection}>
         <div className={styles.imageContainer}>
-          <img
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCodjgW84vEIgsP4VhGreTfLRPFYD5n_KbaHyWldBXJMA2cWWVab47XI4qc6lkSkXfsBiudS-ZuWVdlbZlN99Lr9s-gxGvTNTIBYOjVrQaev0gpwRKMH2qMkObkuZTyTQHMpYS-6ThUpEu0OtDpHV4pfAwZqJB58xmwMyfI83t_RyZ3bVCJqFMw_7FCK-SyX5_HYAwO9MwC6PRAp-m_fKAMOSJXCqV00fDS6nCIIoAiqWZkQUMsoRv9XA1WJvwI-9MCbLXMQUXIml8y"
-            alt="Hero"
-            className={styles.heroImg}
-          />
+          <img src={image} alt="Hero" className={styles.heroImg} />
         </div>
       </main>
 

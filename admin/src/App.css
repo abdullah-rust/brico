@@ -1,0 +1,36 @@
+/* Sidebar ko fix rakhne ke liye flex layout */
+.admin-layout {
+  display: flex;
+  width: 100vw;
+  height: 100dvh;
+  background-color: #f6f8f8; /* Jo tumne background bataya tha */
+  overflow: hidden;
+}
+
+/* Right side content area */
+.main-content {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto; /* Sirf content scroll hoga, sidebar nahi */
+  padding: 2rem;
+  scrollbar-width: thin;
+  scrollbar-color: #17cfb0 transparent;
+}
+
+.content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Jab screen change ho toh smooth transition aaye */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -11,4 +11,6 @@
 export type * from './models/User'
 export type * from './models/Worker'
 export type * from './models/Gig'
+export type * from './models/DesignPost'
+export type * from './models/Admin'
 export type * from './commonInputTypes'

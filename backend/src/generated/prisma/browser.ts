@@ -32,3 +32,13 @@ export type Worker = Prisma.WorkerModel
  * 
  */
 export type Gig = Prisma.GigModel
+/**
+ * Model DesignPost
+ * 
+ */
+export type DesignPost = Prisma.DesignPostModel
+/**
+ * Model Admin
+ * 
+ */
+export type Admin = Prisma.AdminModel

@@ -36,7 +36,7 @@ const EditProfilePage = lazy(
 const CreateGigPage = lazy(() => import("./pages/CreateGigPage/CreateGigPage"));
 const GigDetailPage = lazy(() => import("./pages/GigDetailPage/GigDetailPage"));
 const FrontElevationsPage = lazy(
-  () => import("./pages/DesignCategoryPage/FrontElevations")
+  () => import("./pages/FrontElevations/FrontElevations")
 );
 const HouseMapsPage = lazy(() => import("./pages/HouseMaps/HouseMaps"));
 const CeilingDesignsPage = lazy(

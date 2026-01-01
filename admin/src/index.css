@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
+:root {
+  /* Abdullah's Brico Theme Colors */
+  --primary: #17cfb0;
+  --primary-hover: #14b89d;
+  --primary-soft: rgba(23, 207, 176, 0.08);
+
+  /* Backgrounds & Surfaces */
+  --bg-main: #f4f7f7; /* Halki teal-greyish tone background ke liye */
+  --bg-card: #ffffff;
+  --bg-sidebar: #ffffff;
+
+  /* Text Colors */
+  --text-main: #111817;
+  --text-muted: #618983;
+  --text-light: #94b2ae;
+
+  /* Status Colors */
+  --success: #10b981;
+  --error: #ef4444;
+  --warning: #f59e0b;
+
+  /* Borders & Shadows */
+  --border-color: #e5eded;
+  --shadow-sm: 0 2px 4px rgba(17, 24, 23, 0.05);
+  --shadow-md: 0 10px 25px rgba(17, 24, 23, 0.08);
+  --radius: 16px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", -apple-system, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden; /* App.tsx handle karega scrolling */
+}
+
+/* Scrollbar Customization for Modern Look */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-light);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Standard Heading Styles */
+h1,
+h2,
+h3 {
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+/* Custom Card Effect */
+.brico-card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  padding: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.brico-card:hover {
+  box-shadow: var(--shadow-md);
+}

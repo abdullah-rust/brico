@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client"
   output   = "../src/generated/prisma"
@@ -13,81 +7,87 @@ datasource db {
   provider = "postgresql"
 }
 
-
-
-
-// --- 2. User Model (CREATE TABLE users) ---
 model User {
-  // Fields
-  id              String   @id @default(uuid()) @db.Uuid
-  email           String   @unique
-  password        String?  
-  
+  id             String   @id @default(uuid()) @db.Uuid
+  email          String   @unique
+  password       String?
+  createdAt      DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt      DateTime @updatedAt @map("updated_at") @db.Timestamptz(6)
+  address        String?
   fullName       String   @map("fullName") @db.VarChar(100)
-
-  // Enum mapping the PostgreSQL custom type
-  role    String?  @default("CLIENT") @db.VarChar(20)
-  profilePicture   String?  @map("profile_picture") @db.Text
-  phoneNumber     String?  @map("phone_number") @db.VarChar(15)
-  address         String?  @db.Text
-
-  createdAt       DateTime @default(now()) @map("created_at") @db.Timestamptz()
-  updatedAt       DateTime @updatedAt @map("updated_at") @db.Timestamptz()
-  
-  // Relationships
-  workerProfile   Worker?
+  phoneNumber    String?  @map("phone_number") @db.VarChar(15)
+  profilePicture String?  @map("profile_picture")
+  role           String?  @default("CLIENT") @db.VarChar(20)
+  workerProfile  Worker?
 }
 
-// --- 3. Worker Model (CREATE TABLE workers) ---
 model Worker {
-  // Fields
-  id               String    @id @default(uuid()) @db.Uuid
-  userId           String    @unique @map("user_id") @db.Uuid
-  
-  profession       String    @db.VarChar(100)
-  bio              String?   @db.Text
-  experienceYears  Int       @map("experience_years")
-  rating           Float     @default(0.0) @db.Real // FLOAT for rating is acceptable
-  skills           String[]  // Prisma automatically maps String[] to TEXT[] in PostgreSQL
-
-  
-  createdAt        DateTime  @default(now()) @map("created_at") @db.Timestamptz()
-  updatedAt        DateTime  @updatedAt @map("updated_at") @db.Timestamptz()
-  
-  // Relationships
-  user             User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  gigs             Gig[]     // Worker ki multiple gigs ho sakti hain
+  id              String   @id @default(uuid()) @db.Uuid
+  userId          String   @unique @map("user_id") @db.Uuid
+  profession      String   @db.VarChar(100)
+  bio             String?
+  experienceYears Int      @map("experience_years")
+  rating          Float    @default(0.0) @db.Real
+  skills          String[]
+  createdAt       DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt       DateTime @updatedAt @map("updated_at") @db.Timestamptz(6)
+  gigs            Gig[]
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-// --- 4. Gig Model (CREATE TABLE gigs) ---
 model Gig {
-  id            String   @id @default(uuid()) @db.Uuid
-  workerId      String   @map("worker_id") @db.Uuid
-  
-  title         String   @db.VarChar(255)
-  description   String   @db.Text
-  category      String   @db.VarChar(100)
-  priceBase     Decimal  @map("price_base") @db.Decimal(10, 2)
-  
-  // --- Location Fields ---
-  lat           Float    // Latitude for mapping
-  lng           Float    // Longitude for mapping
-  locationName  String   @map("location_name") @db.VarChar(255) // "Zone III, Islamabad"
-  
-
-  imageUrls     String[] @map("image_urls")
-  availability Json   @db.JsonB
-  
-  isActive      Boolean  @default(true) @map("is_active")
-  createdAt     DateTime @default(now()) @map("created_at") @db.Timestamptz()
-  updatedAt     DateTime @updatedAt @map("updated_at") @db.Timestamptz()
-  phone         String  @map("phone") @db.VarChar(15)
-  rateType      String  
-
-  worker        Worker   @relation(fields: [workerId], references: [userId], onDelete: Cascade)
+  id           String   @id @default(uuid()) @db.Uuid
+  workerId     String   @map("worker_id") @db.Uuid
+  title        String   @db.VarChar(255)
+  description  String
+  category     String   @db.VarChar(100)
+  priceBase    Decimal  @map("price_base") @db.Decimal(10, 2)
+  imageUrls    String[] @map("image_urls")
+  isActive     Boolean  @default(true) @map("is_active")
+  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt    DateTime @updatedAt @map("updated_at") @db.Timestamptz(6)
+  availability Json
+  lat          Float
+  lng          Float
+  locationName String   @map("location_name") @db.VarChar(255)
+  phone        String   @map("phone") @db.VarChar(15)
+  rateType     String
+  worker       Worker   @relation(fields: [workerId], references: [userId], onDelete: Cascade)
 
   @@index([category])
   @@index([workerId])
-  // Geospatial searching ke liye lat/lng par index zarori hai
-  @@index([lat, lng]) 
+  @@index([lat, lng])
+}
+
+
+model DesignPost {
+  id              Int      @id @default(autoincrement())
+  title           String
+  description     String?  @db.Text
+  imageUrl        String   // S3 bucket ka direct link
+  
+  // Filtering & Categorization
+  category        String   // e.g., "Elevations", "Maps", "Ceiling"
+  sizeTag         String   // e.g., "5 Marla", "10 Marla", "1 Kanal"
+  styleTag        String   // e.g., "Modern", "Spanish", "Classical"
+  
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Performance Optimization: Search aur Filter ko fast karne ke liye indexing
+  @@index([category])
+  @@index([sizeTag, styleTag])
+}
+
+
+model Admin {
+  id        String   @id @default(uuid()) @db.Uuid
+  username  String   @unique
+  password  String   
+
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  @@map("admins")
 }

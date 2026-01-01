@@ -1,0 +1,149 @@
+.wrapper {
+  max-width: 850px;
+  margin: 0 auto;
+}
+.header {
+  margin-bottom: 25px;
+}
+.title {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+.subtitle {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.form {
+  background: white;
+  padding: 35px;
+  border-radius: 24px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.uploadBox {
+  margin-bottom: 25px;
+}
+.dropzone {
+  height: 180px;
+  border: 2px dashed #d1dbdb;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: #fcfdfd;
+}
+.dropzone p {
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-top: 10px;
+}
+.dropzone span {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.previewContainer {
+  position: relative;
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.previewImg {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+.closeBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  padding: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.inputGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+.fullWidth {
+  width: 100%;
+}
+.halfWidth {
+  width: calc(50% - 9px);
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 6px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  font-family: inherit;
+  font-size: 14px;
+  background: #fcfdfd;
+}
+
+.titleWrapper {
+  position: relative;
+}
+.titleInput {
+  background: #f0fdfa !important;
+  font-weight: 700;
+  color: var(--primary);
+  border-color: #d1f2eb;
+}
+.magicIcon {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  color: var(--primary);
+  opacity: 0.6;
+}
+
+.submitBtn {
+  margin-top: 30px;
+  width: 100%;
+  padding: 16px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.submitBtn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+.submitBtn:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .halfWidth {
+    width: 100%;
+  }
+}

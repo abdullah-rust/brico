@@ -2,6 +2,7 @@ import React from "react"; // 1. useEffect add kiya
 import { useNavigate } from "react-router-dom";
 import { MdConstruction, MdEmail, MdPersonAdd } from "react-icons/md";
 import styles from "./GetStarted.module.css";
+import image from "/getStarted.webp";
 
 const GetStarted: React.FC = () => {
   const navigate = useNavigate();
@@ -13,8 +14,7 @@ const GetStarted: React.FC = () => {
         <div
           className={styles.bgImage}
           style={{
-            backgroundImage:
-              "url('https://lh3.googleusercontent.com/aida-public/AB6AXuAENG-Y87V5txCcSW6787BcV_QDmuc6eK8-AhzjFj0A4qzJdHMoOPa_ePHnEnP2d7-vmgPHAWFTyIsmPJQPUo_zpuOi4Oq-q_ZtA2NcQD92P2txTI0wUA1JloGeOI2VdBBWqvz-bBYwvBrg5T-zB4wkftG7GdChX9j6eJcoeHPvbfl5lKrlLrxt-DDH5tRehO7zEN6AKA18hprnRMfLXsLR90zigFxeGFVhmXHMWLM0JwF6LfP6leRTl1pnoTQelqwVQZlfN_wmeuLD')",
+            backgroundImage: `url(${image})`,
           }}
         >
           <div className={styles.overlay}></div>
