@@ -29,8 +29,6 @@ export default async function LoginAdmin(req: Request, res: Response) {
       return res.status(401).json({ message: "Invalid username or password" });
     }
 
-    // 3. Tokens create karo (Using your custom functions)
-    // Hum admin.username pass karenge id ki jagah jaisa tumne kaha
     const accessToken = await createAdminAccessToken(admin.username);
 
     // 4. Success Response

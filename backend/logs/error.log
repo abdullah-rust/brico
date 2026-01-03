@@ -154,3 +154,4 @@
 
 
 [31mRaw query failed. Code: `42601`. Message: `syntax error at or near "$4"`[39m
+[2026-01-02 20:27:00] [31merror[39m: [31mPro Admin Email Not Found in .env[39m

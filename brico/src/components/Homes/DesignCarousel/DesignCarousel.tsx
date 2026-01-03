@@ -1,6 +1,8 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import styles from "./DesignCarousel.module.css";
+import { useNavigate } from "react-router-dom";
+
 const designs = [
   {
     id: 1,
@@ -25,36 +27,41 @@ const designs = [
   },
 ];
 
-const DesignCarousel: React.FC = () => (
-  <div className={styles.container}>
-    <div className={styles.header}>
-      <h3>Explore Designs</h3>
-      <button className={styles.seeAll}>See all</button>
-    </div>
+const DesignCarousel: React.FC = () => {
+  const navigate = useNavigate();
 
-    <Swiper
-      spaceBetween={16}
-      slidesPerView={"auto"} // Taake cards ki width CSS se control ho
-      nested={true} // <--- Sab se important line!
-      className={styles.carouselSwiper}
-    >
-      {designs.map((item) => (
-        <SwiperSlide key={item.id} className={styles.cardSlide}>
-          <div className={styles.card}>
-            <div
-              className={styles.imageWrapper}
-              style={{ backgroundImage: `url(${item.img})` }}
-            >
-              {item.tag && <span className={styles.tag}>{item.tag}</span>}
-              <div className={styles.overlay} />
+  return (
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <h3>Explore Designs</h3>
+        <button className={styles.seeAll} onClick={() => navigate("/designs")}>
+          See all
+        </button>
+      </div>
+
+      <Swiper
+        spaceBetween={16}
+        slidesPerView={"auto"} // Taake cards ki width CSS se control ho
+        nested={true} // <--- Sab se important line!
+        className={styles.carouselSwiper}
+      >
+        {designs.map((item) => (
+          <SwiperSlide key={item.id} className={styles.cardSlide}>
+            <div className={styles.card}>
+              <div
+                className={styles.imageWrapper}
+                style={{ backgroundImage: `url(${item.img})` }}
+              >
+                {item.tag && <span className={styles.tag}>{item.tag}</span>}
+                <div className={styles.overlay} />
+              </div>
+              <h4 className={styles.title}>{item.title}</h4>
+              <p className={styles.desc}>{item.desc}</p>
             </div>
-            <h4 className={styles.title}>{item.title}</h4>
-            <p className={styles.desc}>{item.desc}</p>
-          </div>
-        </SwiperSlide>
-      ))}
-    </Swiper>
-  </div>
-);
-
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
+  );
+};
 export default DesignCarousel;

@@ -18,9 +18,7 @@ const Signup = () => {
     setLoading(true);
 
     try {
-      // Step 1: Request Admin Signup
-      // Ye API tumhare paas (Owner) ko OTP bhejegi
-      await api.post("/admin/signup-request", formData);
+      await api.post("/admin/admin-signup", formData);
 
       Swal.fire({
         title: "Request Sent!",

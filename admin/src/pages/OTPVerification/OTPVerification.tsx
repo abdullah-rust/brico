@@ -53,7 +53,7 @@ const OTPVerification = () => {
 
     setLoading(true);
     try {
-      await api.post("/admin/verify-signup", {
+      await api.post("/admin/admin-OTP", {
         username: state.username,
         otp: finalOtp,
       });

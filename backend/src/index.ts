@@ -14,7 +14,11 @@ const PORT = process.env["PORT"] || 4000;
 app.use(
   cors({
     // Ab tumhara PC aur Mobile dono origins allow hain
-    origin: ["http://localhost:5173", "http://192.168.100.5:5173"],
+    origin: [
+      "http://localhost:5173",
+      "http://localhost:5174",
+      "http://192.168.100.5:5173",
+    ],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     allowedHeaders: [
       "Content-Type",

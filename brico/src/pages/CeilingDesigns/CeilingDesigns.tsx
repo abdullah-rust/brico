@@ -9,171 +9,131 @@ import {
   MdFileDownload,
 } from "react-icons/md";
 import Swal from "sweetalert2";
-import styles from "./CeilingDesigns.module.css"; // Consistency ke liye same styles
-
-// Capacitor plugins
+import api from "../../utils/api";
+import styles from "./CeilingDesigns.module.css";
 import { Filesystem, Directory } from "@capacitor/filesystem";
-
-const CEILING_DATA = [
-  {
-    id: "c1",
-    title: "Modern Gypsum Masterpiece",
-    category: "Drawing Room",
-    style: "Modern",
-    imageUrl:
-      "https://images.unsplash.com/photo-1513519245088-0e12902e35ca?q=80&w=600",
-  },
-  {
-    id: "c2",
-    title: "Classic Wooden Tray",
-    category: "Bedroom",
-    style: "Wooden",
-    imageUrl:
-      "https://images.unsplash.com/photo-1620626011761-9963d7521576?q=80&w=600",
-  },
-  {
-    id: "c3",
-    title: "Minimalist Recessed Lighting",
-    category: "Lounge",
-    style: "Minimalist",
-    imageUrl:
-      "https://images.unsplash.com/photo-1594904351111-a072f80b1a71?q=80&w=600",
-  },
-  {
-    id: "c4",
-    title: "Royal Chandelier Base",
-    category: "Drawing Room",
-    style: "Classical",
-    imageUrl:
-      "https://images.unsplash.com/photo-1582582621959-48d245674831?q=80&w=600",
-  },
-  {
-    id: "c5",
-    title: "Smart LED Pattern",
-    category: "Bedroom",
-    style: "Modern",
-    imageUrl:
-      "https://images.unsplash.com/photo-1560185007-c5ca9d2c014d?q=80&w=600",
-  },
-  {
-    id: "c6",
-    title: "Industrial Concrete Finish",
-    category: "Kitchen",
-    style: "Modern",
-    imageUrl:
-      "https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?q=80&w=600",
-  },
-];
 
 const CeilingDesigns: React.FC = () => {
   const navigate = useNavigate();
   const [activeFilter, setActiveFilter] = useState("All");
-  const [previewImage, setPreviewImage] = useState<string | null>(null);
   const [searchResults, setSearchResults] = useState<any[] | null>(null);
+  const [previewImage, setPreviewImage] = useState<string | null>(null);
+  const url = import.meta.env.VITE_API_URL;
 
-  // Ceiling specific categories
+  // Professional filters for Ceiling
+  // Note: Room types ko hum title ya sizeTag mein handle karenge
   const filters = [
     "All",
-    "Drawing Room",
-    "Bedroom",
-    "Lounge",
+    "3 Marla",
+    "5 Marla",
+    "10 Marla",
+    "1 Kanal",
     "Modern",
-    "Wooden",
-    "Minimalist",
+    "Classical",
   ];
 
+  // --- API Fetch Logic ---
+  const {
+    data: designs,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["ceiling-designs", activeFilter, searchResults],
+    queryFn: async () => {
+      if (searchResults && activeFilter === "Search Result")
+        return searchResults;
+
+      // FIX: Category must match exactly what is in your DB ("Ceiling Designs")
+      let endpoint = `/design/get-designs?category=Ceiling Designs&limit=50`;
+
+      if (activeFilter !== "All") {
+        if (activeFilter.includes("Marla") || activeFilter.includes("Kanal")) {
+          endpoint += `&size=${activeFilter}`;
+        } else {
+          endpoint += `&style=${activeFilter}`;
+        }
+      }
+
+      const res = await api.get(endpoint);
+      return res.data.data;
+    },
+  });
+
+  // --- Search Logic ---
   const handleSearch = () => {
     Swal.fire({
       title: "Search Ceiling Designs",
       input: "text",
-      inputPlaceholder: "Search style or room (e.g. Wooden, Bedroom)...",
+      inputPlaceholder: "Search e.g. Modern, 5 Marla...",
       showCancelButton: true,
       confirmButtonColor: "#11d4b4",
       confirmButtonText: "Search",
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed && result.value) {
-        const query = result.value.toLowerCase().trim();
-        const filtered = CEILING_DATA.filter(
-          (item) =>
-            item.title.toLowerCase().includes(query) ||
-            item.category.toLowerCase().includes(query) ||
-            item.style.toLowerCase().includes(query)
-        );
-
-        if (filtered.length > 0) {
-          setSearchResults(filtered);
-          setActiveFilter("Search Result");
-        } else {
+        try {
+          // FIX: Exact category "Ceiling Designs" here too
+          const res = await api.get(
+            `/design/get-designs?category=Ceiling Designs&search=${result.value}`
+          );
+          if (res.data.data.length > 0) {
+            setSearchResults(res.data.data);
+            setActiveFilter("Search Result");
+          } else {
+            Swal.fire(
+              "Not Found",
+              "No ceiling designs matched your search.",
+              "info"
+            );
+          }
+        } catch (err) {
           Swal.fire(
-            "Not Found",
-            "Aapki search ke mutabiq koi design nahi mila.",
-            "info"
+            "Error",
+            "Search service is currently unavailable.",
+            "error"
           );
         }
       }
     });
   };
 
-  const { data: designs, isLoading } = useQuery({
-    queryKey: ["ceiling-designs", activeFilter, searchResults],
-    queryFn: async () => {
-      if (searchResults && activeFilter === "Search Result")
-        return searchResults;
-      if (activeFilter === "All") return CEILING_DATA;
-      return CEILING_DATA.filter(
-        (item) => item.category === activeFilter || item.style === activeFilter
-      );
-    },
-  });
-
-  const blobToBase64 = (blob: Blob): Promise<string> => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onloadend = () => resolve(reader.result as string);
-      reader.onerror = reject;
-      reader.readAsDataURL(blob);
-    });
-  };
-
-  const downloadImage = async (e: React.MouseEvent) => {
+  // --- Download Logic ---
+  const downloadImage = async (e: React.MouseEvent, imgPath: string) => {
     e.preventDefault();
     e.stopPropagation();
-    if (!previewImage) return;
+    const fullUrl = `${url}/files/${imgPath}`;
 
     try {
-      const response = await fetch(previewImage);
+      const response = await fetch(fullUrl);
       const blob = await response.blob();
-      const fileName = `brico-ceiling-${Date.now()}.jpg`;
+      const fileName = `Brico-Ceiling-${Date.now()}.jpg`;
       const isNative = (window as any).Capacitor?.isNativePlatform();
 
       if (!isNative) {
-        const url = window.URL.createObjectURL(blob);
         const link = document.createElement("a");
-        link.href = url;
+        link.href = window.URL.createObjectURL(blob);
         link.download = fileName;
-        document.body.appendChild(link);
         link.click();
-        document.body.removeChild(link);
-        window.URL.revokeObjectURL(url);
       } else {
-        const base64Data = await blobToBase64(blob);
-        await Filesystem.writeFile({
-          path: fileName,
-          data: base64Data,
-          directory: Directory.Documents,
-        });
+        const reader = new FileReader();
+        reader.readAsDataURL(blob);
+        reader.onloadend = async () => {
+          const base64Data = reader.result as string;
+          await Filesystem.writeFile({
+            path: fileName,
+            data: base64Data,
+            directory: Directory.Documents,
+          });
+        };
       }
-
-      setPreviewImage(null);
       Swal.fire({
-        title: "Saved!",
-        text: "Ceiling design downloaded.",
         icon: "success",
+        title: "Saved!",
         timer: 1500,
         showConfirmButton: false,
       });
+      setPreviewImage(null);
     } catch (err) {
-      Swal.fire("Error", "Failed to save image", "error");
+      Swal.fire("Error", "Failed to save image.", "error");
     }
   };
 
@@ -210,10 +170,20 @@ const CeilingDesigns: React.FC = () => {
 
         <main className={styles.scrollContent}>
           {isLoading ? (
-            <div className={styles.loader}>Loading Designs...</div>
+            <div className={styles.gridContainer}>
+              {[1, 2, 3, 4].map((n) => (
+                <div key={n} className={styles.skeletonCard}></div>
+              ))}
+            </div>
+          ) : isError ? (
+            <div className={styles.errorBox}>Failed to load designs.</div>
+          ) : designs?.length === 0 ? (
+            <div className={styles.noData}>
+              No designs found for this category.
+            </div>
           ) : (
             <div className={styles.gridContainer}>
-              {designs?.map((design) => (
+              {designs?.map((design: any) => (
                 <div
                   key={design.id}
                   className={styles.designCard}
@@ -221,7 +191,7 @@ const CeilingDesigns: React.FC = () => {
                 >
                   <div className={styles.imageWrapper}>
                     <img
-                      src={design.imageUrl}
+                      src={`${url}/files/${design.imageUrl}`}
                       alt={design.title}
                       loading="lazy"
                     />
@@ -233,7 +203,9 @@ const CeilingDesigns: React.FC = () => {
                     </button>
                   </div>
                   <div className={styles.cardInfo}>
-                    <span className={styles.sizeTag}>{design.category}</span>
+                    <div className={styles.categoryBadge}>
+                      <span>{design.sizeTag || "General"}</span>
+                    </div>
                     <h3 className={styles.designTitle}>{design.title}</h3>
                   </div>
                 </div>
@@ -256,14 +228,17 @@ const CeilingDesigns: React.FC = () => {
               className={styles.previewClose}
               onClick={() => setPreviewImage(null)}
             >
-              <MdClose size={24} />
+              <MdClose size={28} />
             </button>
-            <button className={styles.previewDownload} onClick={downloadImage}>
-              <MdFileDownload size={24} />
+            <button
+              className={styles.previewDownload}
+              onClick={(e) => downloadImage(e, previewImage)}
+            >
+              <MdFileDownload size={28} />
             </button>
             <img
-              src={previewImage}
-              alt="Preview"
+              src={`${url}/files/${previewImage}`}
+              alt="Ceiling Preview"
               className={styles.previewImage}
             />
           </div>

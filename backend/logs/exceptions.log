@@ -31,3 +31,16 @@
     at router.Router.<computed> [as get] (C:\projects\brico\backend\node_modules\.pnpm\router@2.2.0\node_modules\router\index.js:447:24)
     at Object.<anonymous> (C:\projects\brico\backend\src\routes\routes.ts:13:8)
     at Module.<anonymous> (node:internal/modules/cjs/loader:1761:14)
+[2026-01-03 19:16:41] [31merror[39m: Error: ⨯ Unable to compile TypeScript:
+src/designs/index.ts(8,70): error TS1135: Argument expression expected.
+
+    at Object.<anonymous> (/home/hero/brico/backend/src/designs/index.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1706:14)
+    at Module._compile (/home/hero/brico/backend/node_modules/.pnpm/source-map-support@0.5.21/node_modules/source-map-support/source-map-support.js:568:25)
+    at Module.m._compile (/tmp/ts-node-dev-hook-3497450679192251.js:69:33)
+    at node:internal/modules/cjs/loader:1839:10
+    at require.extensions..jsx.require.extensions..js (/tmp/ts-node-dev-hook-3497450679192251.js:114:20)
+    at require.extensions.<computed> (/tmp/ts-node-dev-hook-3497450679192251.js:71:20)
+    at Object.nodeDevHook [as .ts] (/home/hero/brico/backend/node_modules/.pnpm/ts-node-dev@2.0.0_@types+node@25.0.2_typescript@5.9.3/node_modules/ts-node-dev/lib/hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1441:32)
+    at Function._load (node:internal/modules/cjs/loader:1263:12)

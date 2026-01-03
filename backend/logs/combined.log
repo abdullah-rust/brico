@@ -544,3 +544,49 @@
 [2026-01-01 17:15:00] [32minfo[39m: [32mProfile fetched for user: e5de71aa-4e2e-4139-af7d-faa380baf214[39m
 [2026-01-01 17:15:27] [32minfo[39m: [32mProfile fetched for user: e5de71aa-4e2e-4139-af7d-faa380baf214[39m
 [2026-01-01 17:15:27] [32minfo[39m: [32mProfile fetched for user: e5de71aa-4e2e-4139-af7d-faa380baf214[39m
+[2026-01-02 20:19:31] [33mwarn[39m: [33mAccess token expired, checking refresh token...[39m
+[2026-01-02 20:19:31] [32minfo[39m: [32mToken refreshed successfully for user: e5de71aa-4e2e-4139-af7d-faa380baf214[39m
+[2026-01-02 20:19:35] [32minfo[39m: [32mProfile fetched for user: e5de71aa-4e2e-4139-af7d-faa380baf214[39m
+[2026-01-02 20:27:00] [31merror[39m: [31mPro Admin Email Not Found in .env[39m
+[2026-01-02 20:27:48] [32minfo[39m: [32mSignup request initiated for user: abdullah[39m
+[2026-01-02 20:28:17] [32minfo[39m: [32mAdmin Account Created Successfully: abdullah[39m
+[2026-01-02 20:32:09] [32minfo[39m: [32mAdmin logged in: abdullah[39m
+[2026-01-02 20:35:02] [32minfo[39m: [32mAdmin logged in: abdullah[39m
+[2026-01-02 20:35:31] [32minfo[39m: [32mAdmin logged in: abdullah[39m
+[2026-01-02 20:37:37] [32minfo[39m: [32mAdmin logged in: abdullah[39m
+[2026-01-02 20:38:09] [32minfo[39m: [32mAdmin logged in: abdullah[39m
+[2026-01-03 18:27:20] [32minfo[39m: [32mAdmin logged in: abdullah[39m
+[2026-01-03 18:27:48] [33mwarn[39m: [33mAccess token expired, checking refresh token...[39m
+[2026-01-03 18:27:48] [32minfo[39m: [32mToken refreshed successfully for user: e5de71aa-4e2e-4139-af7d-faa380baf214[39m
+[2026-01-03 18:27:50] [32minfo[39m: [32mProfile fetched for user: e5de71aa-4e2e-4139-af7d-faa380baf214[39m
+[2026-01-03 18:44:00] [32minfo[39m: [32mProfile fetched for user: e5de71aa-4e2e-4139-af7d-faa380baf214[39m
+[2026-01-03 18:44:04] [32minfo[39m: [32mProfile fetched for user: e5de71aa-4e2e-4139-af7d-faa380baf214[39m
+[2026-01-03 18:44:04] [32minfo[39m: [32mProfile fetched for user: e5de71aa-4e2e-4139-af7d-faa380baf214[39m
+[2026-01-03 18:48:33] [32minfo[39m: [32mProfile fetched for user: e5de71aa-4e2e-4139-af7d-faa380baf214[39m
+[2026-01-03 18:48:33] [32minfo[39m: [32mProfile fetched for user: e5de71aa-4e2e-4139-af7d-faa380baf214[39m
+[2026-01-03 18:48:49] [32minfo[39m: [32mfile added [object Object][39m
+[2026-01-03 18:48:49] [32minfo[39m: [32mNew profile picture uploaded for user e5de71aa-4e2e-4139-af7d-faa380baf214: 1767448129292-gjsjboc9-132160.webp[39m
+[2026-01-03 18:49:06] [32minfo[39m: [32mProfile fetched for user: e5de71aa-4e2e-4139-af7d-faa380baf214[39m
+[2026-01-03 18:49:15] [32minfo[39m: [32mProfile fetched for user: e5de71aa-4e2e-4139-af7d-faa380baf214[39m
+[2026-01-03 18:49:15] [32minfo[39m: [32mProfile fetched for user: e5de71aa-4e2e-4139-af7d-faa380baf214[39m
+[2026-01-03 18:59:56] [32minfo[39m: [32mProfile fetched for user: e5de71aa-4e2e-4139-af7d-faa380baf214[39m
+[2026-01-03 19:03:57] [32minfo[39m: [32mProfile fetched for user: e5de71aa-4e2e-4139-af7d-faa380baf214[39m
+[2026-01-03 19:10:35] [32minfo[39m: [32mProfile fetched for user: e5de71aa-4e2e-4139-af7d-faa380baf214[39m
+[2026-01-03 19:18:47] [32minfo[39m: [32mAdmin logged in: abdullah[39m
+[2026-01-03 19:31:35] [32minfo[39m: [32mfile added [object Object][39m
+[2026-01-03 19:31:35] [32minfo[39m: [32mFile uploaded to S3: 1767450695556-p8opqqzk-floor-plan-with-furniture-blueprint-illustration.jpg[39m
+[2026-01-03 19:31:35] [32minfo[39m: [32mDesign successfully published! ID: 1[39m
+[2026-01-03 19:52:29] [33mwarn[39m: [33mAccess token expired, checking refresh token...[39m
+[2026-01-03 19:52:29] [32minfo[39m: [32mToken refreshed successfully for user: e5de71aa-4e2e-4139-af7d-faa380baf214[39m
+[2026-01-03 19:52:29] [32minfo[39m: [32mProfile fetched for user: e5de71aa-4e2e-4139-af7d-faa380baf214[39m
+[2026-01-03 20:11:46] [32minfo[39m: [32mfile added [object Object][39m
+[2026-01-03 20:11:46] [32minfo[39m: [32mFile uploaded to S3: 1767453106450-agxrjh9a-9232-4e3y-141031.jpg[39m
+[2026-01-03 20:11:46] [32minfo[39m: [32mDesign successfully published! ID: 2[39m
+[2026-01-03 20:15:07] [32minfo[39m: [32mfile added [object Object][39m
+[2026-01-03 20:15:07] [32minfo[39m: [32mFile uploaded to S3: 1767453307446-6n5a6lkw-Tanjong-Rhu-Penthouse-Double-Storey-Modern-Oriental-Designer-Style--Living-Room--simple--false--ceiling--design--for--hall--with--fan--simplefalseceilingdesignforhallwithfan.jpeg[39m
+[2026-01-03 20:15:07] [32minfo[39m: [32mDesign successfully published! ID: 3[39m
+[2026-01-03 20:25:20] [32minfo[39m: [32mProfile fetched for user: e5de71aa-4e2e-4139-af7d-faa380baf214[39m
+[2026-01-03 20:27:07] [32minfo[39m: [32mfile added [object Object][39m
+[2026-01-03 20:27:07] [32minfo[39m: [32mfile added [object Object][39m
+[2026-01-03 20:27:07] [32minfo[39m: [32mfile added [object Object][39m
+[2026-01-03 20:27:07] [32minfo[39m: [32mImages uploaded to S3. Keys: 1767454027832-duk8oupx-132316.jpg, 1767454027835-oxvraznk-124317.jpg, 1767454027836-w1966lrn-120296.jpg[39m

@@ -233,3 +233,33 @@
   background: #11d4b4;
   color: white;
 }
+
+.skeletonCard {
+  height: 220px;
+  background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.noData {
+  text-align: center;
+  padding: 50px 20px;
+  color: #94a3b8;
+}
+
+.errorBox {
+  text-align: center;
+  color: #f87171;
+  padding: 40px;
+}

@@ -9,70 +9,20 @@ import {
   MdFileDownload,
 } from "react-icons/md";
 import Swal from "sweetalert2";
+import api from "../../utils/api";
 import styles from "./HouseMaps.module.css";
-
-// Capacitor plugins
 import { Filesystem, Directory } from "@capacitor/filesystem";
-
-const MAPS_DATA = [
-  {
-    id: "m1",
-    title: "Modern 3-Bed Family Plan",
-    sizeTag: "5 Marla",
-    type: "Double Story",
-    imageUrl:
-      "https://images.unsplash.com/photo-1503387762-592dea58ef23?q=80&w=600",
-  },
-  {
-    id: "m2",
-    title: "Luxury 5-Bed Open Concept",
-    sizeTag: "1 Kanal",
-    type: "Double Story",
-    imageUrl:
-      "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?q=80&w=600",
-  },
-  {
-    id: "m3",
-    title: "Compact 4-Bed Layout",
-    sizeTag: "10 Marla",
-    type: "Single Story",
-    imageUrl:
-      "https://images.unsplash.com/photo-1590247813693-5541d1c609fd?q=80&w=600",
-  },
-  {
-    id: "m4",
-    title: "Elite Executive Villa Map",
-    sizeTag: "2 Kanal",
-    type: "Double Story",
-    imageUrl:
-      "https://images.unsplash.com/photo-1605146761889-44a581c327e4?q=80&w=600",
-  },
-  {
-    id: "m5",
-    title: "Smart 3-Bed Economic",
-    sizeTag: "5 Marla",
-    type: "Single Story",
-    imageUrl:
-      "https://images.unsplash.com/photo-1574169208507-84376144848b?q=80&w=600",
-  },
-  {
-    id: "m6",
-    title: "Modern Corner Plot Plan",
-    sizeTag: "7 Marla",
-    type: "Double Story",
-    imageUrl:
-      "https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?q=80&w=600",
-  },
-];
 
 const HouseMaps: React.FC = () => {
   const navigate = useNavigate();
   const [activeFilter, setActiveFilter] = useState("All");
-  const [previewImage, setPreviewImage] = useState<string | null>(null);
   const [searchResults, setSearchResults] = useState<any[] | null>(null);
+  const [previewImage, setPreviewImage] = useState<string | null>(null);
+  const url = import.meta.env.VITE_API_URL;
 
   const filters = [
     "All",
+    "3 Marla",
     "5 Marla",
     "10 Marla",
     "1 Kanal",
@@ -80,100 +30,97 @@ const HouseMaps: React.FC = () => {
     "Double Story",
   ];
 
-  // --- Search Logic Restored ---
+  const {
+    data: maps,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["house-maps", activeFilter, searchResults],
+    queryFn: async () => {
+      if (searchResults && activeFilter === "Search Result")
+        return searchResults;
+      let endpoint = `/design/get-designs?category=House Maps&limit=50`;
+      if (activeFilter !== "All") {
+        if (activeFilter.includes("Marla") || activeFilter.includes("Kanal")) {
+          endpoint += `&size=${activeFilter}`;
+        } else {
+          endpoint += `&style=${activeFilter}`;
+        }
+      }
+      const res = await api.get(endpoint);
+      return res.data.data;
+    },
+  });
+
   const handleSearch = () => {
     Swal.fire({
       title: "Search House Maps",
       input: "text",
-      inputPlaceholder:
-        "Search by size or type (e.g. 5 Marla, Single Story)...",
+      inputPlaceholder: "Search by size or type...",
       showCancelButton: true,
       confirmButtonColor: "#11d4b4",
       confirmButtonText: "Search",
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed && result.value) {
-        const query = result.value.toLowerCase().trim();
-        const filtered = MAPS_DATA.filter(
-          (item) =>
-            item.title.toLowerCase().includes(query) ||
-            item.sizeTag.toLowerCase().includes(query) ||
-            item.type.toLowerCase().includes(query)
-        );
-
-        if (filtered.length > 0) {
-          setSearchResults(filtered);
-          setActiveFilter("Search Result");
-        } else {
-          Swal.fire(
-            "No Results",
-            "Aapki search ke mutabiq koi naqsha nahi mila.",
-            "info"
+        try {
+          const res = await api.get(
+            `/design/get-designs?category=House Maps&search=${result.value}`
           );
+          if (res.data.data.length > 0) {
+            setSearchResults(res.data.data);
+            setActiveFilter("Search Result");
+          } else {
+            Swal.fire(
+              "Not Found",
+              "No blueprints found for your search.",
+              "info"
+            );
+          }
+        } catch (err) {
+          Swal.fire("Error", "Unable to perform search.", "error");
         }
       }
     });
   };
 
-  const { data: maps, isLoading } = useQuery({
-    queryKey: ["house-maps", activeFilter, searchResults],
-    queryFn: async () => {
-      if (searchResults && activeFilter === "Search Result")
-        return searchResults;
-      if (activeFilter === "All") return MAPS_DATA;
-      return MAPS_DATA.filter(
-        (item) => item.sizeTag === activeFilter || item.type === activeFilter
-      );
-    },
-  });
-
-  const blobToBase64 = (blob: Blob): Promise<string> => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onloadend = () => resolve(reader.result as string);
-      reader.onerror = reject;
-      reader.readAsDataURL(blob);
-    });
-  };
-
-  const downloadImage = async (e: React.MouseEvent) => {
+  const downloadImage = async (e: React.MouseEvent, imgPath: string) => {
     e.preventDefault();
     e.stopPropagation();
-    if (!previewImage) return;
+    const fullUrl = `${url}/files/${imgPath}`;
 
     try {
-      const response = await fetch(previewImage);
+      const response = await fetch(fullUrl);
       const blob = await response.blob();
-      const fileName = `brico-map-${Date.now()}.jpg`;
+      const fileName = `Brico-Map-${Date.now()}.jpg`;
       const isNative = (window as any).Capacitor?.isNativePlatform();
 
       if (!isNative) {
-        const url = window.URL.createObjectURL(blob);
         const link = document.createElement("a");
-        link.href = url;
+        link.href = window.URL.createObjectURL(blob);
         link.download = fileName;
-        document.body.appendChild(link);
         link.click();
-        document.body.removeChild(link);
-        window.URL.revokeObjectURL(url);
       } else {
-        const base64Data = await blobToBase64(blob);
-        await Filesystem.writeFile({
-          path: fileName,
-          data: base64Data,
-          directory: Directory.Documents,
-        });
+        const reader = new FileReader();
+        reader.readAsDataURL(blob);
+        reader.onloadend = async () => {
+          const base64Data = reader.result as string;
+          await Filesystem.writeFile({
+            path: fileName,
+            data: base64Data,
+            directory: Directory.Documents,
+          });
+        };
       }
 
-      setPreviewImage(null);
       Swal.fire({
-        title: "Saved!",
-        text: "Map downloaded successfully.",
         icon: "success",
+        title: "Saved to Device",
         timer: 1500,
         showConfirmButton: false,
       });
+      setPreviewImage(null);
     } catch (err) {
-      Swal.fire("Error", "Failed to save map", "error");
+      Swal.fire("Error", "Could not save image.", "error");
     }
   };
 
@@ -210,17 +157,33 @@ const HouseMaps: React.FC = () => {
 
         <main className={styles.scrollContent}>
           {isLoading ? (
-            <div className={styles.loader}>Loading Blueprints...</div>
+            <div className={styles.gridContainer}>
+              {[1, 2, 3, 4].map((n) => (
+                <div key={n} className={styles.skeletonCard}></div>
+              ))}
+            </div>
+          ) : isError ? (
+            <div className={styles.errorBox}>
+              Failed to load designs. Please check your connection.
+            </div>
+          ) : maps?.length === 0 ? (
+            <div className={styles.noData}>
+              No house maps available in this category.
+            </div>
           ) : (
             <div className={styles.gridContainer}>
-              {maps?.map((map) => (
+              {maps?.map((map: any) => (
                 <div
                   key={map.id}
                   className={styles.designCard}
                   onClick={() => setPreviewImage(map.imageUrl)}
                 >
                   <div className={styles.imageWrapper}>
-                    <img src={map.imageUrl} alt={map.title} loading="lazy" />
+                    <img
+                      src={`${url}/files/${map.imageUrl}`}
+                      alt={map.title}
+                      loading="lazy"
+                    />
                     <button
                       className={styles.favBtn}
                       onClick={(e) => e.stopPropagation()}
@@ -230,7 +193,7 @@ const HouseMaps: React.FC = () => {
                   </div>
                   <div className={styles.cardInfo}>
                     <div className={styles.typeBadge}>
-                      <span>{map.type}</span>
+                      <span>{map.styleTag || "Modern"}</span>
                     </div>
                     <span className={styles.sizeTag}>{map.sizeTag}</span>
                     <h3 className={styles.designTitle}>{map.title}</h3>
@@ -255,13 +218,16 @@ const HouseMaps: React.FC = () => {
               className={styles.previewClose}
               onClick={() => setPreviewImage(null)}
             >
-              <MdClose size={24} />
+              <MdClose size={28} />
             </button>
-            <button className={styles.previewDownload} onClick={downloadImage}>
-              <MdFileDownload size={24} />
+            <button
+              className={styles.previewDownload}
+              onClick={(e) => downloadImage(e, previewImage)}
+            >
+              <MdFileDownload size={28} />
             </button>
             <img
-              src={previewImage}
+              src={`${url}/files/${previewImage}`}
               alt="Preview"
               className={styles.previewImage}
             />

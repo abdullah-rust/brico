@@ -6,8 +6,11 @@ import ActiveProjectCard from "../../components/Homes/ActiveProjectCard/ActivePr
 import DesignCarousel from "../../components/Homes/DesignCarousel/DesignCarousel";
 import PromoBanner from "../../components/Homes/PromoBanner/PromoBanner";
 import styles from "./HomePage.module.css";
+import { useNavigate } from "react-router-dom";
 
 const HomePage: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.container}>
       <div className={styles.topSticky}>

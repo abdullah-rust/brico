@@ -4,21 +4,21 @@ import Sidebar from "./componenets/Sidebar/Sidebar";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import UploadDesign from "./pages/UploadDesign/UploadDesign";
 import Login from "./pages/Login/Login";
+import Signup from "./pages/Signup/Signup";
+import OTPVerification from "./pages/OTPVerification/OTPVerification";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 export type ScreenType = "stats" | "upload" | "settings";
 
 function App() {
-  // 1. Auth State (Refresh hone par default false ho jayegi)
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [activeScreen, setActiveScreen] = useState<ScreenType>("stats");
 
-  // 2. Logout Logic (Sidebar ko pass karenge)
   const handleLogout = () => {
     setIsAuthenticated(false);
-    setActiveScreen("stats"); // Reset to default tab
+    setActiveScreen("stats");
   };
 
-  // 3. Conditional Rendering
   const renderScreen = () => {
     switch (activeScreen) {
       case "stats":
@@ -36,23 +36,47 @@ function App() {
     }
   };
 
-  // Agar login nahi hai toh sirf Login Page dikhao
-  if (!isAuthenticated) {
-    return <Login onLoginSuccess={() => setIsAuthenticated(true)} />;
-  }
-
-  // Agar authenticated hai toh poora Admin Layout dikhao
   return (
-    <div className="admin-layout">
-      <Sidebar
-        activeTab={activeScreen}
-        setActiveTab={setActiveScreen}
-        onLogout={handleLogout}
+    <Routes>
+      <Route
+        path="/login"
+        element={
+          !isAuthenticated ? (
+            <Login onLoginSuccess={() => setIsAuthenticated(true)} />
+          ) : (
+            <Navigate to="/" />
+          )
+        }
       />
-      <main className="main-content">
-        <div className="content-container">{renderScreen()}</div>
-      </main>
-    </div>
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/otp" element={<OTPVerification />} />
+
+      {/* Protected Layout: Sirf login ke baad */}
+      <Route
+        path="/"
+        element={
+          isAuthenticated ? (
+            <div className="admin-layout">
+              <Sidebar
+                activeTab={activeScreen}
+                setActiveTab={setActiveScreen}
+                onLogout={handleLogout}
+              />
+              <main className="main-content">
+                <div className="content-container">{renderScreen()}</div>
+              </main>
+            </div>
+          ) : (
+            <Navigate to="/login" />
+          )
+        }
+      />
+
+      <Route
+        path="*"
+        element={<Navigate to={isAuthenticated ? "/" : "/login"} />}
+      />
+    </Routes>
   );
 }
 

@@ -6,11 +6,17 @@ import {
   MdFolderOpen,
 } from "react-icons/md";
 import styles from "./ActionGrid.module.css";
+import { useNavigate } from "react-router-dom";
 
 const ActionGrid: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.grid}>
-      <button className={styles.largeCardTeal}>
+      <button
+        className={styles.largeCardTeal}
+        onClick={() => navigate("/explore")}
+      >
         <div className={styles.iconCircle}>
           <MdPersonSearch size={22} />
         </div>
@@ -30,14 +36,17 @@ const ActionGrid: React.FC = () => {
         </div>
       </button>
 
-      <button className={styles.smallCard}>
+      <button className={styles.smallCard} onClick={() => navigate("/tools")}>
         <div className={styles.smallIcon}>
           <MdConstruction size={22} />
         </div>
         <p className={styles.smallTitle}>Tools</p>
       </button>
 
-      <button className={styles.smallCard}>
+      <button
+        className={styles.smallCard}
+        onClick={() => navigate("/projects")}
+      >
         <div className={styles.smallIcon}>
           <MdFolderOpen size={22} />
         </div>

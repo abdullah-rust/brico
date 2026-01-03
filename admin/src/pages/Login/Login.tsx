@@ -8,7 +8,7 @@ interface LoginProps {
 }
 
 const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -18,18 +18,18 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
 
     try {
       // Backend par login API hit karein ge
-      const response = await api.post("/admin/login", {
-        email,
+      const response = await api.post("/admin/admin-login", {
+        username,
         password,
       });
 
-      const { token } = response.data;
+      const { accessToken, admin } = response.data;
 
-      localStorage.setItem("brico_admin_token", token);
-      onLoginSuccess(token);
+      localStorage.setItem("brico_admin_token", accessToken);
+      onLoginSuccess(accessToken);
 
       Swal.fire({
-        title: "Welcome Abdullah!",
+        title: "Welcome " + admin.username,
         icon: "success",
         timer: 1500,
         showConfirmButton: false,
@@ -53,12 +53,12 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
         <p>Please enter your credentials to continue</p>
 
         <div className={styles.inputGroup}>
-          <label>Email Address</label>
+          <label>Enter Username</label>
           <input
-            type="email"
+            type="text"
             placeholder="admin@brico.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             required
           />
         </div>

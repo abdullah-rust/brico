@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { MdCloudUpload, MdClose, MdAutoAwesome } from "react-icons/md";
-import axios from "axios";
+import api from "../../utils/api";
 import Swal from "sweetalert2";
 import styles from "./UploadDesign.module.css";
 
@@ -63,7 +63,7 @@ const UploadDesign = () => {
 
     try {
       // Backend URL check kar lena (Port 5000 or whatever you use)
-      await axios.post("http://localhost:5000/api/designs/upload", data);
+      await api.post("/design/add-design", data);
 
       Swal.fire({
         title: "Success!",
@@ -82,11 +82,11 @@ const UploadDesign = () => {
         sizeTag: "",
         styleTag: "",
       });
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
       Swal.fire(
         "Upload Failed",
-        "Check backend logs or S3 connection",
+        err.response.data?.message || "Check backend logs or S3 connection",
         "error"
       );
     } finally {
